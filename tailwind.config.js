@@ -9,6 +9,10 @@ module.exports = {
         dark: "#252525",
         secondary: "#7c7c7c",
         active: "#9c9c9c"
+      },
+      screens: {
+        wide: "2000px",
+        uw: "2800px"
       }
     },
   },

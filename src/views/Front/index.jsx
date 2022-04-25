@@ -16,10 +16,12 @@ const Front = () => {
         </div>
         <div className="hero-action move-down font-extrabold text-[10vmin]">↓</div>
       </div>
-      <div className="w-2/3 grid grid-cols-2 gap-4">
-        <div className="w-full aspect-square"><img className="aspect-square h-full object-cover rounded-md" src={AboutMePhoto} /></div>
-        <div className="text-center">
-          Hallow, have a look at my projects!
+      <div className="w-2/3 grid grid-col-1 sm:grid-cols-2 gap-4">
+        <div className="flex justify-center sm:justify-end"><img className="aspect-square object-cover rounded-md max-h-[50vh] md:max-h-[80vh]" src={AboutMePhoto} /></div>
+        <div className="flex justify-center items-center sm:justify-start">
+          <div className="text-center">
+            Hallow, have a look at my projects!
+          </div>
         </div>
       </div>
     </>
