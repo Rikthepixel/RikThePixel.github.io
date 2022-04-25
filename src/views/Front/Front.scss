@@ -1,0 +1,15 @@
+@keyframes move-down-keys {
+    from {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+    }
+
+    to {
+        margin-top: 0rem;
+        margin-bottom: 1rem
+    }
+}
+
+.hero-action.move-down {
+    animation: move-down-keys infinite ease-out alternate-reverse 0.75s;
+}

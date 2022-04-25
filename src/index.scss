@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Roboto Slab";
+    src: url("res/fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf");
+}
+
+:root {
+    font-family: "Roboto Slab";
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#react-root {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    background-image: linear-gradient(45deg, rgb(243, 195, 242), rgb(243, 40, 239));
+}
