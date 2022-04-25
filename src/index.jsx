@@ -14,7 +14,7 @@ const Contact = React.lazy(() => import("views/Contact"));
 const loading = <Loading />;
 
 const SuspenseRoute = ({ element }) => (
-  <ErrorBoundary><Suspense fallback={loading}>{element}</Suspense></ErrorBoundary>
+  <ErrorBoundary><Suspense fallback={<></>}>{element}</Suspense></ErrorBoundary>
 );
 
 render(
