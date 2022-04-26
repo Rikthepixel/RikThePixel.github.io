@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PageHeader from "components/PageHeader";
 
 const Contact = () => {
   useEffect(() => {
@@ -6,9 +7,11 @@ const Contact = () => {
   }, []);
 
   return (
-    <main className="p-4 flex-1">
-      Contact
-    </main>
+    <>
+      <PageHeader>
+        <p>Contact</p>
+      </PageHeader>
+    </>
   );
 };
 
