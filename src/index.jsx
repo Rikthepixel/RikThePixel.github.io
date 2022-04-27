@@ -17,6 +17,8 @@ const SuspenseRoute = ({ element }) => (
   <ErrorBoundary><Suspense fallback={<></>}>{element}</Suspense></ErrorBoundary>
 );
 
+document.title = "Rik den Breejen";
+
 render(
   <React.StrictMode>
     <HashRouter>
