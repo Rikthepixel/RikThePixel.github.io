@@ -22,7 +22,8 @@ const Front = () => {
           <img className="w-full h-fit aspect-square object-cover rounded-full max-w-[15rem]" src={AboutMePhoto} />
         </div>
         <div className="text-center p-4">
-          Hello, have a look at my projects!
+          Hello, this website is still work in progress! <br />
+          Stay tuned!
         </div>
       </div>
     </>
