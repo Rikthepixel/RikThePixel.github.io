@@ -13,3 +13,23 @@
 .hero-action.move-down {
     animation: move-down-keys infinite ease-out alternate-reverse 0.75s;
 }
+
+:where(.hero-long, .hero-short) {
+    text-align: center;
+    padding: 1rem;
+}
+
+.hero-short {
+
+    @media (min-width: 640px) {
+        display: none;
+    }
+}
+
+.hero-long {
+    display: none;
+
+    @media (min-width: 640px) {
+        display: flex;
+    }
+}
