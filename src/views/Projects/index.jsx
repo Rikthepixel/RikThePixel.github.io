@@ -8,9 +8,17 @@ const Projects = () => {
 
     return (
         <>
-            <PageHeader>
+            <PageHeader className="pb-0">
                 <p>Projects</p>
             </PageHeader>
+            <div className="w-2/3 pb-32 sm:pb-20">
+                <div>
+                    <input placeholder="search by name..." value="" />
+                </div>
+                <div>
+
+                </div>
+            </div>
         </>
     );
 };
