@@ -1,5 +1,5 @@
 import { useEffect } from 'preact/hooks';
-import AboutMePhoto from "res/images/Placeholder.webp";
+import AboutMePhoto from "res/images/FrontImage.webp";
 import PageHeader from "components/PageHeader";
 import "./Front.scss";
 

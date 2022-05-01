@@ -20,7 +20,7 @@ module.exports = {
     plugin(({ addVariant }) => {
       addVariant("current-page", "&.active");
       addVariant("children", "&>*");
-      addVariant("decendants", "& *");
+      addVariant("descendants", "& *");
     })
   ],
 };

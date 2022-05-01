@@ -28,3 +28,16 @@ body {
     flex: 1;
     overflow: hidden;
 }
+
+input,
+select {
+    font-family: "Roboto Slab";
+    line-height: normal;
+    border: rgb(136, 136, 136) solid 0.05rem;
+    border-radius: 0.25rem;
+    padding-inline: 0.5rem;
+}
+
+select {
+    background-color: white;
+}
