@@ -98,7 +98,7 @@ const Projects = () => {
                     ...state,
                     search: value,
                     projects: filteredProjects,
-                    technologies: filteredTechnologies,
+                    filterTechnologies: filteredTechnologies,
                     projectNames: filteredProjectNames
                 };
             }
@@ -120,7 +120,7 @@ const Projects = () => {
                 return {
                     ...state,
                     projects: filteredProjects,
-                    technologies: filteredTechnologies,
+                    filterTechnologies: filteredTechnologies,
                     projectNames: filteredProjectNames
                 };
             }
@@ -148,10 +148,14 @@ const Projects = () => {
                         <input
                             className="min-h-[2rem] border-purple-700"
                             id="SearchByNameFilter"
+                            list="SearchList"
                             placeholder="Search by name..."
                             value={filter.search}
                             onChange={e => dispatchFilter({ type: "SetSearch", value: e.target.value })}
                         />
+                        <datalist id="SearchList">
+                            {filter.projectNames.map(proj => <option key={proj} value={proj}>{proj}</option>)}
+                        </datalist>
                     </div>
 
                     <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
