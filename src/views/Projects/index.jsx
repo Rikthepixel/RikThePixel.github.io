@@ -9,14 +9,14 @@ const sortFunctions = {
     "DateUp": (pA, pB) => {
         const { endDate: aEnd, datePriority: aPriority } = pA;
         const { endDate: bEnd, datePriority: bPriority } = pB;
-        return (aEnd ? new Date(aEnd.year, (aEnd.month ?? 0) - 1, aEnd.day ?? 0) : aPriority ?? new Date(Date.now())) <
-            (bEnd ? new Date(bEnd.year, (bEnd.month ?? 0) - 1, bEnd.day ?? 0) : bPriority ?? new Date(Date.now()));
+        return (aEnd ? new Date(aEnd.year, (aEnd.month ?? 0) - 1, aEnd.day ?? 1) : new Date(Date.now() - aPriority)) >
+            (bEnd ? new Date(bEnd.year, (bEnd.month ?? 0) - 1, bEnd.day ?? 1) : new Date(Date.now() - bPriority));
     },
     "DateDown": (pA, pB) => {
         const { endDate: aEnd, datePriority: aPriority } = pA;
         const { endDate: bEnd, datePriority: bPriority } = pB;
-        return (aEnd ? new Date(aEnd.year, (aEnd.month ?? 0) - 1, aEnd.day ?? 0) : aPriority ?? new Date(Date.now())) >
-            (bEnd ? new Date(bEnd.year, (bEnd.month ?? 0) - 1, bEnd.day ?? 0) : bPriority ?? new Date(Date.now()));
+        return (aEnd ? new Date(aEnd.year, (aEnd.month ?? 0) - 1, aEnd.day ?? 1) : new Date(Date.now() - aPriority)) <
+            (bEnd ? new Date(bEnd.year, (bEnd.month ?? 0) - 1, bEnd.day ?? 1) : new Date(Date.now() - bPriority));
     },
     "NameUp": (pA, pB) => pA.title.toLowerCase() < pB.title.toLowerCase(),
     "NameDown": (pA, pB) => pA.title.toLowerCase() >= pB.title.toLowerCase()
@@ -40,7 +40,7 @@ const controlStyle = {
 };
 
 const initialState = {
-    projects: QuickSort(ProjectsState, sortFunctions.DateUp),
+    projects: ProjectsState,
     sort: { value: "DateUp", label: "Date ↑" },
     search: "",
     filterTechnologies: [],
@@ -56,17 +56,10 @@ const filterProjects = (search, selectedTechnologies) => {
     ProjectsState.forEach((project) => {
         const { title, technologies } = project;
 
-        console.log(title.toLowerCase(), search?.toLowerCase?.(), (!title.toLowerCase().includes(search?.toLowerCase?.()) && search !== ""));
         if (!title.toLowerCase().includes(search?.toLowerCase?.()) && search !== "") {
-            console.log(project, "title");
             return;
         }
-
-        if (!selectedTechnologies.every(filterTech => {
-            console.log(filterTech);
-            return technologies.find(tech => filterTech.value === tech.name);
-        })) {
-            console.log(project, "tech");
+        if (!selectedTechnologies.every(filterTech => technologies.find(tech => filterTech.value === tech.name))) {
             return;
         }
 

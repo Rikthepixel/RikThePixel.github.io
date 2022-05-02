@@ -33,7 +33,7 @@ export default [
         linkLabel: "You are already on the website!",
 
         startDate: { day: 24, month: 4, year: 2022 },
-        datePriority: -1,
+        datePriority: 0,
 
         technologies: [
             { name: "JavaScript" },
