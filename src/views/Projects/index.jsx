@@ -22,6 +22,23 @@ const sortFunctions = {
     "NameDown": (pA, pB) => pA.title.toLowerCase() >= pB.title.toLowerCase()
 };
 
+const controlStyle = {
+    cursor: "default",
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    minHeight: "38px",
+    outline: "0",
+    backgroundColor: "white",
+    position: "relative",
+    transition: "all 100ms",
+    boxSizing: "border-box",
+    borderRadius: "0.375rem",
+    borderWidth: "1px",
+    borderColor: "rgb(126 34 206);"
+};
+
 const initialState = {
     projects: QuickSort(ProjectsState, sortFunctions.DateUp),
     sort: { value: "DateUp", label: "Date ↑" },
@@ -125,34 +142,36 @@ const Projects = () => {
                 <p className="text-base"></p>
             </PageHeader>
             <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-4">
-                <div className="flex gap-4 flex-wrap children:flex children:items-center children:gap-2 children:w-full children:sm:w-auto sm:flex-nowrap">
-                    <div>
+                <div className="flex gap-4 flex-wrap">
+                    <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
                         <label htmlFor="SearchByNameFilter">Search:</label>
                         <input
-                            className="min-h-[2rem]"
+                            className="min-h-[2rem] border-purple-700"
                             id="SearchByNameFilter"
-                            placeholder="search by name..."
+                            placeholder="Search by name..."
                             value={filter.search}
                             onChange={e => dispatchFilter({ type: "SetSearch", value: e.target.value })}
                         />
                     </div>
 
-                    <div>
+                    <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
                         <label htmlFor="TechnologyFilter">Technologies:</label>
                         <Select
                             id="TechnologyFilter"
                             className="min-h-[2rem]"
+                            styles={{ control: () => controlStyle }}
                             onChange={selected => dispatchFilter({ type: "SetTechnologies", value: selected })}
                             options={filter.filterTechnologies}
                             isMulti
                         />
                     </div>
 
-                    <div>
+                    <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
                         <label htmlFor="SortBy">Sort by:</label>
                         <Select
                             id="SortBy"
                             className="min-h-[2rem]"
+                            styles={{ control: () => controlStyle }}
                             value={filter.sort}
                             onChange={selected => dispatchFilter({ type: "SetSort", value: selected })}
                             options={[
