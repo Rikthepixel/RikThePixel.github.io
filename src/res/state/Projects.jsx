@@ -73,11 +73,11 @@ export default [
         text: <>
             <p>In the third semester of my college I made Pinnnote.</p>
             <p>
-                Pinnote was a web-based not making app, which implemented workspaces similarly to Trello.
+                Pinnote was a web-based note making app, which implemented workspaces similarly to Trello.
                 You could add attachments to notes, customize your note-boards and share your note-boards with other people.
             </p>
             <p>
-                I learned a lot during the making of Pinnote, which lead to the code-base messy.
+                My skill developed a lot during the making of Pinnote, which led to the code-base becoming messy.
                 Reflecting on the project, I would say that I could have made a lot of things better, like the implementation of SignalR or the way the authentication was handled.
                 Though over-all It was a very educational experience!
             </p>
@@ -86,8 +86,8 @@ export default [
         link: "https://github.com/Rikthepixel/Pinnote-frontend",
         linkLabel: "View source",
 
-        startDate: { day: 1, month: 4, year: 2022 },
-        endDate: { day: 14, month: 4, year: 2022 },
+        startDate: { day: 4, month: 9, year: 2021 },
+        endDate: { day: 18, month: 1, year: 2022 },
 
         technologies: [
             { name: "JavaScript" },
