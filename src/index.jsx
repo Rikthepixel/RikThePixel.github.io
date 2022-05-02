@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { render } from 'preact';
-import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 import "./index.scss";
 
@@ -12,7 +11,7 @@ const Timeline = React.lazy(() => import("views/Timeline"));
 const Contact = React.lazy(() => import("views/Contact"));
 
 const SuspenseRoute = ({ element }) => (
-  <ErrorBoundary><Suspense fallback={<></>}>{element}</Suspense></ErrorBoundary>
+<Suspense fallback={<></>}>{element}</Suspense>
 );
 
 render(

@@ -12,7 +12,8 @@ module.exports = {
       },
       screens: {
         wide: "2000px",
-        uw: "2800px"
+        uw: "2800px",
+        low: { 'raw': '(max-height: 500px)' }
       }
     },
   },

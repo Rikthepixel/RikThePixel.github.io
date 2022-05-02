@@ -18,6 +18,8 @@ export default defineConfig({
             "react-dom": "preact/compat",
             "react": "preact/compat",
             "react/jsx-runtime": "preact/jsx-runtime",
+
+            "utils": "/src/utils",
             "res": "/src/res",
             "components": "/src/components",
             "views": "/src/views"

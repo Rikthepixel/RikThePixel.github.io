@@ -1,0 +1,44 @@
+import React from 'react';
+import Link from "components/Link";
+import Technology from "../Technology";
+import "./Project.scss";
+
+const Project = ({ title, text, icon, technologies, startDate, endDate = { custom: "Now" }, link, linkLabel = "Go to" }) => {
+
+    const startDateString = startDate.custom ?? `${startDate.year}-${startDate.month}`;
+    const endDateString = endDate.custom ?? `${endDate.year}-${endDate.month}`;
+
+    return (
+        <div className="bg-white bg-opacity-30 flex justify-center flex-wrap gap-4 overflow-hidden shadow-md rounded-md even:flex-row-reverse sm:justify-start sm:flex-nowrap">
+            {icon && <div className="aspect-[4/3] w-auto sm:max-w-[30%]">
+                <img
+                    className="aspect-[4/3] sm:aspect-auto object-cover w-full max-h-[60vh] low:max-h-[unset]"
+                    loading="lazy"
+                    src={icon}
+                    alt="Image not found"
+                />
+            </div>}
+            <div className="flex flex-col justify-between w-full transition-all duration-500 p-2 gap-1 sm:gap-2 sm:py-2 sm:p-1 md:p-2 lg:p-4">
+                <div className="flex flex-col gap-2">
+                    <div className="flex flex-col sm:flex-col-reverse">
+                        <div className="text-gray-600 text-[0.8rem] sm:text-[0.9rem] lg:text-[1rem]">{startDateString} → {endDateString}</div>
+                        <div className="text-[1.5rem] sm:text-[2.5rem">{title}</div>
+                    </div>
+                    <div className="project-description">{text}</div>
+                </div>
+                {(link ?? (technologies && technologies?.length > 0)) && <div className="flex flex-col transition-all duration-500 gap-1 sm:gap-2">
+
+                    {link && <Link href={link}>
+                        {linkLabel}
+                    </Link>}
+                    {(technologies && technologies?.length > 0) && <div className="flex flex-wrap gap-2">
+                        {technologies.map(tech => <Technology name={tech.name} link={tech.link} />)}
+                    </div>}
+
+                </div>}
+            </div>
+        </div >
+    );
+};
+
+export default Project;
