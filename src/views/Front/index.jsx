@@ -22,12 +22,18 @@ const Front = () => {
           <img className="w-full h-fit aspect-square object-cover rounded-full max-w-[10rem] sm:max-w-[15rem]" src={AboutMePhoto} />
         </div>
         <div className="hero-short">
-          Hello, this website is still work in progress! <br />
-          Stay tuned!
+          <p>Hello, my name is Rik den Breejen.</p>
+          <p>I'm a Software engineering student at Fontys.</p>
         </div>
         <div className="hero-long">
-          Hello, this website is still work in progress! <br />
-          Stay tuned!
+          <p>
+            Hello, my name is Rik den Breejen. I'm a Dutch Software engineering student at Fontys.<br />
+            I have a passion for coding! I often spend a lot of my free time programming.
+          </p>
+          <p>
+            Currently learning: <br />
+            <a href="https://vitejs.dev/" target="_blank">ViteJS ⚡</a> and <a href="https://love2d.org/" target="_blank">Love2D</a>
+          </p>
         </div>
       </div>
     </>
