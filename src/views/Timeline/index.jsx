@@ -9,7 +9,7 @@ const Timeline = () => {
   return (
     <>
       <PageHeader>
-        <p>Timeline</p>
+        <p>Coming Soon</p>
       </PageHeader>
     </>
   );

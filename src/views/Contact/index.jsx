@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <>
       <PageHeader>
-        <p>Contact</p>
+        <p>Coming Soon</p>
       </PageHeader>
     </>
   );

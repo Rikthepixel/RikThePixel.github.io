@@ -19,8 +19,8 @@ const Layout = () => {
                 >
                     <PageLink to="/">Home</PageLink>
                     <PageLink to="/Projects">Projects</PageLink>
-                    <PageLink to="/Timeline">Timeline</PageLink>
-                    <PageLink to="/Contact" >Contact</PageLink>
+                    <PageLink to="/Timeline">Coming Soon</PageLink>
+                    <PageLink to="/Contact" >Coming Soon</PageLink>
                 </nav>
             </div>
         </div >
