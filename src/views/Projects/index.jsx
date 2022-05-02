@@ -6,20 +6,20 @@ import Select from "react-select";
 import { QuickSort } from "utils/sort";
 
 const sortFunctions = {
-    "DateUp": (pA, pB) => {
+    DateUp: (pA, pB) => {
         const { endDate: aEnd, datePriority: aPriority } = pA;
         const { endDate: bEnd, datePriority: bPriority } = pB;
         return (aEnd ? new Date(aEnd.year, (aEnd.month ?? 0) - 1, aEnd.day ?? 1) : new Date(Date.now() - aPriority)) >
             (bEnd ? new Date(bEnd.year, (bEnd.month ?? 0) - 1, bEnd.day ?? 1) : new Date(Date.now() - bPriority));
     },
-    "DateDown": (pA, pB) => {
+    DateDown: (pA, pB) => {
         const { endDate: aEnd, datePriority: aPriority } = pA;
         const { endDate: bEnd, datePriority: bPriority } = pB;
         return (aEnd ? new Date(aEnd.year, (aEnd.month ?? 0) - 1, aEnd.day ?? 1) : new Date(Date.now() - aPriority)) <
             (bEnd ? new Date(bEnd.year, (bEnd.month ?? 0) - 1, bEnd.day ?? 1) : new Date(Date.now() - bPriority));
     },
-    "NameUp": (pA, pB) => pA.title.toLowerCase() < pB.title.toLowerCase(),
-    "NameDown": (pA, pB) => pA.title.toLowerCase() >= pB.title.toLowerCase()
+    NameUp: (pA, pB) => pA.title.toLowerCase() < pB.title.toLowerCase(),
+    NameDown: (pA, pB) => pA.title.toLowerCase() > pB.title.toLowerCase()
 };
 
 const controlStyle = {
