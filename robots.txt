@@ -1,6 +1,1 @@
 User-agent: *
-Allow: /
-Allow: /#/
-Allow: /#/Projects
-Allow: /#/Timeline
-Allow: /#/Contact
