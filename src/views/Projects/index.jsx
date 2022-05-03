@@ -139,7 +139,7 @@ const Projects = () => {
                     <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
                         <label htmlFor="SearchByNameFilter">Search:</label>
                         <input
-                            className="min-h-[38px] border-purple-700"
+                            className="min-h-[38px] border-purple-700 border-[1px]"
                             id="SearchByNameFilter"
                             list="SearchList"
                             placeholder="Search by name..."
