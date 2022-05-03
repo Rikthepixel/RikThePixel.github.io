@@ -8,7 +8,7 @@ const Contact = () => {
 
   return (
     <>
-      <PageHeader>
+      <PageHeader className="pb-4">
         <p>Coming Soon</p>
       </PageHeader>
     </>
