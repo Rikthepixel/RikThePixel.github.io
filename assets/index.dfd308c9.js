@@ -1,1 +1,0 @@
-import{y as t,v as e,P as n,d as o}from"./index.15a0578e.js";const l=()=>(t(()=>{document.title="Rik den Breejen | Contact"},[]),e(o,null,e(n,{className:"pb-4"},e("p",null,"Coming Soon"))));export{l as default};
