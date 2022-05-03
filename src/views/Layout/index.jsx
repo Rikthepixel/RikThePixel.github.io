@@ -8,13 +8,12 @@ const Layout = () => {
 
     return (
         <div className="flex flex-1 justify-between flex-col relative">
-            <main className="flex-1 flex flex-col overflow-y-auto items-center">
+            <main aria-labelledby="page-header" className="flex-1 flex flex-col overflow-y-auto items-center">
                 <Outlet />
             </main>
             <div className="absolute bottom-0 w-full text-white">
                 <nav
-                    aria-label="primary"
-                    role="navigation"
+                    aria-label="Main"
                     className="py-4 px-6 grid grid-cols-[1fr_1fr] place-items-center gap-2 sm:flex sm:justify-around"
                 >
                     <PageLink to="/">Home</PageLink>

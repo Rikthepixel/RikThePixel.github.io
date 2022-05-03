@@ -135,9 +135,12 @@ const Projects = () => {
                 <p className="text-base"></p>
             </PageHeader>
             <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-4">
-                <div className="flex gap-4 flex-wrap">
-                    <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
-                        <label htmlFor="SearchByNameFilter">Search:</label>
+                <section aria-label="Project filters" className="flex gap-4 flex-wrap">
+                    <section
+                        aria-label="Search by title"
+                        className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto"
+                    >
+                        <label htmlFor="SearchByNameFilter">Search</label>
                         <input
                             className="min-h-[38px] border-purple-700 border-[1px]"
                             id="SearchByNameFilter"
@@ -149,24 +152,32 @@ const Projects = () => {
                         <datalist id="SearchList">
                             {filter.projectNames.map(proj => <option key={proj} value={proj}>{proj}</option>)}
                         </datalist>
-                    </div>
+                    </section>
 
-                    <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
-                        <label htmlFor="TechnologyFilter">Technologies:</label>
+                    <section
+                        aria-label="Technology"
+                        className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto"
+                    >
+                        <label htmlFor="TechnologyFilter">Technologies</label>
                         <Select
                             id="TechnologyFilter"
+                            aria-label="Select box"
                             className="min-h-[2rem]"
                             styles={{ control: () => controlStyle }}
                             onChange={selected => dispatchFilter({ type: "SetTechnologies", value: selected })}
                             options={filter.filterTechnologies}
                             isMulti
                         />
-                    </div>
+                    </section>
 
-                    <div className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto">
-                        <label htmlFor="SortBy">Sort by:</label>
+                    <section
+                        aria-label="Sort by"
+                        className="flex items-center gap-2 w-full flex-wrap children:w-full sm:w-auto md:children:w-auto"
+                    >
+                        <label htmlFor="SortBy">Sort by</label>
                         <Select
                             id="SortBy"
+                            aria-label="Select box"
                             className="min-h-[2rem]"
                             styles={{ control: () => controlStyle }}
                             value={filter.sort}
@@ -179,13 +190,13 @@ const Projects = () => {
                             ]}
                             isSearchable="false"
                         />
-                    </div>
-                </div>
-                <div className="flex flex-col gap-8">
+                    </section>
+                </section>
+                <section aria-label="Projects" className="flex flex-col gap-8">
                     {filter.projects.map((project, index) => {
                         return <Project key={`${index}-${project.title}`} {...project} />;
                     })}
-                </div>
+                </section>
             </div>
         </>
     );
