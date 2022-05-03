@@ -8,7 +8,7 @@
     "start-host": "vite --host",
     "build": "vite build",
     "build:sitemap": "vite-node ./builders/sitemap.js",
-    "build:full": "npm run sitemap && npm run build",
+    "build:full": "npm run build:sitemap && npm run build",
     "predeploy": "npm run build:full",
     "deploy": "gh-pages -d dist"
   },
