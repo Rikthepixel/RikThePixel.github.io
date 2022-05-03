@@ -27,7 +27,13 @@ export default [
         icon: MyWebsite,
         text: <>
             <p>After making a portfolio website for Menno I realized that I needed one too. This was because in my upcoming semester I had to do an internship.</p>
-            <p>I made this website using <a href="https://vitejs.dev/" target="_blank">Vite</a>, <a href="https://preactjs.com/" target="_blank">Preact</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.</p>
+            <p>
+                I made this website using <a href="https://vitejs.dev/" target="_blank">Vite</a>, <a href="https://reactjs.org/" target="_blank">React</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.
+            </p>
+            <p>
+                Another notable technology I used is <a href="https://github.com/stereobooster/react-snap#readme" target="_blank">React-snap</a>. This package pre-renders the SPA (single page application) into an HTML file.
+                This optimizes the website for search engines that do not run Javascript like Bing.
+            </p>
         </>,
 
         link: "#/",
@@ -39,7 +45,9 @@ export default [
         technologies: [
             { name: "JavaScript" },
             { name: "ViteJS", link: "https://vitejs.dev/" },
-            { name: "Preact", link: "https://preactjs.com/" },
+            { name: "React", link: "https://reactjs.org/" },
+            { name: "React-router", link: "https://reactrouterdotcom.fly.dev/" },
+            { name: "React-snap", link: "https://github.com/stereobooster/react-snap#readme" },
             { name: "Tailwind", link: "https://tailwindcss.com/" },
             { name: "SCSS", link: "https://sass-lang.com/" },
         ]
@@ -93,6 +101,7 @@ export default [
         technologies: [
             { name: "JavaScript" },
             { name: "React", link: "https://reactjs.org/" },
+            { name: "React-Router", link: "https://reactrouterdotcom.fly.dev/" },
             { name: "Redux", link: "https://redux.js.org/" },
             { name: "Bootstrap", link: "https://getbootstrap.com/" },
             { name: "SCSS", link: "https://sass-lang.com/" },
