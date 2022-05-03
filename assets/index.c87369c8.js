@@ -1,0 +1,1 @@
+import{y as n,v as e,P as l,d as i}from"./index.afaaa613.js";const t=()=>(n(()=>{document.title="Rik den Breejen | Timeline"},[]),e(i,null,e(l,{className:"pb-4"},e("p",null,"Coming Soon"))));export{t as default};
