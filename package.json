@@ -8,13 +8,13 @@
     "prebuild": "vite-node ./builders/sitemap.js",
     "build": "vite build",
     "postbuild": "react-snap",
-    "compile": "npm run prebuild && npm run build && npm run postbuild",
-    "predeploy": "npm run compile",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "reactSnap": {
     "source": "dist",
     "minifyHtml": {
+      "collapseWhitespace": false,
       "removeComments": false
     }
   },
