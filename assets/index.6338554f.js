@@ -1,1 +1,0 @@
-import{r as t,j as e,F as a,P as r}from"./index.4dd378e2.js";const o=()=>(t.exports.useEffect(()=>{document.title="Rik den Breejen | Contact"},[]),e(a,{children:e(r,{className:"pb-4",children:e("p",{children:"Coming Soon"})})}));export{o as default};
