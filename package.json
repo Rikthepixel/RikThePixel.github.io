@@ -6,13 +6,11 @@
   "scripts": {
     "start": "vite",
     "start-host": "vite --host",
-    "prebuild": "npm run prebuild:sitemap",
-    "prebuild:sitemap": "vite-node ./builders/sitemap.js",
+    "prebuild": "vite-node ./builders/sitemap.js",
     "build": "vite build",
-    "postbuild": "npm run postbuild:prerender",
-    "postbuild:prerender": "react-snap",
-    "build:full": "npm run prebuild && npm run build && npm run postbuild",
-    "predeploy": "npm run build:full",
+    "postbuild": "react-snap",
+    "compile": "npm run prebuild && npm run build && npm run postbuild",
+    "predeploy": "npm run compile",
     "deploy": "gh-pages -d dist"
   },
   "reactSnap": {
