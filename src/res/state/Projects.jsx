@@ -1,3 +1,4 @@
+import React from "react";
 import MyWebsite from "res/images/MyWebsite.webp";
 import MennoWebsite from "res/images/MennoWebsite.webp";
 import PinnoteLogo from "res/images/PinnoteLogo.webp";

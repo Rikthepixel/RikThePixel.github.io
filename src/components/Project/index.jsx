@@ -32,7 +32,7 @@ const Project = ({ title, text, icon, technologies, startDate, endDate = { custo
                         {linkLabel}
                     </Link>}
                     {(technologies && technologies?.length > 0) && <section aria-label="Technologies" className="flex flex-wrap gap-2">
-                        {technologies.map(tech => <Technology name={tech.name} link={tech.link} />)}
+                        {technologies.map(tech => <Technology key={tech.name} name={tech.name} link={tech.link} />)}
                     </section>}
 
                 </div>}
