@@ -1,24 +1,14 @@
 import { defineConfig } from "vite";
 import svgr from '@honkhonk/vite-plugin-svgr';
-import prefresh from "@prefresh/vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-    esbuild: {
-        jsxFactory: 'h',
-        jsxFragment: 'Fragment',
-        jsxInject: `import { h, Fragment } from 'preact'`,
-    },
     plugins: [
-        prefresh(),
+        react(),
         svgr()
     ],
     resolve: {
         alias: {
-            "react-dom/test-utils": "preact/test-utils",
-            "react-dom": "preact/compat",
-            "react": "preact/compat",
-            "react/jsx-runtime": "preact/jsx-runtime",
-
             "utils": "/src/utils",
             "res": "/src/res",
             "components": "/src/components",
