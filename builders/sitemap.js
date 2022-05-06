@@ -9,4 +9,4 @@ const generator = new Generator(
         changefreq: 'monthly',
     }
 );
-generator.save('public/sitemap.xml');
+generator.save('dist/sitemap.xml');
