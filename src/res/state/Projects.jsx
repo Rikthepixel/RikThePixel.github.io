@@ -101,6 +101,7 @@ export default [
         technologies: [
             { name: "JavaScript" },
             { name: "React", link: "https://reactjs.org/" },
+            { name: "Create-React-App", link: "https://create-react-app.dev/" },
             { name: "React-Router", link: "https://reactrouterdotcom.fly.dev/" },
             { name: "Redux", link: "https://redux.js.org/" },
             { name: "Bootstrap", link: "https://getbootstrap.com/" },
