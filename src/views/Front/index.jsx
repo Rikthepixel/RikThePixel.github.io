@@ -5,7 +5,7 @@ import "./Front.scss";
 
 const Front = () => {
   useEffect(() => {
-    document.title = "Rik den Breejen | Home";
+    document.title = "Rik den Breejen | Portfolio";
   }, []);
 
   return (
