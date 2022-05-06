@@ -41,3 +41,11 @@ select {
 select {
     background-color: white;
 }
+
+.link {
+    color: rgb(126 34 206);
+
+    &:hover {
+        color: rgb(168 85 247);
+    }
+}
