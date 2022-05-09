@@ -19,7 +19,7 @@ const Front = () => {
       </PageHeader>
       <section
         aria-label="About me"
-        className="w-2/3 gap-4 mb-auto flex justify-center flex-wrap children:w-full children:flex children:justify-center children:items-center pb-32 sm:pb-24 sm:flex-nowrap sm:children:w-auto md:gap-8"
+        className="w-2/3 gap-4 mb-auto flex justify-center flex-wrap children:w-full children:flex children:justify-center children:items-center pb-32 sm:pb-[40vh] sm:flex-nowrap sm:children:w-auto md:gap-8"
       >
         <div>
           <img
