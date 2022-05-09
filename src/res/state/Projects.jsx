@@ -68,7 +68,7 @@ export default [
         endDate: { day: 14, month: 4, year: 2022 },
 
         links: [
-            { name: "Go to website", link: "https://m-e-n-n-o.github.io/" }
+            { name: "Go to the website", link: "https://m-e-n-n-o.github.io/" }
         ],
 
         technologies: [
