@@ -1,43 +1,40 @@
 import React from 'react';
-import Link from "components/Link";
-import Technology from "../Technology";
+import ProjectLinks from "./ProjectLinks";
+import ProjectTechnologies from "./ProjectTechnologies";
 import "./Project.scss";
+import ProjectIcon from "./ProjectIcon";
+import ProjectHeading from "./ProjectHeading";
 
-const Project = ({ title, text, icon, technologies, startDate, endDate = { custom: "Now" }, link, linkLabel = "Go to" }) => {
+const Project = ({
+    title, text, icon, startDate, endDate = { custom: "Now" }, links, technologies
+}) => {
 
     const startDateString = startDate.custom ?? `${startDate.year}-${startDate.month}`;
     const endDateString = endDate.custom ?? `${endDate.year}-${endDate.month}`;
 
+    const renderedLinks = links?.length > 0 && <ProjectLinks links={links} />;
+    const renderedTechnologies = technologies?.length > 0 && <ProjectTechnologies technologies={technologies} />;
+
     return (
         <article aria-label={`Project: ${title}`} className="bg-white bg-opacity-30 flex justify-center flex-wrap gap-4 overflow-hidden shadow-md rounded-md even:flex-row-reverse sm:justify-start sm:flex-nowrap">
-            {icon && <div className="aspect-[4/3] w-auto sm:max-w-[30%]">
-                <img
-                    aria-label="Image"
-                    className="aspect-[4/3] object-contain sm:object-cover w-full max-h-[60vh] low:max-h-[unset] sm:aspect-auto"
-                    loading="lazy"
-                    src={icon}
-                    alt="Image not found"
-                />
-            </div>}
-            <div className="flex flex-col justify-between w-full transition-all duration-500 p-2 gap-2 sm:gap-3 sm:py-2 sm:p-1 md:p-2 lg:p-4">
-                <div className="flex flex-col gap-3">
-                    <div className="flex flex-col sm:flex-col-reverse">
-                        <div aria-label="Start and end date" className="text-gray-600 text-[0.8rem] sm:text-[0.9rem] lg:text-[1rem]">{startDateString} → {endDateString}</div>
-                        <div aria-label="Title" className="text-[1.5rem] sm:text-[2.5rem">{title}</div>
-                    </div>
+            {icon && <ProjectIcon icon={icon} />}
+            <div className="flex flex-col justify-between w-full transition-all duration-500 p-2 gap-6 sm:gap-4 sm:py-2 sm:p-1 md:p-2 lg:p-4">
+                <div className="flex flex-col gap-2 sm:gap-4">
+                    <ProjectHeading
+                        startDate={startDateString}
+                        endDate={endDateString}
+                        title={title}
+                    />
                     <section aria-label="Description" className="project-description">{text}</section>
                 </div>
-                {(link ?? (technologies && technologies?.length > 0)) && <div className="flex flex-col transition-all duration-500 gap-1 sm:gap-2">
-                    {link && <Link aria-label="External link" className="w-full sm:w-fit" href={link}>
-                        {linkLabel}
-                    </Link>}
-                    {(technologies && technologies?.length > 0) && <section aria-label="Technologies" className="flex flex-wrap gap-2">
-                        {technologies.map(tech => <Technology key={tech.name} name={tech.name} link={tech.link} />)}
-                    </section>}
 
+                {(renderedLinks || renderedTechnologies) && <div className="flex flex-col transition-all duration-500 gap-8 sm:gap-4">
+                    {renderedLinks}
+                    {renderedTechnologies}
                 </div>}
+
             </div>
-        </article >
+        </article>
     );
 };
 

@@ -9,12 +9,13 @@ import PinnoteLogo from "res/images/PinnoteLogo.webp";
 
     icon: imagePath?
 
-    link: string
-    linkLabel: string
-
     startDate: { year: number, month: number, day: number }
     endDate: { year: number, month: number, day: number }?
     datePriority: number (if the endDate is not set, this will decide which project holds priority)?
+
+    links: [
+        { name: string, link: string }
+    ]
 
     technologies: [
         { name: string, link: string? }
@@ -36,11 +37,13 @@ export default [
             </p>
         </>,
 
-        link: "#/",
-        linkLabel: "You are already on the website!",
-
         startDate: { day: 24, month: 4, year: 2022 },
         datePriority: 0,
+
+        links: [
+            { name: "You are already on the website!", link: "#/" },
+            { name: "View the source code", link: "https://github.com/Rikthepixel/RikThePixel.github.io" }
+        ],
 
         technologies: [
             { name: "JavaScript" },
@@ -61,11 +64,12 @@ export default [
             <p>That is when I had the ✨<strong>bright</strong>✨ idea to make him a new portfolio website using <a href="https://vitejs.dev/" target="_blank">Vite</a>, <a href="https://reactjs.org/" target="_blank">React</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.</p>
         </>,
 
-        link: "https://m-e-n-n-o.github.io/",
-        linkLabel: "Go to website",
-
         startDate: { day: 1, month: 4, year: 2022 },
         endDate: { day: 14, month: 4, year: 2022 },
+
+        links: [
+            { name: "Go to website", link: "https://m-e-n-n-o.github.io/" }
+        ],
 
         technologies: [
             { name: "JavaScript" },
@@ -92,11 +96,12 @@ export default [
             </p>
         </>,
 
-        link: "https://github.com/Rikthepixel/Pinnote-frontend",
-        linkLabel: "View source",
-
         startDate: { day: 4, month: 9, year: 2021 },
         endDate: { day: 18, month: 1, year: 2022 },
+
+        links: [
+            { name: "View source", link: "https://github.com/Rikthepixel/Pinnote-frontend" }
+        ],
 
         technologies: [
             { name: "JavaScript" },
