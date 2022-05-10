@@ -9,8 +9,8 @@ const Project = ({
     title, text, icon, startDate, endDate = { custom: "Now" }, links, technologies
 }) => {
 
-    const startDateString = startDate.custom ?? `${startDate.year}-${startDate.month}`;
-    const endDateString = endDate.custom ?? `${endDate.year}-${endDate.month}`;
+    const startDateString = startDate.custom ?? `${startDate.year}-${startDate.month}-${startDate.day}`;
+    const endDateString = endDate.custom ?? `${endDate.year}-${endDate.month}-${endDate.day}`;
 
     const renderedLinks = links?.length > 0 && <ProjectLinks links={links} />;
     const renderedTechnologies = technologies?.length > 0 && <ProjectTechnologies technologies={technologies} />;
