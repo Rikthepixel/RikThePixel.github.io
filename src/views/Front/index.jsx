@@ -10,16 +10,15 @@ const Front = () => {
 
   return (
     <>
-      <PageHeader className="pb-0 mt-auto sm:mt-0">
+      <PageHeader>
         <div>
           <p className="text-[5vmin]">Hello!</p>
           <p>I'm Rik!</p>
         </div>
-        <div className="hero-action move-down font-extrabold text-[10vmin] hidden sm:block" aria-label="Go down">↓</div>
       </PageHeader>
       <section
         aria-label="About me"
-        className="w-2/3 gap-4 mb-auto flex justify-center flex-wrap children:w-full children:flex children:justify-center children:items-center pb-32 sm:pb-[40vh] sm:flex-nowrap sm:children:w-auto md:gap-8"
+        className="w-2/3 gap-4 mb-auto flex justify-center flex-wrap children:w-full children:flex children:justify-center children:items-center pb-32 sm:pb-20 sm:flex-nowrap sm:children:w-auto md:gap-8"
       >
         <div>
           <img

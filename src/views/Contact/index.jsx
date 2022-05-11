@@ -25,13 +25,12 @@ const Contact = () => {
 
   return (
     <>
-      <PageHeader className="pb-4 sm:pb-4 mt-auto sm:mt-auto sm:min-h-[unset]">
+      <PageHeader>
         <p>Contact</p>
+        <div className="text-[2rem]">You can find me on</div>
       </PageHeader>
       <section className="w-2/3 pb-32 sm:pb-24 mb-auto">
-        <h2 className="text-center text-[7vmin] mb-4">
-          You can find me on
-        </h2>
+
         <nav
           aria-label="External contact links"
           className="flex gap-4 md:gap-6 xl:gap-8 2xl:gap-10 wide:gap-12 justify-center flex-wrap children:w-full sm:children:w-auto"

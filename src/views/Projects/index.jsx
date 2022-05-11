@@ -130,7 +130,7 @@ const Projects = () => {
 
     return (
         <>
-            <PageHeader className="pb-4">
+            <PageHeader className="sm:mt-0">
                 <p>Projects</p>
                 <p className="text-base"></p>
             </PageHeader>
