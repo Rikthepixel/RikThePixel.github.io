@@ -19,7 +19,7 @@ const Layout = () => {
                 >
                     <PageLink to="/">Home</PageLink>
                     <PageLink to="/Projects">Projects</PageLink>
-                    <PageLink to="/Timeline">Coming Soon</PageLink>
+                    <PageLink to="/Timeline">Timeline</PageLink>
                     <PageLink to="/Contact" >Contact</PageLink>
                 </nav>
             </div>
