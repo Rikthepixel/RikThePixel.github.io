@@ -8,7 +8,7 @@ const Timeline = () => {
 
   return (
     <>
-      <PageHeader className="pb-4">
+      <PageHeader className="mb-auto">
         <p>Coming Soon</p>
       </PageHeader>
     </>
