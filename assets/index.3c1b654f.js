@@ -1,1 +1,0 @@
-import{r,j as e,F as a,P as n}from"./index.45933f86.js";const i=()=>(r.exports.useEffect(()=>{document.title="Rik den Breejen | Timeline"},[]),e(a,{children:e(n,{className:"mb-auto",children:e("p",{children:"Coming Soon"})})}));export{i as default};
