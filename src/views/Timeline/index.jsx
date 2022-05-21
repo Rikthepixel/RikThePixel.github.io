@@ -14,7 +14,7 @@ const Timeline = () => {
       <PageHeader className="sm:mt-0">
         <p>Timeline</p>
         <div className="w-2/3 text-center text-[2rem] mb-4">
-          This is a timeline of my experience with software engineering and development. As of now this only includes my education.
+          This is a timeline of my experience with software engineering and development.
         </div>
       </PageHeader>
       <section aria-label="Timeline" className="pb-32 sm:pb-20">
