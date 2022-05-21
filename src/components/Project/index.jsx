@@ -1,7 +1,6 @@
 import React from 'react';
 import ProjectLinks from "./ProjectLinks";
 import ProjectTechnologies from "./ProjectTechnologies";
-import "./Project.scss";
 import ProjectIcon from "./ProjectIcon";
 import ProjectHeading from "./ProjectHeading";
 
@@ -25,7 +24,12 @@ const Project = ({
                         endDate={endDateString}
                         title={title}
                     />
-                    <section aria-label="Description" className="project-description">{text}</section>
+                    <section
+                        aria-label="Description"
+                        className="description"
+                    >
+                        {text}
+                    </section>
                 </div>
 
                 {(renderedLinks || renderedTechnologies) && <div className="flex flex-col transition-all duration-500 gap-8 sm:gap-4">

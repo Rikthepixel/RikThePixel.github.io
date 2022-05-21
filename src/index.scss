@@ -49,3 +49,21 @@ select {
         color: rgb(168 85 247);
     }
 }
+
+.description {
+    & p {
+        margin-bottom: 0.75rem;
+
+        &:last-child {
+            margin-bottom: unset;
+        }
+    }
+
+    & a {
+        color: rgb(126 34 206);
+
+        &:hover {
+            color: rgb(168 85 247);
+        }
+    }
+}

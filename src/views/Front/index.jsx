@@ -29,14 +29,14 @@ const Front = () => {
         </div>
         <div
           aria-label="Description"
-          className="hero-short"
+          className="hero-short description"
         >
           <p aria-label="Who I am">Hello, my name is Rik den Breejen.</p>
           <p aria-label="What I do">I'm a Software engineering student at Fontys.</p>
         </div>
         <div
           aria-label="Description"
-          className="hero-long"
+          className="hero-long description"
         >
           <p aria-label="Who I am">
             Hello, my name is Rik den Breejen. I'm a Dutch Software engineering student at Fontys.<br />
