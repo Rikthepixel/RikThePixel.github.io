@@ -3,7 +3,6 @@ import TimelineState from "res/state/Timeline";
 import PageHeader from "components/PageHeader";
 import TimelineItem from "../../components/TimelineItem";
 
-
 const Timeline = () => {
   useEffect(() => {
     document.title = "Rik den Breejen | Timeline";
@@ -17,7 +16,7 @@ const Timeline = () => {
           This is a timeline of my experience with software engineering and development.
         </div>
       </PageHeader>
-      <section aria-label="Timeline" className="pb-32 sm:pb-20">
+      <section aria-label="Timeline" className="w-4/5 pb-32 sm:pb-20">
         {TimelineState.map((point, i) => {
           return <TimelineItem
             key={i}
