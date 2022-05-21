@@ -12,7 +12,6 @@ const Front = () => {
     <>
       <PageHeader>
         <div>
-          <p className="text-[5vmin]">Hello!</p>
           <p>I'm Rik!</p>
         </div>
       </PageHeader>
@@ -25,7 +24,7 @@ const Front = () => {
             aria-label="Image"
             className="w-full h-fit aspect-square object-cover rounded-full max-w-[10rem] sm:max-w-[15rem]"
             src={AboutMePhoto}
-            alt="A guy with brown hair, brown eyes and white skin holding a french bulldog with white fur and black dots"
+            alt="A guy with brown hair, brown eyes and white skin"
           />
         </div>
         <div
