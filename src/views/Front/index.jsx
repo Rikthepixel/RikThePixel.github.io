@@ -10,7 +10,7 @@ const Front = () => {
 
   return (
     <>
-      <PageHeader>
+      <PageHeader className="mt-auto">
         <div>
           <p>I'm Rik!</p>
         </div>

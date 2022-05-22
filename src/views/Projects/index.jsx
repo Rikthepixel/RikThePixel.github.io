@@ -14,7 +14,7 @@ const Projects = () => {
 
     return (
         <>
-            <PageHeader className="sm:mt-0">
+            <PageHeader>
                 <p>Projects</p>
                 <p className="text-base"></p>
             </PageHeader>

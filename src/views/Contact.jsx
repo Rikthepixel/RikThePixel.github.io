@@ -25,7 +25,7 @@ const Contact = () => {
 
   return (
     <>
-      <PageHeader>
+      <PageHeader className="mt-auto">
         <p>Contact</p>
         <div className="text-[2rem]">You can find me on</div>
       </PageHeader>
