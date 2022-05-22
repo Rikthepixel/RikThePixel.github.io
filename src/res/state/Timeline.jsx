@@ -1,13 +1,20 @@
 export default [
     {
-        title: "Software engineering student",
+        title: "ICT student",
 
         company: "Hogeschool Fontys",
         companyLink: "https://fontys.nl/Studeren/Vind-een-passende-opleiding/HBO-ICT.htm",
         location: "Eindhoven",
 
         description: <>
-            Hallo
+            <p>
+                This was my first semester of college.
+                In this semester we got taught about IT in general.
+            </p>
+            <p>
+                It was in this semester that I first came in touch with programming.
+                Turns out, I ended up liking it quite a lot! So much, in fact, that I chose to persue software engineering.
+            </p>
         </>,
 
         periodName: "Semester 1",
@@ -22,7 +29,14 @@ export default [
         location: "Eindhoven",
 
         description: <>
-            Hallo
+            <p>
+                In the second semester we started learning web development.
+                I made an in hindsight pretty bad portfolio website in raw PHP using no libraries.
+            </p>
+            <p>
+                What I learned from that experience is that time management is really important.
+                I also learned that it is okey to use libraries, and that testing an application is a crutial part of development.
+            </p>
         </>,
 
         periodName: "Semester 2",
@@ -37,7 +51,18 @@ export default [
         location: "Eindhoven",
 
         description: <>
-            Hallo
+            <p>
+                Semester three built upon the foundation that the second semester had built.
+                I was thrown into the deep-end and had to make a distributed system using a framework.
+            </p>
+            <p>
+                The demand-based teaching style of my college forced me to mostly research these requirements and subjects on my own.
+                I could only ask for feedback and discuss progress with my teachers.
+            </p>
+            <p>
+                In the end I learned how important it is to ask feedback to stakeholders.
+                This will make sure a project stays on track.
+            </p>
         </>,
 
         periodName: "Semester 3",
@@ -45,14 +70,26 @@ export default [
         endDate: { day: 24, month: 1, year: 2022 }
     },
     {
-        title: "Software engineering student",
+        title: "Cyber security student",
 
         company: "Hogeschool Fontys",
         companyLink: "https://fontys.nl/Studeren/Vind-een-passende-opleiding/HBO-ICT.htm",
         location: "Eindhoven",
 
         description: <>
-            Hallo
+            <p>
+                Semester four is a specialization semester, I chose Cyber Security.
+                I chose this, since it is a really relevant topic, especially in web development.
+            </p>
+            <p>
+                We had to form groups and had to run a penetration test on a company.
+                I this group during and after the pentest was done.
+            </p>
+            <p>
+                After the pentest we had to create a secure distributed computing platform.
+                Since our group was a mix of software engineers, media designers and infrastructure students everyone got a chance to shine.
+                I built and designed the backend together with a fellow software engineer.
+            </p>
         </>,
 
         periodName: "Semester 4",
