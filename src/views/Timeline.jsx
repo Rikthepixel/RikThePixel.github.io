@@ -10,7 +10,7 @@ const Timeline = () => {
 
   return (
     <>
-      <PageHeader>
+      <PageHeader className="mt-8">
         <p>{`< Timeline />`}</p>
         <div className="w-2/3 text-center text-[1.25rem] md:text-[2rem] mb-4">
           This is a timeline of my experience with software engineering and development.

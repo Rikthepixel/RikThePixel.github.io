@@ -14,7 +14,7 @@ const Projects = () => {
 
     return (
         <>
-            <PageHeader>
+            <PageHeader className="mt-8">
                 <p>{`< Projects />`}</p>
             </PageHeader>
             <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-4">

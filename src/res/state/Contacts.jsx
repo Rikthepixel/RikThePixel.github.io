@@ -12,5 +12,5 @@ Contact
 export default [
     { name: "Github", link: "https://github.com/Rikthepixel", icon: GithubIcon },
     { name: "LinkedIn", link: "https://www.linkedin.com/in/rik-den-breejen-a84aa71a7/", icon: LinkedInIcon, },
-    { name: "Email: rikdenbreejen@tutanota.com", link: "mailto:rikdenbreejen@tutanota.com", icon: EmailIcon }
+    { name: "Rikdenbreejen@tutanota.com", link: "mailto:rikdenbreejen@tutanota.com", icon: EmailIcon }
 ];
