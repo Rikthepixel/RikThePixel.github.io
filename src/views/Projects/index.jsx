@@ -17,12 +17,12 @@ const Projects = () => {
             <PageHeader className="mt-8">
                 <p>{`< Projects />`}</p>
             </PageHeader>
-            <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-4">
+            <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-6 sm:gap-8">
                 <FilterBar
                     onChange={dispatchFilter}
                     state={filter}
                 />
-                <section aria-label="Projects" className="flex flex-col gap-8">
+                <section aria-label="Projects" className="flex flex-col gap-16">
                     {filter.projects.map((project, index) => {
                         return <Project key={`${index}-${project.title}`} {...project} />;
                     })}

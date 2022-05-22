@@ -31,12 +31,10 @@ const Project = ({
                         {text}
                     </section>
                 </div>
-
                 {(renderedLinks || renderedTechnologies) && <div className="flex flex-col transition-all duration-500 gap-8 sm:gap-4">
                     {renderedLinks}
                     {renderedTechnologies}
                 </div>}
-
             </div>
         </article>
     );
