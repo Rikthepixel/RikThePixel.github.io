@@ -1,3 +1,17 @@
+/*
+    title: string
+
+    company: string
+    companyLink: string?
+    location: string?
+
+    description: string? | html?
+
+    periodName: string?
+    startDate: { year: number, month: number, day: number }
+    endDate: { year: number, month: number, day: number }?
+*/
+
 export default [
     {
         title: "ICT student",
