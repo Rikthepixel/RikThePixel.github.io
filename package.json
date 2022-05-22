@@ -5,9 +5,8 @@
   "private": true,
   "scripts": {
     "start": "vite",
-    "prebuild": "vite-node ./builders/sitemap.js",
     "build": "vite build",
-    "postbuild": "react-snap",
+    "postbuild": "react-snap && vite-node ./builders/sitemap.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

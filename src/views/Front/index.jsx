@@ -12,7 +12,7 @@ const Front = () => {
     <>
       <PageHeader className="mt-auto">
         <div>
-          <p>I'm Rik!</p>
+          <p>{`< I'm Rik! />`}</p>
         </div>
       </PageHeader>
       <section

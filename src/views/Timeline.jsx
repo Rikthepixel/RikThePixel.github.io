@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import TimelineState from "res/state/Timeline";
 import PageHeader from "components/PageHeader";
-import TimelineItem from "../../components/TimelineItem";
+import TimelineItem from "../components/TimelineItem";
 
 const Timeline = () => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const Timeline = () => {
   return (
     <>
       <PageHeader>
-        <p>Timeline</p>
+        <p>{`< Timeline />`}</p>
         <div className="w-2/3 text-center text-[1.25rem] md:text-[2rem] mb-4">
           This is a timeline of my experience with software engineering and development.
         </div>

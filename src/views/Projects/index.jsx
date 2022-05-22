@@ -15,8 +15,7 @@ const Projects = () => {
     return (
         <>
             <PageHeader>
-                <p>Projects</p>
-                <p className="text-base"></p>
+                <p>{`< Projects />`}</p>
             </PageHeader>
             <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-4">
                 <FilterBar

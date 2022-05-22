@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const PageLink = ({ className, ...props }) => {
-    return <NavLink className="bg-secondary hover:bg-active hover:active:bg-light hover:active:text-zinc-600 current-page:bg-dark text-center p-2 rounded-lg w-full md:basis-full shadow-lg" {...props} />;
+    return <NavLink className="bg-purple-700 hover:bg-purple-500 hover:active:bg-purple-400 hover:active:text-zinc-600 current-page:bg-purple-900 text-center p-2 rounded-lg w-full md:basis-full shadow-lg" {...props} />;
 };
 
 const Layout = () => {
