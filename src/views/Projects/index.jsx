@@ -17,7 +17,7 @@ const Projects = () => {
             <PageHeader className="mt-8">
                 <p>{`< Projects />`}</p>
             </PageHeader>
-            <div className="w-4/5 children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-6 sm:gap-8">
+            <div className="w-4/5 max-w-7xl children:w-full pb-32 sm:pb-20 flex flex-col items-center gap-6 sm:gap-8">
                 <FilterBar
                     onChange={dispatchFilter}
                     state={filter}

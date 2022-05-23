@@ -4,7 +4,7 @@ const Description = ({
     title, text, company, companyLink, location, periodName, dateString
 }) => {
     return (
-        <div className="w-full mx-2 px-2 pt-2 pb-16 description">
+        <div className="w-full mx-2 px-2 pt-4 pb-16 sm:pb-32 description">
             <div className="text-[1.3rem] font-bold">{title}</div>
             <div className="text-[1.05rem] sm:text-[1.1rem] font-bold flex flex-col flex-wrap justify-center md:gap-2 md:flex-row">
                 {companyLink ?
@@ -18,7 +18,7 @@ const Description = ({
                 {periodName && <span className="font-bold">{periodName}:</span>}
                 <span>{dateString}</span>
             </div>
-            {text && <div className="mt-2 text-left text-[0.9rem] sm:text-[1rem] wide:px-32 uw:px-96 ">{text}</div>}
+            {text && <div className="mt-2 text-left text-[0.9rem] sm:text-[1rem]">{text}</div>}
         </div>
     );
 };

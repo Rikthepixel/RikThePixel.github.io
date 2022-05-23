@@ -16,7 +16,7 @@ const Timeline = () => {
           This is a timeline of my experience with software engineering and development.
         </div>
       </PageHeader>
-      <section aria-label="Timeline" className="w-4/5 flex flex-col justify-center pb-32 sm:pb-20">
+      <section aria-label="Timeline" className="w-4/5 max-w-7xl flex flex-col justify-center pb-32 sm:pb-20">
         {TimelineState.map((point, i) => {
           return <TimelineItem
             key={i}
