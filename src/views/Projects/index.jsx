@@ -22,7 +22,7 @@ const Projects = () => {
                     onChange={dispatchFilter}
                     state={filter}
                 />
-                <section aria-label="Projects" className="flex flex-col gap-16">
+                <section aria-label="Projects" className={`flex flex-col gap-16 ${filter.projects?.length > 0 ? "mb-[20vh]" : ""}`}>
                     {filter.projects.map((project, index) => {
                         return <Project key={`${index}-${project.title}`} {...project} />;
                     })}
