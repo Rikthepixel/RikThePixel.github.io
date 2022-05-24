@@ -2,6 +2,7 @@ import React from "react";
 import MyWebsite from "res/images/MyWebsite.webp";
 import MennoWebsite from "res/images/MennoWebsite.webp";
 import PinnoteLogo from "res/images/PinnoteLogo.webp";
+import SitemapImage from "res/images/Sitemap.webp";
 
 /*
     title: string
@@ -25,10 +26,10 @@ import PinnoteLogo from "res/images/PinnoteLogo.webp";
 export default [
     {
         title: "React Router sitemap maker package",
-        icon: MyWebsite,
+        icon: SitemapImage,
         text: <>
             <p>
-                When creating my portfolio website I used a package that created a sitemap automatically.
+                When creating my portfolio website I used a package that created a <a href="https://www.sitemaps.org/" target="_blank">sitemap</a> automatically.
                 This package was made for <a href="https://reactrouterdotcom.fly.dev/" target="_blank">React Router</a> v4 while I was using React Router v6.
             </p>
             <p>
@@ -53,7 +54,8 @@ export default [
             { name: "Typescript", link: "https://www.typescriptlang.org/" },
             { name: "React", link: "https://reactjs.org/" },
             { name: "React-router", link: "https://reactrouterdotcom.fly.dev/" },
-            { name: "Mocha", link: "https://mochajs.org/" }
+            { name: "Mocha", link: "https://mochajs.org/" },
+            { name: "Sitemap", link: "https://www.sitemaps.org" }
         ]
     },
     {
