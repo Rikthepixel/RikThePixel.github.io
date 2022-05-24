@@ -24,6 +24,39 @@ import PinnoteLogo from "res/images/PinnoteLogo.webp";
 
 export default [
     {
+        title: "React Router sitemap maker package",
+        icon: MyWebsite,
+        text: <>
+            <p>
+                When creating my portfolio website I used a package that created a sitemap automatically.
+                This package was made for <a href="https://reactrouterdotcom.fly.dev/" target="_blank">React Router</a> v4 while I was using React Router v6.
+            </p>
+            <p>
+                That's when I decided to learn a how to make a npm-package and publish it online.
+                My react-router-sitemap-maker package is fully compatible with React Router v6 and is built with <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>.
+            </p>
+            <p>
+                I published my package with the intent of having it be FOSS (Free and Open Source Software) that anyone could build on top of.
+            </p>
+        </>,
+
+        startDate: { day: 22, month: 5, year: 2022 },
+        endDate: { day: 24, month: 5, year: 2022 },
+
+        links: [
+            { name: "View on Npm", link: "https://www.npmjs.com/package/react-router-sitemap-maker" },
+            { name: "See the source", link: "https://github.com/Rikthepixel/react-router-sitemap-maker" }
+        ],
+        technologies: [
+            { name: "JavaScript" },
+            { name: "npm", link: "https://www.npmjs.com/" },
+            { name: "Typescript", link: "https://www.typescriptlang.org/" },
+            { name: "React", link: "https://reactjs.org/" },
+            { name: "React-router", link: "https://reactrouterdotcom.fly.dev/" },
+            { name: "Mocha", link: "https://mochajs.org/" }
+        ]
+    },
+    {
         title: "My portfolio website",
         icon: MyWebsite,
         text: <>
