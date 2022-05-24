@@ -85,9 +85,10 @@ export const ProjectsReducer = (state, { type, value }) => {
 
         case "Refresh": {
             const [filteredProjects, filteredTechnologies, filteredProjectNames] = filterProjects(state.search, state.selectedTechnologies);
+            const sortedProjects = QuickSort(filteredProjects, sortFunctions[state.sort.value]);
             return {
                 ...state,
-                projects: filteredProjects,
+                projects: sortedProjects,
                 filterTechnologies: filteredTechnologies,
                 projectNames: filteredProjectNames
             };
