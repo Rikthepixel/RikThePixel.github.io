@@ -8,11 +8,9 @@ const PageLink = ({ className, ...props }) => {
 const Layout = () => {
 
     return (
-        <div className="flex flex-1 justify-between flex-col relative">
-            <main aria-labelledby="page-header" className="flex-1 flex flex-col overflow-y-auto items-center">
-                <Outlet />
-            </main>
-            <div className="absolute bottom-0 w-full text-white">
+        <main aria-labelledby="page-header" className="relative h-full flex-1 flex flex-col overflow-y-auto items-center">
+            <Outlet />
+            <div className="fixed bottom-0 w-full text-white">
                 <nav
                     aria-label="Main"
                     className="py-4 px-6 grid grid-cols-[1fr_1fr] place-items-center gap-2 sm:flex sm:justify-around"
@@ -23,7 +21,7 @@ const Layout = () => {
                     <PageLink to="/Contact" >Contact</PageLink>
                 </nav>
             </div>
-        </div >
+        </main>
     );
 };
 
