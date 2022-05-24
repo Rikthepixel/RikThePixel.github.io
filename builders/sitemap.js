@@ -1,17 +1,16 @@
+import GenerateSitemap, { ParseRoutes } from "react-router-sitemap-maker";
 import Routes from "../src/routes";
-const Generator = require('react-router-sitemap-generator').default;
 
 try {
-    const generator = new Generator(
-        'https://rikthepixel.github.io/#/',
+    await GenerateSitemap(
         Routes(),
         {
-            lastmod: new Date().toISOString().slice(0, 10),
-            changefreq: 'monthly',
-            
+            baseUrl: "https://rikthepixel.github.io",
+            hashrouting: true,
+            changeFrequency: "monthly"
         }
-    );
-    generator.save('dist/sitemap.xml');
+    ).toFile("./dist/sitemap.xml");
+
     console.log("Sitemap succesfully generated");
 } catch (err) {
     console.log("Failed to generate sitemap", err);
