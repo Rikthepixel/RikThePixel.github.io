@@ -5,7 +5,7 @@ try {
     await GenerateSitemap(
         Routes(),
         {
-            baseUrl: "https://rikthepixel.github.io",
+            baseUrl: "https://www.rikdenbreejen.nl",
             hashrouting: true,
             changeFrequency: "monthly"
         }
