@@ -4,8 +4,13 @@
 
 @font-face {
     font-family: "Roboto Slab";
+    src: 
+        local("Roboto Slab"),
+        local("RobotoSlab"),
+        url("res/fonts//robotoslab.eot") format('embedded-opentype'),
+        url("res/fonts/RobotoSlab.ttf") format("truetype");
     font-weight: 1 999;
-    src: url("res/fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf");
+    font-display: swap;
 }
 
 :root {
