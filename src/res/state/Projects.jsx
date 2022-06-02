@@ -68,7 +68,7 @@ export default [
             </p>
             <p>
                 Another notable technology I used is <a href="https://github.com/stereobooster/react-snap#readme" target="_blank">React-snap</a>. This package pre-renders the SPA (single page application) into an HTML file.
-                This optimizes the website for search engines that do not run Javascript like Bing.
+                This optimizes the website for search engines that do not run JavaScript like Bing.
             </p>
         </>,
 
@@ -119,7 +119,7 @@ export default [
         title: "Pinnote",
         icon: PinnoteLogo,
         text: <>
-            <p>In the third semester of my college I made Pinnnote.</p>
+            <p>In the third semester of my college I made Pinnote.</p>
             <p>
                 Pinnote was a web-based note making app, which implemented workspaces similarly to Trello.
                 You could add attachments to notes, customize your note-boards and share your note-boards with other people.

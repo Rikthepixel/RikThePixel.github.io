@@ -27,7 +27,7 @@ export default [
             </p>
             <p>
                 It was in this semester that I first came in touch with programming.
-                Turns out, I ended up liking it quite a lot! So much, in fact, that I chose to persue software engineering.
+                Turns out, I ended up liking it quite a lot! So much, in fact, that I chose to pursue software engineering.
             </p>
         </>,
 
@@ -49,7 +49,7 @@ export default [
             </p>
             <p>
                 What I learned from that experience is that time management is really important.
-                I also learned that it is okey to use libraries, and that testing an application is a crutial part of development.
+                I also learned that it is okey to use libraries, and that testing an application is a crucial part of development.
             </p>
         </>,
 
