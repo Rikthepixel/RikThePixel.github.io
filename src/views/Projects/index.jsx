@@ -24,7 +24,7 @@ const Projects = () => {
                 />
                 <section aria-label="Projects" className={`flex flex-col gap-16 ${filter.projects?.length > 0 ? "mb-[20vh]" : ""}`}>
                     {filter.projects.map((project, index) => {
-                        return <Project key={`${index}-${project.title}`} {...project} />;
+                        return <Project key={`${index}-${project.title}`} lazy={index > 2} {...project} />;
                     })}
                 </section>
             </div>

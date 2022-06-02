@@ -21,6 +21,7 @@ const Front = () => {
       >
         <div>
           <img
+            loading="eager"
             aria-label="Image"
             className="w-full h-fit aspect-square object-cover rounded-full max-w-[10rem] sm:max-w-[15rem]"
             src={AboutMePhoto}
