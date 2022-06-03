@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import PageHeader from "components/PageHeader";
 import Project from "components/Project";
-import { ProjectsReducer, initialState } from "./ProjectsLogic";
+import { ProjectsReducer, initialState } from "./ProjectsReducer";
 import FilterBar from "./FilterBar";
 
 const Projects = () => {
@@ -9,7 +9,6 @@ const Projects = () => {
 
     useEffect(() => {
         document.title = "Rik den Breejen | Projects";
-        dispatchFilter({ type: "Refresh" });
     }, []);
 
     return (

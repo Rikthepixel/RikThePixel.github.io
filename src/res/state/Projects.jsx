@@ -3,6 +3,8 @@ import MyWebsite from "res/images/MyWebsite.webp";
 import MennoWebsite from "res/images/MennoWebsite.webp";
 import PinnoteLogo from "res/images/PinnoteLogo.webp";
 import SitemapImage from "res/images/Sitemap.webp";
+import { QuickSort } from "../../utils/sort";
+import { sortFunctions } from "../../logic/Projects";
 
 /*
     title: string
@@ -23,7 +25,7 @@ import SitemapImage from "res/images/Sitemap.webp";
     ]
 */
 
-export default [
+export default QuickSort([
     {
         title: "React Router sitemap maker package",
         icon: SitemapImage,
@@ -156,4 +158,4 @@ export default [
             { name: "MySql", link: "https://www.mysql.com/" }
         ]
     }
-];
+], sortFunctions.DateUp);
