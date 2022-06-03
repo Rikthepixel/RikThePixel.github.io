@@ -45,10 +45,10 @@ export default [
         description: <>
             <p>
                 In the second semester we started learning web development.
-                I made an in hindsight pretty bad portfolio website in raw PHP using no libraries.
+                I made (in hindsight) a bad portfolio website in raw PHP using no libraries.
             </p>
             <p>
-                What I learned from that experience is that time management is really important.
+                What I learned from that experience is that time management is important.
                 I also learned that it is okey to use libraries, and that testing an application is a crucial part of development.
             </p>
         </>,
@@ -93,7 +93,7 @@ export default [
         description: <>
             <p>
                 Semester four is a specialization semester, I chose Cyber Security.
-                I chose this, since it is a really relevant topic, especially in web development.
+                I chose this, since it is a relevant topic, especially in web development.
             </p>
             <p>
                 We had to form groups and had to run a penetration test on a company.

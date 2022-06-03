@@ -31,15 +31,15 @@ export default QuickSort([
         icon: SitemapImage,
         text: <>
             <p>
-                When creating my portfolio website I used a package that created a <a href="https://www.sitemaps.org/" target="_blank">sitemap</a> automatically.
+                When creating my portfolio website, I used a package that created a <a href="https://www.sitemaps.org/" target="_blank">sitemap</a> automatically.
                 This package was made for <a href="https://reactrouterdotcom.fly.dev/" target="_blank">React Router</a> v4 while I was using React Router v6.
             </p>
             <p>
-                That's when I decided to learn a how to make a npm-package and publish it online.
+                I decided to learn a how to make a npm-package and publish it online.
                 My react-router-sitemap-maker package is fully compatible with React Router v6 and is built with <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>.
             </p>
             <p>
-                I published my package with the intent of having it be FOSS (Free and Open Source Software) that anyone could build on top of.
+                I published my package with the intent of having it be FOSS (Free and Open-Source Software) that anyone could build on top of.
             </p>
         </>,
 
@@ -121,13 +121,13 @@ export default QuickSort([
         title: "Pinnote",
         icon: PinnoteLogo,
         text: <>
-            <p>In the third semester of my college I made Pinnote.</p>
+            <p>In the third semester of my college, I made Pinnote.</p>
             <p>
                 Pinnote was a web-based note making app, which implemented workspaces similarly to Trello.
-                You could add attachments to notes, customize your note-boards and share your note-boards with other people.
+                You could add attachments to notes, customize your note-boards and share your note-boards, with other people.
             </p>
             <p>
-                My skill developed a lot during the making of Pinnote, which led to the code-base becoming messy.
+                My skill developed a lot during the making of Pinnote, which led to the codebase becoming messy.
                 Reflecting on the project, I would say that I could have made a lot of things better, like the implementation of SignalR or the way the authentication was handled.
                 Though over-all It was a very educational experience!
             </p>
