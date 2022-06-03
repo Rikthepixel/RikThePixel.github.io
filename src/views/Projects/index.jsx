@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import PageHeader from "components/PageHeader";
 import Project from "components/Project";
-import { ProjectsReducer, initialState } from "./ProjectsReducer";
+import { ProjectsReducer, initialState } from "../../reducers/ProjectsReducer";
 import FilterBar from "./FilterBar";
 
 const Projects = () => {
