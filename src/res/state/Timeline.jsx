@@ -92,8 +92,8 @@ export default [
 
         description: <>
             <p>
-                Semester four is a specialization semester, I chose Cyber Security.
-                I chose this, since it is a relevant topic, especially in web development.
+                Semester four is a specialization semester. 
+                I chose Cyber Security, since it is a relevant topic, especially in web development.
             </p>
             <p>
                 We had to form groups and ran a penetration test on a company.
