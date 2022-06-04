@@ -49,7 +49,7 @@ export default [
             </p>
             <p>
                 What I learned from that experience is that time management is important.
-                I also learned that it is okey to use libraries, and that testing an application is a crucial part of development.
+                I also learned that it is okay to use libraries, and that testing an application is a crucial part of development.
             </p>
         </>,
 
@@ -96,8 +96,8 @@ export default [
                 I chose this, since it is a relevant topic, especially in web development.
             </p>
             <p>
-                We had to form groups and had to run a penetration test on a company.
-                I this group during and after the pentest was done.
+                We had to form groups and ran a penetration test on a company.
+                I was the leader of this group during and after the pentest was done.
             </p>
             <p>
                 After the pentest we had to create a secure distributed computing platform.
