@@ -1,5 +1,5 @@
 import React from "react";
-import MyWebsite from "res/images/MyWebsite.webp";
+import PortfolioWebsiteMedium from "res/images/PortfolioWebsiteMedium.webp";
 import MennoWebsite from "res/images/MennoWebsite.webp";
 import PinnoteLogo from "res/images/PinnoteLogo.webp";
 import SitemapImage from "res/images/Sitemap.webp";
@@ -62,7 +62,7 @@ export default QuickSort([
     },
     {
         title: "My portfolio website",
-        icon: MyWebsite,
+        icon: PortfolioWebsiteMedium,
         text: <>
             <p>After making a portfolio website for Menno I realized that I needed one too. This was because in my upcoming semester I had to do an internship.</p>
             <p>
