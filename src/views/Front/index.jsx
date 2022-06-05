@@ -1,7 +1,21 @@
 import React, { useEffect } from 'react';
-import AboutMePhoto from "res/images/FrontImage.webp";
+import { generateSrcSet } from "utils/imageSets";
 import PageHeader from "components/PageHeader";
+import FrontImg1x from "images/front/FrontImage-1x.webp";
+import FrontImg2x from "images/front/FrontImage-2x.webp";
+import FrontImg3x from "images/front/FrontImage-3x.webp";
+import FrontImg4x from "images/front/FrontImage-4x.webp";
+import FrontImg5x from "images/front/FrontImage-5x.webp";
 import "./Front.scss";
+
+
+const [FrontImgSetString, displayFrontImg] = generateSrcSet([
+  { src: FrontImg1x, width: 500, height: 500 },
+  { src: FrontImg2x, width: 1000, height: 1000 },
+  { src: FrontImg3x, width: 1500, height: 1500 },
+  { src: FrontImg4x, width: 2000, height: 2000 },
+  { src: FrontImg5x, width: 2316, height: 2316 },
+]);
 
 const Front = () => {
   useEffect(() => {
@@ -23,8 +37,11 @@ const Front = () => {
           <img
             loading="eager"
             aria-label="Image"
+            width="500"
+            height="500"
             className="w-full h-fit aspect-square object-cover rounded-full max-w-[10rem] sm:max-w-[15rem]"
-            src={AboutMePhoto}
+            src={displayFrontImg.src}
+            srcSet={FrontImgSetString}
             alt="A guy with brown hair, brown eyes and white skin"
           />
         </div>
