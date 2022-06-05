@@ -16,10 +16,11 @@ import SitemapMaker3x from "images/projects/Sitemap-3x.webp";
 import SitemapMaker4x from "images/projects/Sitemap-4x.webp";
 
 /*
+
     title: string
     text: string? | html?
 
-    icon: imagePath? | { src: imagePath, width: number }[]?
+    icon: { src: imagePath, width: number, height: number }? | { src: imagePath, width: number, height: number }[]?
     iconAlt: string?
 
     startDate: { year: number, month: number, day: number }
@@ -40,10 +41,10 @@ export default QuickSort([
         title: "React Router sitemap maker package",
 
         icon: [
-            { src: SitemapMaker1x, width: 340 },
-            { src: SitemapMaker2x, width: 534 },
-            { src: SitemapMaker3x, width: 1021 },
-            { src: SitemapMaker4x, width: 1067 },
+            { src: SitemapMaker1x, width: 340, height: 255 },
+            { src: SitemapMaker2x, width: 534, height: 400 },
+            { src: SitemapMaker3x, width: 800, height: 600 },
+            { src: SitemapMaker4x, width: 1067, height: 800 },
         ],
         iconAlt: "A sitemap generated with my package",
 
@@ -82,10 +83,10 @@ export default QuickSort([
         title: "My portfolio website",
 
         icon: [
-            { src: PortfolioWebsite1x, width: 500 },
-            { src: PortfolioWebsite2x, width: 1000 },
-            { src: PortfolioWebsite3x, width: 1500 },
-            { src: PortfolioWebsite4x, width: 2000 }
+            { src: PortfolioWebsite1x, width: 500, height: 375 },
+            { src: PortfolioWebsite2x, width: 1000, height: 750 },
+            { src: PortfolioWebsite3x, width: 1500, height: 1125 },
+            { src: PortfolioWebsite4x, width: 2000, height: 1500 }
         ],
         iconAlt: "A picture of the portfolio website you are now on",
 
@@ -122,10 +123,10 @@ export default QuickSort([
         title: "Portfolio website Menno Bil",
 
         icon: [
-            { src: MennoWebsite1x, width: 500 },
-            { src: MennoWebsite2x, width: 1000 },
-            { src: MennoWebsite3x, width: 1500 },
-            { src: MennoWebsite4x, width: 2000 }
+            { src: MennoWebsite1x, width: 500, height: 375 },
+            { src: MennoWebsite2x, width: 1000, height: 750 },
+            { src: MennoWebsite3x, width: 1500, height: 1125 },
+            { src: MennoWebsite4x, width: 2000, height: 1500 }
         ],
         iconAlt: "A picture of Menno's portfolio website",
 
@@ -154,7 +155,7 @@ export default QuickSort([
     {
         title: "Pinnote",
 
-        icon: PinnoteLogo,
+        icon: { src: PinnoteLogo, width: 400, height: 152 },
         iconAlt: "The Pinnote Logo",
 
         text: <>
