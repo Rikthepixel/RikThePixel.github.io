@@ -1,16 +1,26 @@
 import React from "react";
-import PortfolioWebsiteMedium from "res/images/PortfolioWebsiteMedium.webp";
-import MennoWebsite from "res/images/MennoWebsite.webp";
-import PinnoteLogo from "res/images/PinnoteLogo.webp";
-import SitemapImage from "res/images/Sitemap.webp";
 import { QuickSort } from "../../utils/sort";
 import { sortFunctions } from "../../logic/Projects";
+import PortfolioWebsite1x from "images/projects/PortfolioWebsite-1x.webp";
+import PortfolioWebsite2x from "images/projects/PortfolioWebsite-2x.webp";
+import PortfolioWebsite3x from "images/projects/PortfolioWebsite-3x.webp";
+import PortfolioWebsite4x from "images/projects/PortfolioWebsite-4x.webp";
+import MennoWebsite1x from "images/projects/MennoWebsite-1x.webp";
+import MennoWebsite2x from "images/projects/MennoWebsite-2x.webp";
+import MennoWebsite3x from "images/projects/MennoWebsite-3x.webp";
+import MennoWebsite4x from "images/projects/MennoWebsite-4x.webp";
+import PinnoteLogo from "images/projects/PinnoteLogo.webp";
+import SitemapMaker1x from "images/projects/Sitemap-1x.webp";
+import SitemapMaker2x from "images/projects/Sitemap-2x.webp";
+import SitemapMaker3x from "images/projects/Sitemap-3x.webp";
+import SitemapMaker4x from "images/projects/Sitemap-4x.webp";
 
 /*
     title: string
     text: string? | html?
 
-    icon: imagePath?
+    icon: imagePath? | { src: imagePath, width: number }[]?
+    iconAlt: string?
 
     startDate: { year: number, month: number, day: number }
     endDate: { year: number, month: number, day: number }?
@@ -28,7 +38,15 @@ import { sortFunctions } from "../../logic/Projects";
 export default QuickSort([
     {
         title: "React Router sitemap maker package",
-        icon: SitemapImage,
+
+        icon: [
+            { src: SitemapMaker1x, width: 340 },
+            { src: SitemapMaker2x, width: 534 },
+            { src: SitemapMaker3x, width: 1021 },
+            { src: SitemapMaker4x, width: 1067 },
+        ],
+        iconAlt: "A sitemap generated with my package",
+
         text: <>
             <p>
                 When creating my portfolio website, I used a package that created a <a href="https://www.sitemaps.org/" target="_blank">sitemap</a> automatically.
@@ -62,7 +80,15 @@ export default QuickSort([
     },
     {
         title: "My portfolio website",
-        icon: PortfolioWebsiteMedium,
+
+        icon: [
+            { src: PortfolioWebsite1x, width: 500 },
+            { src: PortfolioWebsite2x, width: 1000 },
+            { src: PortfolioWebsite3x, width: 1500 },
+            { src: PortfolioWebsite4x, width: 2000 }
+        ],
+        iconAlt: "A picture of the portfolio website you are now on",
+
         text: <>
             <p>After making a portfolio website for Menno I realized that I needed one too. This was because in my upcoming semester I had to do an internship.</p>
             <p>
@@ -94,7 +120,15 @@ export default QuickSort([
     },
     {
         title: "Portfolio website Menno Bil",
-        icon: MennoWebsite,
+
+        icon: [
+            { src: MennoWebsite1x, width: 500 },
+            { src: MennoWebsite2x, width: 1000 },
+            { src: MennoWebsite3x, width: 1500 },
+            { src: MennoWebsite4x, width: 2000 }
+        ],
+        iconAlt: "A picture of Menno's portfolio website",
+
         text: <>
             <p>I made this portfolio website for <a href="https://www.linkedin.com/in/menno-bil-055100201/" target="_blank">Menno Bil</a>. I made this website for his birthday.</p>
             <p>He told me a that he wanted to redo his website, though he did not have the required knowledge to make it.</p>
@@ -119,7 +153,10 @@ export default QuickSort([
     },
     {
         title: "Pinnote",
+
         icon: PinnoteLogo,
+        iconAlt: "The Pinnote Logo",
+
         text: <>
             <p>In the third semester of my college, I made Pinnote.</p>
             <p>
