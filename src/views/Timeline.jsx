@@ -34,7 +34,7 @@ const Timeline = () => {
         })}
         <div className="flex mb-[40vh]">
           <div className="w-1/4 sm:hidden"></div>
-          <div className="w-full text-grayed transition-colors sm:text-center">And the story continues...</div>
+          <div className="w-full text-grayed transition-colors sm:text-center">To be continued...</div>
         </div>
       </section>
     </>

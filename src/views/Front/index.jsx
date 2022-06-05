@@ -40,8 +40,9 @@ const Front = () => {
           className="hero-long description"
         >
           <p aria-label="Who I am">
-            Hello, my name is Rik den Breejen. I'm a Dutch Software engineering student at Fontys.<br />
-            I have a passion for coding! I often spend a lot of my free time programming.
+            Hello, my name is Rik den Breejen.<br />
+            I'm a Dutch Software engineering student at Fontys.<br />
+            I have a passion for coding and often spend a lot of my free time programming.
           </p>
           <p aria-label="What I am currently learning">
             Currently learning: <br />
