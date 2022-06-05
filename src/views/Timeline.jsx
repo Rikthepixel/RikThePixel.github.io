@@ -11,7 +11,7 @@ const Timeline = () => {
   return (
     <>
       <PageHeader className="mt-8">
-        <p>{`< Timeline />`}</p>
+        <p>&lt; Timeline /&gt;</p>
         <div className="w-2/3 text-center text-[1.25rem] md:text-[2rem] mb-4">
           This is a timeline of my experience with software engineering and development.
         </div>
