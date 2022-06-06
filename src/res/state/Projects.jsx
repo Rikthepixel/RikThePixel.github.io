@@ -80,7 +80,7 @@ export default QuickSort([
         ]
     },
     {
-        title: "My portfolio website",
+        title: "Personal portfolio website",
 
         icon: [
             { src: PortfolioWebsite1x, width: 500, height: 375 },
