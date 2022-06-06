@@ -1,7 +1,7 @@
 import { QuickSort } from "./sort";
 
 export const generateSrcSet = (set) => {
-    if (!Array.isArray(set)) return [set, ""];
+    if (!Array.isArray(set)) return ["", set];
 
     const iconSet = QuickSort(set, (a, b) => a.width <= b.width);
     const smallestImage = iconSet[0];
