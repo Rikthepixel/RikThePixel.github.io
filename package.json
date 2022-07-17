@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "vite build",
     "postbuild": "vite-node ./builders/sitemap.js && vite-node ./builders/cname.js && react-snap",
-    "predeploy": "npm run build && cname dist",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "reactSnap": {
