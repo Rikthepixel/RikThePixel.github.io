@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import TimelineState from "res/state/Timeline";
 import PageHeader from "components/PageHeader";
-import TimelineItem from "../components/TimelineItem";
+import TimelineItem from "./features/TimelineItem";
 
 const Timeline = () => {
   useEffect(() => {
