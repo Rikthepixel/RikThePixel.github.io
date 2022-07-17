@@ -14,100 +14,72 @@
 
 export default [
     {
-        title: "ICT student",
+        title: "HBO Software engineering student",
 
         company: "Hogeschool Fontys",
         companyLink: "https://fontys.nl/Studeren/Vind-een-passende-opleiding/HBO-ICT.htm",
         location: "Eindhoven",
 
         description: <>
+            <h2 className="text-[1.05rem] font-bold text-center">Semester 1</h2>
             <p>
-                This was my first semester of college.
-                In this semester we got taught about IT in general.
+                After graduating from HAVO I chose to pursue a career in IT.
+                In the first semester I learned about general IT; Infrastructure, Software, Design, Business and Technology.
             </p>
             <p>
-                It was in this semester that I first came in touch with programming.
-                Turns out, I ended up liking it quite a lot! So much, in fact, that I chose to pursue software engineering.
+                That semester I came in contact with programming.
+                Because I liked it so much, I chose Software engineering as my specialty.
             </p>
-        </>,
 
-        periodName: "Semester 1",
-        startDate: { day: 1, month: 9, year: 2020 },
-        endDate: { day: 28, month: 1, year: 2021 }
-    },
-    {
-        title: "Software engineering student",
-
-        company: "Hogeschool Fontys",
-        companyLink: "https://fontys.nl/Studeren/Vind-een-passende-opleiding/HBO-ICT.htm",
-        location: "Eindhoven",
-
-        description: <>
+            <h2 className="text-[1.05rem] font-bold text-center">Semester 2</h2>
             <p>
-                In the second semester we started learning web development.
-                I made (in hindsight) a bad portfolio website in raw PHP using no libraries.
+                In my second semester I made my first website, it was a portfolio website (which never saw the light of day). It was built in PHP and it used no libraries.
+                I ended up running out of time. This project taught me that it is alright to use libraries, and that testing is crucial to the development life-cycle.
+            </p>
+
+            <h2 className="text-[1.05rem] font-bold text-center">Semester 3</h2>
+            <p>
+                The third semester was a lot harder then the second. It expanded upon the foundation that had been built by the second semester.
+                The requirements this semester were that I had to make use of a framework, an Object Relational Mapper (ORM) and proper tests.
             </p>
             <p>
-                What I learned from that experience is that time management is important.
-                I also learned that it is okay to use libraries, and that testing an application is a crucial part of development.
+                At the end of this semester I learnt the importance of asking feedback and communicating with your client.
+                Communication makes sure that the project stays on track and meets the client's requirements.
             </p>
-        </>,
 
-        periodName: "Semester 2",
-        startDate: { day: 8, month: 2, year: 2021 },
-        endDate: { day: 18, month: 6, year: 2021 }
-    },
-    {
-        title: "Software engineering student",
-
-        company: "Hogeschool Fontys",
-        companyLink: "https://fontys.nl/Studeren/Vind-een-passende-opleiding/HBO-ICT.htm",
-        location: "Eindhoven",
-
-        description: <>
+            <h2 className="text-[1.05rem] font-bold text-center">Semester 4</h2>
             <p>
-                Semester three built upon the foundation that the second semester had built.
-                I was thrown into the deep-end and had to make a distributed system using a framework.
-            </p>
-            <p>
-                The demand-based teaching style of my college forced me to mostly research these requirements and subjects on my own.
-                I could only ask for feedback and discuss progress with my teachers.
-            </p>
-            <p>
-                In the end I learned how important it is to ask feedback to stakeholders.
-                This will make sure a project stays on track.
-            </p>
-        </>,
-
-        periodName: "Semester 3",
-        startDate: { day: 1, month: 9, year: 2021 },
-        endDate: { day: 24, month: 1, year: 2022 }
-    },
-    {
-        title: "Cyber security student",
-
-        company: "Hogeschool Fontys",
-        companyLink: "https://fontys.nl/Studeren/Vind-een-passende-opleiding/HBO-ICT.htm",
-        location: "Eindhoven",
-
-        description: <>
-            <p>
-                Semester four is a specialization semester. 
+                The fourth semester offered us a choice of specialization.
                 I chose Cyber Security, since it is a relevant topic, especially in web development.
             </p>
             <p>
-                We had to form groups and ran a penetration test on a company.
-                I was the leader of this group during and after the pentest was done.
-            </p>
-            <p>
-                After the pentest we had to create a secure distributed computing platform.
-                Since our group was a mix of software engineers, media designers and infrastructure students everyone got a chance to shine.
-                I built and designed the backend together with a fellow software engineer.
+                During this semester I lead a group of five student.
+                We had to perform a security/penetration test for a company.
+                This test turned out successful, we found a few flaws in their security.
+                We promptly made a risk analysis and informed them of the vulnerabilities.
             </p>
         </>,
 
-        periodName: "Semester 4",
-        startDate: { day: 7, month: 2, year: 2022 },
-        endDate: { day: 24, month: 6, year: 2022 }
+        startDate: { day: 1, month: 9, year: 2020 },
     },
+    {
+        title: "Software engineer",
+
+        company: "TinyTronics",
+        companyLink: "https://www.tinytronics.nl/shop/nl",
+        location: "Eindhoven",
+
+        description: <>
+            <p>
+                Since June I've started working as a Software engineer at TinyTronics.
+                TinyTronics is a company that sells electronic components at an affordable price point.
+            </p>
+            <p>
+                They brought me in to improve the workflow for their internal applications,
+                so that work can be done more efficiently and the customer receives their orders sooner.
+            </p>
+        </>,
+
+        startDate: { day: 8, month: 6, year: 2022 }
+    }
 ];
