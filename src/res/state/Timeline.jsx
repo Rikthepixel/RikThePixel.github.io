@@ -27,23 +27,23 @@ export default [
                 In the first semester I learned about general IT; Infrastructure, Software, Design, Business and Technology.
             </p>
             <p>
-                That semester I came in contact with programming.
+                That semester I started programming for the first time.
                 Because I liked it so much, I chose Software engineering as my specialty.
             </p>
 
             <h2 className="text-[1.05rem] font-bold text-center">Semester 2</h2>
             <p>
-                In my second semester I made my first website, it was a portfolio website (which never saw the light of day). It was built in PHP and it used no libraries.
-                I ended up running out of time. This project taught me that it is alright to use libraries, and that testing is crucial to the development life-cycle.
+                In my second semester I made my first website, it was a portfolio website. It was built using PHP, and it used no libraries.
+                I ended up running out of time. This project taught me that it is all right to use libraries, and that testing is crucial to the development life cycle.
             </p>
 
             <h2 className="text-[1.05rem] font-bold text-center">Semester 3</h2>
             <p>
-                The third semester was a lot harder then the second. It expanded upon the foundation that had been built by the second semester.
-                The requirements this semester were that I had to make use of a framework, an Object Relational Mapper (ORM) and proper tests.
+                The third semester was harder then the second. It expanded upon the foundation that had been built by the second semester.
+                Requirements for this semester were that I had to make use of a framework, an Object Relational Mapper (ORM) and proper tests.
             </p>
             <p>
-                At the end of this semester I learnt the importance of asking feedback and communicating with your client.
+                At the end of this semester, I learnt the importance of asking feedback and communicating with your client.
                 Communication makes sure that the project stays on track and meets the client's requirements.
             </p>
 
@@ -55,7 +55,7 @@ export default [
             <p>
                 During this semester I lead a group of five student.
                 We had to perform a security/penetration test for a company.
-                This test turned out successful, we found a few flaws in their security.
+                This test turned out successful, we found a couple of flaws in their security.
                 We promptly made a risk analysis and informed them of the vulnerabilities.
             </p>
         </>,
