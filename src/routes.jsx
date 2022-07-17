@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Front from "views/Front";
-import Layout from "views/Layout";
+import Layout from "layouts/MainLayout";
 
 const Projects = React.lazy(() => import("views/Projects"));
 const Timeline = React.lazy(() => import("views/Timeline"));
