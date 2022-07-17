@@ -63,7 +63,7 @@ const Front = () => {
           </p>
           <p aria-label="What I am currently learning">
             Currently learning: <br />
-            <a href="https://vitejs.dev/" target="_blank">ViteJS ⚡</a> and <a href="https://love2d.org/" target="_blank">Love2D</a>
+            <a href="https://vitejs.dev/" target="_blank">ViteJS ⚡</a> and <a href="https://mui.com/" target="_blank">Material UI (MUI)</a>
           </p>
         </div>
       </section>
