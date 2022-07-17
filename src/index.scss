@@ -2,19 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: "Roboto Slab";
-    src: 
-        local("Roboto Slab"),
-        local("RobotoSlab"),
-        url("res/fonts//robotoslab.eot") format('embedded-opentype'),
-        url("res/fonts/RobotoSlab.ttf") format("truetype");
-    font-weight: 1 999;
-    font-display: swap;
-}
-
 :root {
-    font-family: "Roboto Slab";
+    font-family: "Roboto Slab", serif;
 }
 
 html,
