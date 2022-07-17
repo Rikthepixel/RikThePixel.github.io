@@ -1,0 +1,20 @@
+.front_description {
+    flex-direction: column;
+    text-align: center;
+    
+    &[data-short] {
+        display: "flex";
+
+        @media (min-width: 640px) {
+            display: "none"
+        }
+    }
+
+    &[data-long] {
+        display: "none";
+
+        @media (min-width: 640px) {
+            display: "flex"
+        }
+    }
+}

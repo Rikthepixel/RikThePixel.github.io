@@ -14,6 +14,7 @@ export default defineConfig({
             "images": "/src/res/images",
             "components": "/src/components",
             "views": "/src/views",
+            "hooks": "/src/hooks"
         }
     }
 });

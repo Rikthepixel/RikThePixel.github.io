@@ -6,7 +6,7 @@ import FrontImg2x from "images/front/FrontImage-2x.webp";
 import FrontImg3x from "images/front/FrontImage-3x.webp";
 import FrontImg4x from "images/front/FrontImage-4x.webp";
 import FrontImg5x from "images/front/FrontImage-5x.webp";
-import "./Front.scss";
+import Description from "./features/description";
 
 
 const [FrontImgSetString, displayFrontImg] = generateSrcSet([
@@ -45,27 +45,24 @@ const Front = () => {
             alt="A guy with brown hair, brown eyes and white skin"
           />
         </div>
-        <div
-          aria-label="Description"
-          className="hero-short description"
-        >
-          <p aria-label="Who I am">Hello, my name is Rik den Breejen.</p>
-          <p aria-label="What I do">I'm a Software engineering student at Fontys.</p>
-        </div>
-        <div
-          aria-label="Description"
-          className="hero-long description"
-        >
-          <p aria-label="Who I am">
-            Hello, my name is Rik den Breejen.<br />
-            I'm a Dutch Software engineering student at Fontys.<br />
-            I have a passion for coding and often spend a lot of my free time programming.
-          </p>
-          <p aria-label="What I am currently learning">
-            Currently learning: <br />
-            <a href="https://vitejs.dev/" target="_blank">ViteJS ⚡</a> and <a href="https://mui.com/" target="_blank">Material UI (MUI)</a>
-          </p>
-        </div>
+        <Description
+          shortDescription={<>
+            <p aria-label="Who I am">Hello, my name is Rik den Breejen.</p>
+            <p aria-label="What I do">I'm a Software engineering student at Fontys.</p>
+          </>}
+
+          longDescription={<>
+            <p aria-label="Who I am">
+              Hello, my name is Rik den Breejen.<br />
+              I'm a Dutch Software engineering student at Fontys.<br />
+              I have a passion for coding and often spend a lot of my free time programming.
+            </p>
+            <p aria-label="What I am currently learning">
+              Currently learning: <br />
+              <a href="https://vitejs.dev/" target="_blank">ViteJS ⚡</a> and <a href="https://mui.com/" target="_blank">Material UI (MUI)</a>
+            </p>
+          </>}
+        />
       </section>
     </>
   );
