@@ -1,12 +1,11 @@
 import React from 'react';
 import useMediaQuery from "hooks/useMediaQuery";
+import "./style.scss";
 
-const generateAria = (hidden) => {
-    return {
-        ariaHidden: hidden.toString(),
-        ariaLabel: hidden ? "Hidden description" : "Description"
-    };
-};
+const generateAria = (hidden) => ({
+    "aria-hidden": hidden.toString(),
+    "aria-label": hidden ? "Hidden description" : "Description"
+});
 
 const Description = ({ shortDescription, longDescription }) => {
     const isLarger = useMediaQuery("(min-width: 640px)");
