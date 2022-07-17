@@ -1,6 +1,6 @@
-import { QuickSort } from "../utils/sort";
-import { filterProjects, sortFunctions } from "../logic/Projects";
-import ProjectsState from "../res/state/Projects";
+import { QuickSort } from "../../../utils/sort";
+import { filterProjects, sortFunctions } from "../../../logic/Projects";
+import ProjectsState from "../../../res/state/Projects";
 
 export const initialState = {
     projects: ProjectsState,

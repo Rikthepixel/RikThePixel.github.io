@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import PageHeader from "components/PageHeader";
 import Project from "components/Project";
-import { ProjectsReducer, initialState } from "../../reducers/ProjectsReducer";
-import FilterBar from "./FilterBar";
+import { ProjectsReducer, initialState } from "./logic/reducer";
+import FilterBar from "./features/FilterBar";
 
 const Projects = () => {
     const [filter, dispatchFilter] = useReducer(ProjectsReducer, initialState);
