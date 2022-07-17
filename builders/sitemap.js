@@ -11,7 +11,7 @@ try {
         }
     ).toFile("./dist/sitemap.xml");
 
-    console.log("Sitemap succesfully generated");
+    console.log("✅ Sitemap succesfully generated");
 } catch (err) {
-    console.log("Failed to generate sitemap", err);
+    console.log("❌ Failed to generate sitemap", err);
 }
