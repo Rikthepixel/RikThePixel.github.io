@@ -1,12 +1,13 @@
 import React, { useEffect, useReducer } from 'react';
 import PageHeader from "components/PageHeader";
 import Project from "components/Project";
-import { ProjectsReducer, initialState } from "./logic/reducer";
+import ProjectsState from "res/state/Projects";
+import useProjectsLogic from "./hooks/useProjectsLogic";
 import FilterBar from "./features/FilterBar";
 
 const Projects = () => {
-    const [filter, dispatchFilter] = useReducer(ProjectsReducer, initialState);
-
+    const [filter, dispatchFilter] = useProjectsLogic(ProjectsState);
+    
     useEffect(() => {
         document.title = "Rik den Breejen | Projects";
     }, []);

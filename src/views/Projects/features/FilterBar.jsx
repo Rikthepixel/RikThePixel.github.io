@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Select from "react-select";
+import { types } from "../hooks/useProjectsLogic";
 
 const controlStyle = {
     cursor: "default",
@@ -32,7 +33,7 @@ const FilterBar = ({ onChange, state }) => {
                     list="SearchList"
                     placeholder="Search by name..."
                     value={state.search}
-                    onChange={e => onChange?.({ type: "SetSearch", value: e.target.value })}
+                    onChange={e => onChange?.({ type: types.SET_SEARCH, value: e.target.value })}
                 />
                 <datalist id="SearchList">
                     {state.projectNames.map(proj => <option key={proj} value={proj}>{proj}</option>)}
@@ -49,7 +50,7 @@ const FilterBar = ({ onChange, state }) => {
                     aria-label="Select box"
                     className="min-h-[2rem]"
                     styles={{ control: () => controlStyle }}
-                    onChange={selected => onChange?.({ type: "SetTechnologies", value: selected })}
+                    onChange={selected => onChange?.({ type: types.SET_TECHNOLOGIES, value: selected })}
                     options={state.filterTechnologies}
                     isMulti
                 />
@@ -66,7 +67,7 @@ const FilterBar = ({ onChange, state }) => {
                     className="min-h-[2rem]"
                     styles={{ control: () => controlStyle }}
                     value={state.sort}
-                    onChange={selected => onChange?.({ type: "SetSort", value: selected })}
+                    onChange={selected => onChange?.({ type: types.SET_SORT, value: selected })}
                     options={[
                         { value: "DateUp", label: "Date ↑" },
                         { value: "DateDown", label: "Date ↓" },

@@ -1,6 +1,4 @@
 import React from "react";
-import { QuickSort } from "../../utils/sort";
-import { sortFunctions } from "../../logic/Projects";
 import PortfolioWebsite1x from "images/projects/PortfolioWebsite-1x.webp";
 import PortfolioWebsite2x from "images/projects/PortfolioWebsite-2x.webp";
 import PortfolioWebsite3x from "images/projects/PortfolioWebsite-3x.webp";
@@ -36,7 +34,7 @@ import SitemapMaker4x from "images/projects/Sitemap-4x.webp";
     ]
 */
 
-export default QuickSort([
+export default [
     {
         title: "React Router sitemap maker package",
 
@@ -196,4 +194,4 @@ export default QuickSort([
             { name: "MySql", link: "https://www.mysql.com/" }
         ]
     }
-], sortFunctions.DateUp);
+];
