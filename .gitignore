@@ -8,8 +8,12 @@
 # testing
 /coverage
 
+#building
+/.next
+
 # production
 /build
+/out
 /dist
 
 # misc
