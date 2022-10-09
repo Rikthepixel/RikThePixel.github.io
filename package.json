@@ -1,7 +1,7 @@
 {
   "name": "rikthepixel",
   "homepage": "https://www.rikdenbreejen.nl",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "private": false,
   "scripts": {
     "start": "next dev",
