@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PageHeader from "components/PageHeader";
 import ProjectsState from "res/state/Projects";
 import useProjectsLogic from "logic/projectsLogic";
 import FilterBar from "components/ProjectFilterBar";
 import Project from "components/Project";
+import Head from 'next/head';
 
 const Projects = () => {
   const [filter, dispatchFilter] = useProjectsLogic(ProjectsState);
 
-  useEffect(() => {
-    document.title = "Rik den Breejen | Projects";
-  }, []);
-
   return (
     <>
+      <Head>
+        <title>Rik den Breejen | Projects</title>
+      </Head>
       <PageHeader className="mt-8">
         <p>&lt; Projects /&gt;</p>
       </PageHeader>

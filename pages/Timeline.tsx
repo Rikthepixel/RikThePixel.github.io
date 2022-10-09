@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TimelineState from "res/state/Timeline";
 import PageHeader from "components/PageHeader";
 import TimelineItem from "components/TimelineItem";
+import Head from 'next/head';
 
 const Timeline = () => {
-  useEffect(() => {
-    document.title = "Rik den Breejen | Timeline";
-  }, []);
 
   return (
     <>
+      <Head>
+        <title>Rik den Breejen | Timeline</title>
+      </Head>
       <PageHeader className="mt-8">
         <p>&lt; Timeline /&gt;</p>
         <div className="w-2/3 text-center text-[1.25rem] md:text-[2rem] mb-4">

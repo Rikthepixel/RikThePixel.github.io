@@ -1,6 +1,7 @@
-import React, { ReactNode, SVGProps, useEffect } from 'react';
+import React, { ReactNode, SVGProps } from 'react';
 import PageHeader from "components/PageHeader";
 import Contacts from "res/state/Contacts";
+import Head from 'next/head';
 
 interface ContactLinkProps {
   name: ReactNode;
@@ -25,12 +26,11 @@ const ContactLink = ({ name, icon: Icon, link }: ContactLinkProps) => {
 };
 
 const Contact = () => {
-  useEffect(() => {
-    document.title = "Rik den Breejen | Contact";
-  }, []);
-
   return (
     <>
+      <Head>
+        <title>Rik den Breejen | Contact</title>
+      </Head>
       <PageHeader className="mt-auto">
         <p>&lt; Contact /&gt;</p>
         <div className="text-[2rem]">You can find me on</div>

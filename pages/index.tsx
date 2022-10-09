@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import { generateSrcSet } from "utils/imageSets";
 import PageHeader from "components/PageHeader";
 import useMediaQuery from "hooks/useMediaQuery";
@@ -8,6 +8,7 @@ import FrontImg2x from "res/images/front/FrontImage-2x.webp";
 import FrontImg3x from "res/images/front/FrontImage-3x.webp";
 import FrontImg4x from "res/images/front/FrontImage-4x.webp";
 import FrontImg5x from "res/images/front/FrontImage-5x.webp";
+import Head from 'next/head';
 
 const generateAria = (hidden: boolean) => ({
     "aria-hidden": hidden,
@@ -73,12 +74,12 @@ const [FrontImgSetString, displayFrontImg] = generateSrcSet([
 ]);
 
 const Front = () => {
-    useEffect(() => {
-        document.title = "Rik den Breejen | Portfolio";
-    }, []);
 
     return (
         <>
+            <Head>
+                <title>Rik den Breejen | Portfolio</title>
+            </Head>
             <PageHeader className="mt-auto">
                 <div>
                     <p>&lt; I'm Rik! /&gt;</p>
