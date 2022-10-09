@@ -21,6 +21,7 @@ interface DescriptionProps {
 
 const Description = ({ shortDescription, longDescription }: DescriptionProps) => {
     const isLarger = useMediaQuery("(min-width: 640px)");
+    const isSsr = typeof window !== "undefined";
 
     return (
         <>
@@ -46,14 +47,14 @@ const Description = ({ shortDescription, longDescription }: DescriptionProps) =>
                 }
             `}</style>
             <div
-                {...generateAria(window === undefined ?? isLarger)}
+                {...generateAria(isSsr ? true : isLarger)}
                 className="front_description description"
                 data-short
             >
                 {shortDescription}
             </div>
             <div
-                {...generateAria(window !== undefined ?? !isLarger)}
+                {...generateAria(isSsr ? false : !isLarger)}
                 className="front_description description"
                 data-long
             >
