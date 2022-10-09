@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { HorizontalArrow, VerticalArrow } from "./Arrows";
 import Description from "./Description";
 
+
+interface TimelineItemProps {
+    title: string;
+    company: string;
+    companyLink?: string;
+    location?: string;
+    description: ReactNode;
+    startDate: { day: number, month: number, year: number, custom?: string; };
+    endDate?: { day: number, month: number, year: number, custom?: string; },
+    periodName?: string;
+    onLeft: boolean;
+}
+
 const TimelineItem = ({
-    title, company, companyLink, location, description, startDate, endDate = { custom: "Now" }, periodName, onLeft
-}) => {
+    title, company, companyLink, location, description, startDate, endDate = { day: 0, month: 0, year: 0, custom: "Now" }, periodName, onLeft
+}: TimelineItemProps) => {
 
     const startDateString = startDate.custom ?? `${startDate.year}-${startDate.month}-${startDate.day}`;
     const endDateString = endDate.custom ?? `${endDate.year}-${endDate.month}-${endDate.day}`;
@@ -31,4 +44,4 @@ const TimelineItem = ({
     );
 };
 
-export default TimelineItem;;
+export default TimelineItem;

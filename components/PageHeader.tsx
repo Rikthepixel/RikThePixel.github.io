@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const PageHeader = ({ className = "", children }) => {
+interface PageHeaderProps {
+    className: string;
+    children: ReactNode;
+}
+
+const PageHeader = ({ className = "", children }: PageHeaderProps) => {
     return (
         <h1
             id="page-header"

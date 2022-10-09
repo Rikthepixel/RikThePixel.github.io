@@ -3,10 +3,15 @@ import Links from "./Links";
 import Technologies from "./Technologies";
 import Icon from "./Icon";
 import Heading from "./Heading";
+import type { Project as IProject } from 'res/state/Projects';
+
+interface ProjectProps extends IProject {
+    lazy: boolean;
+}
 
 const Project = ({
-    title, text, icon, iconAlt, startDate, endDate = { custom: "Now" }, links, technologies, lazy
-}) => {
+    title, text, icon, iconAlt, startDate, endDate = { day: 0, month: 0, year: 0, custom: "Now" }, links, technologies, lazy
+}: ProjectProps) => {
 
     const startDateString = startDate.custom ?? `${startDate.year}-${startDate.month}-${startDate.day}`;
     const endDateString = endDate.custom ?? `${endDate.year}-${endDate.month}-${endDate.day}`;

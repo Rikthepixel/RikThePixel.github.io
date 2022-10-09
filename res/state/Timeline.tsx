@@ -1,18 +1,20 @@
-/*
-    title: string
+import { ReactNode } from 'react';
 
-    company: string
-    companyLink: string?
-    location: string?
+interface TimelineItem {
+    title: string;
 
-    description: string? | html?
+    company: string;
+    companyLink?: string;
+    location?: string;
 
-    periodName: string?
-    startDate: { year: number, month: number, day: number }
-    endDate: { year: number, month: number, day: number }?
-*/
+    description?: string | ReactNode;
 
-export default [
+    periodName?: string;
+    startDate: { year: number, month: number, day: number; };
+    endDate?: { year: number, month: number, day: number; custom: string; };
+}
+
+const timeline: TimelineItem[] = [
     {
         title: "HBO Software engineering student",
 
@@ -83,3 +85,5 @@ export default [
         startDate: { day: 8, month: 6, year: 2022 }
     }
 ];
+
+export default timeline;

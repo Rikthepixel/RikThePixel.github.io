@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "Divlo.vscode-styled-jsx-syntax",
+        "Divlo.vscode-styled-jsx-languageserver"
+    ],
+    "unwantedRecommendations": [
+        "styled-components.vscode-styled-components"
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "disabled": [
+        "styled-components.vscode-styled-components"
+    ],
+    "autoReload": true
+}

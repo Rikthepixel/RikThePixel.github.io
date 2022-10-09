@@ -1,11 +1,13 @@
-const quickSort = (array, compare) => {
+type CompareFunc<T> = (val: T, pivot: T) => boolean;
+
+const quickSort = <T>(array: T[], compare: CompareFunc<T>): T[] => {
     if (array.length <= 1) {
         return array;
     } else {
-        var left = [];
-        var right = [];
-        var newArray = [];
-        var pivot = array.pop();
+        var left: T[] = [];
+        var right: T[] = [];
+        var newArray: T[] = [];
+        var pivot = array.pop()!;
         var length = array.length;
         for (var i = 0; i < length; i++) {
             if (compare(array[i], pivot)) {
@@ -18,6 +20,6 @@ const quickSort = (array, compare) => {
     }
 };
 
-export const QuickSort = (array, compare) => {
+export const QuickSort = <T>(array: T[], compare: CompareFunc<T>): T[] => {
     return quickSort([...array], compare);
 };

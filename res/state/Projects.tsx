@@ -1,48 +1,57 @@
-import React from "react";
-import PortfolioWebsite1x from "images/projects/PortfolioWebsite-1x.webp";
-import PortfolioWebsite2x from "images/projects/PortfolioWebsite-2x.webp";
-import PortfolioWebsite3x from "images/projects/PortfolioWebsite-3x.webp";
-import PortfolioWebsite4x from "images/projects/PortfolioWebsite-4x.webp";
-import MennoWebsite1x from "images/projects/MennoWebsite-1x.webp";
-import MennoWebsite2x from "images/projects/MennoWebsite-2x.webp";
-import MennoWebsite3x from "images/projects/MennoWebsite-3x.webp";
-import MennoWebsite4x from "images/projects/MennoWebsite-4x.webp";
-import PinnoteLogo from "images/projects/PinnoteLogo.webp";
-import SitemapMaker1x from "images/projects/Sitemap-1x.webp";
-import SitemapMaker2x from "images/projects/Sitemap-2x.webp";
-import SitemapMaker3x from "images/projects/Sitemap-3x.webp";
-import SitemapMaker4x from "images/projects/Sitemap-4x.webp";
+import React, { ReactNode } from "react";
+import PortfolioWebsite1x from "res/images/projects/PortfolioWebsite-1x.webp";
+import PortfolioWebsite2x from "res/images/projects/PortfolioWebsite-2x.webp";
+import PortfolioWebsite3x from "res/images/projects/PortfolioWebsite-3x.webp";
+import PortfolioWebsite4x from "res/images/projects/PortfolioWebsite-4x.webp";
+import MennoWebsite1x from "res/images/projects/MennoWebsite-1x.webp";
+import MennoWebsite2x from "res/images/projects/MennoWebsite-2x.webp";
+import MennoWebsite3x from "res/images/projects/MennoWebsite-3x.webp";
+import MennoWebsite4x from "res/images/projects/MennoWebsite-4x.webp";
+import PinnoteLogo from "res/images/projects/PinnoteLogo.webp";
+import SitemapMaker1x from "res/images/projects/Sitemap-1x.webp";
+import SitemapMaker2x from "res/images/projects/Sitemap-2x.webp";
+import SitemapMaker3x from "res/images/projects/Sitemap-3x.webp";
+import SitemapMaker4x from "res/images/projects/Sitemap-4x.webp";
 
-/*
+interface Icon {
+    src: string;
+    width: number;
+    height: number;
+}
 
-    title: string
-    text: string? | html?
+export interface ProjectTechnology {
+    name: string;
+    link?: string;
+}
 
-    icon: { src: imagePath, width: number, height: number }? | { src: imagePath, width: number, height: number }[]?
-    iconAlt: string?
+export interface Project {
+    title: string;
+    text: ReactNode;
 
-    startDate: { year: number, month: number, day: number }
-    endDate: { year: number, month: number, day: number }?
-    datePriority: number (if the endDate is not set, this will decide which project holds priority)?
+    icon?: Icon | Icon[];
+    iconAlt?: string;
 
-    links: [
-        { name: string, link: string }
-    ]
+    startDate: { year: number, month: number, day: number; custom?: string; };
+    endDate?: { year: number, month: number, day: number; custom?: string; };
+    datePriority: number;
 
-    technologies: [
-        { name: string, link: string? }
-    ]
-*/
+    links: {
+        name: string;
+        link: string;
+    }[];
 
-export default [
+    technologies: ProjectTechnology[];
+}
+
+const projects: Project[] = [
     {
         title: "React Router sitemap maker package",
 
         icon: [
-            { src: SitemapMaker1x, width: 340, height: 255 },
-            { src: SitemapMaker2x, width: 534, height: 400 },
-            { src: SitemapMaker3x, width: 800, height: 600 },
-            { src: SitemapMaker4x, width: 1067, height: 800 },
+            SitemapMaker1x,
+            SitemapMaker2x,
+            SitemapMaker3x,
+            SitemapMaker4x
         ],
         iconAlt: "A sitemap generated with my package",
 
@@ -62,6 +71,7 @@ export default [
 
         startDate: { day: 22, month: 5, year: 2022 },
         endDate: { day: 24, month: 5, year: 2022 },
+        datePriority: -1,
 
         links: [
             { name: "View on Npm", link: "https://www.npmjs.com/package/react-router-sitemap-maker" },
@@ -81,10 +91,10 @@ export default [
         title: "Personal portfolio website",
 
         icon: [
-            { src: PortfolioWebsite1x, width: 500, height: 375 },
-            { src: PortfolioWebsite2x, width: 1000, height: 750 },
-            { src: PortfolioWebsite3x, width: 1500, height: 1125 },
-            { src: PortfolioWebsite4x, width: 2000, height: 1500 }
+            PortfolioWebsite1x,
+            PortfolioWebsite2x,
+            PortfolioWebsite3x,
+            PortfolioWebsite4x
         ],
         iconAlt: "A picture of the portfolio website you are now on",
 
@@ -121,10 +131,10 @@ export default [
         title: "Portfolio website Menno Bil",
 
         icon: [
-            { src: MennoWebsite1x, width: 500, height: 375 },
-            { src: MennoWebsite2x, width: 1000, height: 750 },
-            { src: MennoWebsite3x, width: 1500, height: 1125 },
-            { src: MennoWebsite4x, width: 2000, height: 1500 }
+            MennoWebsite1x,
+            MennoWebsite2x,
+            MennoWebsite3x,
+            MennoWebsite4x
         ],
         iconAlt: "A picture of Menno's portfolio website",
 
@@ -136,6 +146,7 @@ export default [
 
         startDate: { day: 1, month: 4, year: 2022 },
         endDate: { day: 14, month: 4, year: 2022 },
+        datePriority: -1,
 
         links: [
             { name: "Go to the website", link: "https://m-e-n-n-o.github.io/" }
@@ -153,7 +164,7 @@ export default [
     {
         title: "Pinnote",
 
-        icon: { src: PinnoteLogo, width: 400, height: 152 },
+        icon: PinnoteLogo,
         iconAlt: "The Pinnote Logo",
 
         text: <>
@@ -171,6 +182,7 @@ export default [
 
         startDate: { day: 4, month: 9, year: 2021 },
         endDate: { day: 18, month: 1, year: 2022 },
+        datePriority: -1,
 
         links: [
             { name: "View source", link: "https://github.com/Rikthepixel/Pinnote-frontend" }
@@ -195,3 +207,5 @@ export default [
         ]
     }
 ];
+
+export default projects;

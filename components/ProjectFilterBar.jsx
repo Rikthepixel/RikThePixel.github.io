@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Select from "react-select";
-import { types } from "../hooks/useProjectsLogic";
+import { types } from "logic/projectsLogic";
 
 const controlStyle = {
     cursor: "default",
@@ -47,6 +47,7 @@ const FilterBar = ({ onChange, state }) => {
                 <label htmlFor="TechnologyFilter">Technologies</label>
                 <Select
                     id="TechnologyFilter"
+                    instanceId="TechnologyFilterSelect"
                     aria-label="Select box"
                     className="min-h-[2rem]"
                     styles={{ control: () => controlStyle }}
@@ -63,6 +64,7 @@ const FilterBar = ({ onChange, state }) => {
                 <label htmlFor="SortBy">Sort by</label>
                 <Select
                     id="SortBy"
+                    instanceId="SortBySelect"
                     aria-label="Select box"
                     className="min-h-[2rem]"
                     styles={{ control: () => controlStyle }}

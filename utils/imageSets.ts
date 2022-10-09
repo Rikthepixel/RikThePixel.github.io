@@ -1,6 +1,7 @@
+import { StaticImageData } from 'next/image';
 import { QuickSort } from "./sort";
 
-export const generateSrcSet = (set) => {
+export const generateSrcSet = (set: readonly StaticImageData[]) => {
     if (!Array.isArray(set)) return ["", set];
 
     const iconSet = QuickSort(set, (a, b) => a.width <= b.width);
