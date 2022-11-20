@@ -60,7 +60,7 @@ const Front = () => {
                         aria-label="Image"
                         width="500"
                         height="500"
-                        className="absolute w-full h-full aspect-square object-cover rounded-full transition-opacity duration-75  hover:opacity-0"
+                        className="absolute w-full h-full aspect-square object-cover rounded-full z-10 transition-opacity duration-75 hover:opacity-0"
                         src={displayFrontOpenImg.src}
                         srcSet={FrontOpenImgSetString}
                         alt="A guy with brown hair, brown eyes and white skin"
