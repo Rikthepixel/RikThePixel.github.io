@@ -1,79 +1,44 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { generateSrcSet } from "utils/imageSets";
 import PageHeader from "components/PageHeader";
-import useMediaQuery from "hooks/useMediaQuery";
 
-import FrontImg1x from "res/images/front/FrontImage-1x.webp";
-import FrontImg2x from "res/images/front/FrontImage-2x.webp";
-import FrontImg3x from "res/images/front/FrontImage-3x.webp";
-import FrontImg4x from "res/images/front/FrontImage-4x.webp";
-import FrontImg5x from "res/images/front/FrontImage-5x.webp";
+import FrontImgClosed1x from "res/images/front/eyes closed/closed 1x.webp";
+import FrontImgClosed2x from "res/images/front/eyes closed/closed 2x.webp";
+import FrontImgClosed3x from "res/images/front/eyes closed/closed 3x.webp";
+import FrontImgClosed4x from "res/images/front/eyes closed/closed 4x.webp";
+import FrontImgClosed5x from "res/images/front/eyes closed/closed 5x.webp";
+
+import FrontImgOpen1x from "res/images/front/eyes open/open 1x.webp";
+import FrontImgOpen2x from "res/images/front/eyes open/open 2x.webp";
+import FrontImgOpen3x from "res/images/front/eyes open/open 3x.webp";
+import FrontImgOpen4x from "res/images/front/eyes open/open 4x.webp";
+import FrontImgOpen5x from "res/images/front/eyes open/open 5x.webp";
+
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
+import type { DescriptionProps } from '../components/FrontDescription';
 
-const generateAria = (hidden: boolean) => ({
-    "aria-hidden": hidden,
-    "aria-label": hidden ? "Hidden description" : "Description"
-});
+//@ts-ignore
+const Description = dynamic<DescriptionProps>(async () => (await import('../components/FrontDescription')).default, { ssr: false });
 
-interface DescriptionProps {
-    shortDescription: ReactNode;
-    longDescription: ReactNode;
-}
+const [FrontOpenImgSetString, displayFrontOpenImg] = generateSrcSet([
+    FrontImgOpen1x,
+    FrontImgOpen2x,
+    FrontImgOpen3x,
+    FrontImgOpen4x,
+    FrontImgOpen5x,
+]);
 
-const Description = ({ shortDescription, longDescription }: DescriptionProps) => {
-    const isLarger = useMediaQuery("(min-width: 640px)");
-    const isSsr = typeof window !== "undefined";
-
-    return (
-        <>
-            <style jsx>{`
-                .front_description {
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-                }
-
-                .front_description[data-long="true"] {
-                    display: none;
-                }   
-                
-                @media (min-width: 640px) {
-                    .front_description[data-short="true"] {
-                        display: none
-                    }
-
-                    .front_description[data-short="true"] {
-                        display: flex;
-                    }
-                }
-            `}</style>
-            <div
-                {...generateAria(isSsr ? true : isLarger)}
-                className="front_description description"
-                data-short
-            >
-                {shortDescription}
-            </div>
-            <div
-                {...generateAria(isSsr ? false : !isLarger)}
-                className="front_description description"
-                data-long
-            >
-                {longDescription}
-            </div>
-        </>
-    );
-};
-
-const [FrontImgSetString, displayFrontImg] = generateSrcSet([
-    FrontImg1x,
-    FrontImg2x,
-    FrontImg3x,
-    FrontImg4x,
-    FrontImg5x,
+const [FrontClosedImgSetString, displayFrontClosedImg] = generateSrcSet([
+    FrontImgClosed1x,
+    FrontImgClosed2x,
+    FrontImgClosed3x,
+    FrontImgClosed4x,
+    FrontImgClosed5x,
 ]);
 
 const Front = () => {
+
 
     return (
         <>
@@ -87,17 +52,28 @@ const Front = () => {
             </PageHeader>
             <section
                 aria-label="About me"
-                className="w-2/3 gap-4 mb-auto flex justify-center flex-wrap children:w-full children:justify-center children:items-center pb-32 sm:pb-20 sm:flex-nowrap sm:children:w-auto md:gap-8"
+                className="w-2/3 gap-4 mb-auto flex justify-center flex-wrap children:justify-center children:items-center pb-32 sm:pb-20 sm:flex-nowrap md:gap-8"
             >
-                <div className="flex">
+                <div className="flex relative w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem] aspect-square">
                     <img
                         loading="eager"
                         aria-label="Image"
                         width="500"
                         height="500"
-                        className="w-full h-fit aspect-square object-cover rounded-full max-w-[10rem] sm:max-w-[15rem]"
-                        src={displayFrontImg.src}
-                        srcSet={FrontImgSetString}
+                        className="absolute w-full h-full aspect-square object-cover rounded-full transition-opacity duration-75  hover:opacity-0"
+                        src={displayFrontOpenImg.src}
+                        srcSet={FrontOpenImgSetString}
+                        alt="A guy with brown hair, brown eyes and white skin"
+                    />
+                    <img
+                        aria-hidden="true"
+                        loading="eager"
+                        aria-label="Image"
+                        width="500"
+                        height="500"
+                        className="absolute w-full h-full aspect-square object-cover rounded-full"
+                        src={displayFrontClosedImg.src}
+                        srcSet={FrontClosedImgSetString}
                         alt="A guy with brown hair, brown eyes and white skin"
                     />
                 </div>
@@ -115,7 +91,7 @@ const Front = () => {
                         </p>
                         <p aria-label="What I am currently learning">
                             Currently learning: <br />
-                            <a href="https://vitejs.dev/" target="_blank">ViteJS ⚡</a> and <a href="https://mui.com/" target="_blank">Material UI (MUI)</a>
+                            <a href="https://www.python.org/" target="_blank">Python 🐍</a> and <a href="https://v2.vuejs.org/" target="_blank">Vue 2 👀</a>
                         </p>
                     </>}
                 />

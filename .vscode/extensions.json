@@ -4,6 +4,9 @@
         "Divlo.vscode-styled-jsx-languageserver"
     ],
     "unwantedRecommendations": [
-        "styled-components.vscode-styled-components"
+        "styled-components.vscode-styled-components",
+        "Vue.vscode-typescript-vue-plugin",
+        "Vue.volar",
+        "octref.vetur"
     ]
 }
