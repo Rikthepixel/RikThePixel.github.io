@@ -6,8 +6,6 @@
   "scripts": {
     "start": "next dev",
     "build": "next build && next export",
-    "predeploy": "npm run build && echo '' > ./out/_next/.nojekyll",
-    "deploy": "gh-pages -d out",
     "lint": "tslint -c tslint.json src/**/*.ts"
   },
   "engines": {

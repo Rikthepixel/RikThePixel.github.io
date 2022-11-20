@@ -51,7 +51,6 @@ jobs:
         uses: actions/configure-pages@v2
         with:
           static_site_generator: next
-
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -68,6 +67,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      - run: echo '' > ./out/_next/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -83,3 +83,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+      
