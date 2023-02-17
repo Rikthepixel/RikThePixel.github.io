@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import { motion, AnimatePresence, MotionConfig, useReducedMotion } from "framer-motion";
 import { AppProps } from 'next/app';
-import NextLink from 'next/link';
+
+import MainLayout from "layouts/Main";
 
 import "@fontsource/roboto-slab/100.css";
 import "@fontsource/roboto-slab/200.css";
@@ -11,39 +12,60 @@ import "@fontsource/roboto-slab/600.css";
 import "@fontsource/roboto-slab/700.css";
 import "@fontsource/roboto-slab/800.css";
 import "@fontsource/roboto-slab/900.css";
+
 import "../styles/index.scss";
+import useIsFirstRender from "hooks/useIsFirstRender";
+import useTypeTitle from "hooks/useTypeTitle";
 
-interface PageLinkProps {
-    to: string;
-    children: ReactNode;
-}
-
-const PageLink = ({ to, children }: PageLinkProps) => {
-    return (
-        <NextLink href={to}>
-            <a className="bg-purple-700 hover:bg-purple-500 hover:active:bg-purple-400 hover:active:text-zinc-600 current-page:bg-purple-900 text-center p-2 rounded-lg w-full md:basis-full shadow-lg">
-                {children}
-            </a>
-        </NextLink>
-    );
+const pageTransition = {
+    duration: .35,
+    ease: "easeOut"
 };
 
-const App = ({ Component, pageProps }: AppProps) => {
+const pageAnimation = {
+    initial: {
+        opacity: 0,
+        translateX: "0%"
+    },
+    animate: {
+        opacity: 100,
+        translateX: "0%",
+    },
+    exit: {
+        opacity: 0,
+        translateX: "5%"
+    }
+};
+
+const App = ({ Component, pageProps, router }: AppProps) => {
+
+    const isFirstRender = useIsFirstRender();
+    const reduceMotion = useReducedMotion();
+
+    useTypeTitle({
+        updateKey: router.pathname,
+        removePrefix: "Rik den Breejen | "
+    });
+
     return (
-        <main aria-labelledby="page-header" className="relative h-full flex-1 flex flex-col overflow-y-auto items-center">
-            <Component {...pageProps} />
-            <div className="fixed bottom-0 w-full text-white">
-                <nav
-                    aria-label="Main"
-                    className="py-4 px-6 grid grid-cols-[1fr_1fr] place-items-center gap-2 sm:flex sm:justify-around"
-                >
-                    <PageLink to="/">Home</PageLink>
-                    <PageLink to="/Projects">Projects</PageLink>
-                    <PageLink to="/Timeline">Timeline</PageLink>
-                    <PageLink to="/Contact" >Contact</PageLink>
-                </nav>
-            </div>
-        </main>
+        <MotionConfig reducedMotion="user">
+            <MainLayout>
+                <AnimatePresence mode="wait">
+                    <motion.main
+                        key={router.pathname}
+                        aria-labelledby="page-header"
+                        className="flex flex-col w-full h-[calc(100%_-_var(--nav-height))]"
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={pageTransition}
+                        variants={(isFirstRender || reduceMotion) ? {} : pageAnimation}
+                    >
+                        <Component {...pageProps} />
+                    </motion.main>
+                </AnimatePresence>
+            </MainLayout>
+        </MotionConfig >
     );
 };
 

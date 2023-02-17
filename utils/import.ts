@@ -1,0 +1,1 @@
+export const getDefault = async <DefaultExport>(imported: Promise<{ default: DefaultExport; }>): Promise<DefaultExport> => (await imported).default;

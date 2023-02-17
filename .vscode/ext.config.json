@@ -1,9 +1,0 @@
-{
-    "disabled": [
-        "styled-components.vscode-styled-components",
-        "Vue.vscode-typescript-vue-plugin",
-        "Vue.volar",
-        "octref.vetur"
-    ],
-    "autoReload": false
-}
