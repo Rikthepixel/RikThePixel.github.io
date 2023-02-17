@@ -11,7 +11,7 @@ export interface PageLinkProps {
 const PageLink = ({ to, className, children }: PageLinkProps) => {
     const router = useRouter();
 
-    const match = to === "/" ? router.asPath === "/" : router.asPath.includes(to);
+    const match = (to === "/" || router.pathname === "/404") ? router.asPath === "/" : router.asPath.includes(to);
 
     return (
         <Link

@@ -9,6 +9,7 @@ import LinkedInIcon from "res/images/icons/LinkedIn.svg";
 import RikPictureOutline from "res/images/graphics/rik-picture-outline.webp";
 import technologies from "res/state/technologies";
 import useIsFirstRender from "hooks/useIsFirstRender";
+import LinkButton from "components/controls/LinkButton";
 
 const secondsPerIcon = 6;
 
@@ -95,9 +96,9 @@ const Front = () => {
                         ))}
                     </div>
                     <div className="flex justify-center mt-0 mb-12 md:mb-0 md:mt-8">
-                        <Link href="/about" className="bg-primary-900 text-lg rounded-md px-3 py-2 text-shadow-none transition-all hover:brightness-125 hover:active:brightness-75 md:text-2xl md:px-5 md:py-3">
+                        <LinkButton href="/about" className="text-lg text-shadow-none transition-all md:text-2xl md:px-5 md:py-3">
                             Learn More About Me
-                        </Link>
+                        </LinkButton>
                     </div>
                 </div>
 
