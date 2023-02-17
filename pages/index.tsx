@@ -81,8 +81,10 @@ const Front = () => {
             </Head>
             <div className="flex flex-col flex-1 w-full items-center overflow-y-auto">
                 <div className="flex flex-col flex-1 p-2 sm:p-4 gap-4 sm:gap-8 text-center justify-center text-shadow-md text-shadow-primary-100 text-shadow-opacity-40">
-                    <div className="text-5xl px-4 motion-safe:transition-all sm:text-6xl sm:px-0 md:text-7xl">Rik den Breejen</div>
-                    <div className="text-3xl motion-safe:transition-all text-primary-900 font-black mt-auto sm:font-semibold sm:text-4xl md:font-normal md:text-5xl md:mt-0">Software Engineer</div>
+                    <h1 id="page-header" className="flex flex-col gap-4 sm:gap-8">
+                        <div className="text-5xl px-4 motion-safe:transition-all sm:text-6xl sm:px-0 md:text-7xl">Rik den Breejen</div>
+                        <div className="text-3xl motion-safe:transition-all text-primary-900 font-black mt-auto sm:font-semibold sm:text-4xl md:font-normal md:text-5xl md:mt-0">Software Engineer</div>
+                    </h1>
                     <div className="flex justify-center gap-4">
                         {links.map((link, i) => (
                             <Link
@@ -91,7 +93,10 @@ const Front = () => {
                                 href={link.to}
                                 aria-label={link.label}
                             >
-                                <link.icon className="w-12 aspect-square motion-safe:transition-all border rounded-full shadow-md shadow-primary-100/50  border-primary-100/75 sm:w-16" role="img" />
+                                <link.icon
+                                    className="w-12 aspect-square motion-safe:transition-all border rounded-full shadow-md shadow-primary-100/50  border-primary-100/75 sm:w-16"
+                                    role="presentation"
+                                />
                             </Link>
                         ))}
                     </div>
