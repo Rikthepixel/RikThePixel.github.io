@@ -1,5 +1,6 @@
-import { motion, AnimatePresence, MotionConfig, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { AppProps } from 'next/app';
+import { motion, AnimatePresence, MotionConfig, useReducedMotion } from "framer-motion";
 
 import MainLayout from "layouts/Main";
 
@@ -39,6 +40,8 @@ const pageAnimation = {
 
 const App = ({ Component, pageProps, router }: AppProps) => {
 
+    const previousPathname = useRef(router.pathname);
+    const [initialLoad, setIntialLoad] = useState(true);
     const isFirstRender = useIsFirstRender();
     const reduceMotion = useReducedMotion();
 
@@ -46,6 +49,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         updateKey: router.pathname,
         removePrefix: "Rik den Breejen | "
     });
+
+    useEffect(() => {
+        if (previousPathname.current !== router.pathname) setIntialLoad(false);
+        previousPathname.current = router.pathname;
+    }, [router.pathname]);
 
     return (
         <MotionConfig reducedMotion="user">
@@ -61,7 +69,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
                         transition={pageTransition}
                         variants={(isFirstRender || reduceMotion) ? {} : pageAnimation}
                     >
-                        <Component {...pageProps} />
+                        <Component initialLoad={initialLoad} {...pageProps} />
                     </motion.main>
                 </AnimatePresence>
             </MainLayout>
