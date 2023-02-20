@@ -14,7 +14,7 @@ import "@fontsource/roboto-slab/700.css";
 import "@fontsource/roboto-slab/800.css";
 import "@fontsource/roboto-slab/900.css";
 
-import "../styles/index.scss";
+import "../styles/index.css";
 import useIsFirstRender from "hooks/useIsFirstRender";
 import useTypeTitle from "hooks/useTypeTitle";
 

@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+}
+
+html,
+body,
+#__next {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+@layer base {
+
+    :where(input, select, button, a) {
+        @apply outline-primary-contrast/25
+    }
+
+    :where(input, select, button, a):focus-within {
+        outline-style: solid;
+        @apply outline-primary-contrast/25
+    }
+
+}

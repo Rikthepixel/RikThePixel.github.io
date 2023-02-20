@@ -89,7 +89,7 @@ const Front = () => {
                         {links.map((link, i) => (
                             <Link
                                 key={i}
-                                className="transition-colors hover:text-neutral-300 active:hover:text-neutral-400"
+                                className="transition-colors rounded-full hover:text-neutral-300 active:hover:text-neutral-400"
                                 href={link.to}
                                 aria-label={link.label}
                             >
