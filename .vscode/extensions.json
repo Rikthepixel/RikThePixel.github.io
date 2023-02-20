@@ -1,5 +1,10 @@
 {
     "recommendations": [
+        "EditorConfig.EditorConfig",
+        "ecmel.vscode-html-css",
+        "Zignd.html-css-class-completion",
+        "csstools.postcss",
+        "bradlc.vscode-tailwindcss"
     ],
     "unwantedRecommendations": [
         "styled-components.vscode-styled-components",
