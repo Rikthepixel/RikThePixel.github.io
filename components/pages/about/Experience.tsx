@@ -23,10 +23,7 @@ const Experience = ({ title, position, logo, place, timespan, showDivider }: Exp
                     </header>
                     <div className="flex flex-col gap-1 sm:gap-2">
                         <div className="flex flex-col gap-1 sm:items-center sm:flex-row sm:gap-4">
-                            <InlineLink
-                                className="underline"
-                                href={place.link}
-                            >
+                            <InlineLink href={place.link} underline>
                                 {place.name}
                             </InlineLink>
                             <div className="hidden bg-white w-1 h-1 rounded-full sm:block" aria-hidden></div>
