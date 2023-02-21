@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import LinkButton from "components/controls/LinkButton";
 
 export interface PageLinkProps {
     to: string;
@@ -14,13 +14,14 @@ const PageLink = ({ to, className, children }: PageLinkProps) => {
     const match = (to === "/" || router.pathname === "/404") ? router.asPath === "/" : router.asPath.includes(to);
 
     return (
-        <Link
+        <LinkButton
             href={to}
+            variant="outlined"
             aria-current={match ? "page" : undefined}
-            className={`w-full text-lg text-center px-2 py-1 border-2 rounded-md transition-colors border-primary-700 hover:border-primary-900 active:hover:border-secondary aria-[current='page']:border-secondary sm:w-auto md:text-2xl ${className ?? ""}`}
+            className={`w-full text-lg text-center is:font-normal is:px-2 is:py-1 is:text-white is:hover:text-white active:hover:border-secondary aria-[current='page']:text-white aria-[current='page']:border-secondary sm:w-auto md:text-2xl ${className ?? ""}`}
         >
             {children}
-        </Link>
+        </LinkButton>
     );
 };
 
