@@ -16,11 +16,12 @@ body,
 
 @layer base {
 
-    :where(input, select, button, a) {
+    :where(input, select, button, a, .focusable) {
         @apply outline-primary-contrast/25
     }
 
-    :where(input, select, button, a):focus-within {
+    :where(:where(input, select, button, a, .focusable):focus-within,
+        .focusable[data-focussed="true"]) {
         outline-style: solid;
         @apply outline-primary-contrast/25
     }

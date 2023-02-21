@@ -1,16 +1,34 @@
 import React from "react";
 import Link, { LinkProps } from "next/link";
+import { cva, VariantProps } from "class-variance-authority";
 
-export type LinkButtonProps = {
+export const style = cva("font-medium rounded-md transition-colors px-4 py-2", {
+    variants: {
+        variant: {
+            contained: "bg-primary-900 hover:bg-primary-700",
+            outlined: "text-primary-900 border-primary-900 border-2 hover:text-primary-700 hover:border-primary-700"
+        }
+    },
+});
+
+export interface LinkButtonProps extends
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps>,
+    React.RefAttributes<HTMLAnchorElement>,
+    VariantProps<typeof style>,
+    LinkProps {
     children?: React.ReactNode;
     beforeChildren?: React.ReactNode;
     afterChildren?: React.ReactNode;
-} & LinkProps & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & React.RefAttributes<HTMLAnchorElement>;
+};
 
-const LinkButton = ({ children, beforeChildren, afterChildren, className, ...props }: LinkButtonProps) => {
+const LinkButton = ({ children, beforeChildren, afterChildren, className, variant = "contained", ...props }: LinkButtonProps) => {
+
     return (
         <Link
-            className={`bg-primary-900 font-medium rounded-md transition-colors px-4 py-2 hover:bg-primary-700 ${className ?? ""}`}
+            className={style({
+                className,
+                variant
+            })}
             {...props}
         >
             {beforeChildren}

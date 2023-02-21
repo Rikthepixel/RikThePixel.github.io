@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -26,6 +28,10 @@ module.exports = {
     },
   },
   plugins: [
-    require("./plugins/tailwind-text-shadow")
+    require("./plugins/tailwind-text-shadow"),
+    plugin(({ addVariant }) => {
+      addVariant("is", ":is(&)")
+      addVariant("where", ":where(&)")
+    })
   ]
 };
