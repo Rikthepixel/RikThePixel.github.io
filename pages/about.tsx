@@ -77,11 +77,11 @@ const About = ({ initialLoad }: PageProps) => {
                                 I am Rik den Breejen, a Software engineer from the Netherlands.
                                 My specialization is prominently in web-development, ranging from front- to back-end.
                             </p>
-                            <p className="font-medium">
+                            <p>
                                 Currently I attend <InlineLink href="https://fontys.edu/" rel="noreferrer" external>Fontys University of Applied Sciences</InlineLink>, majoring in Software engineering.
                                 Ever since I started attending college I have gained a passion for coding.
                             </p>
-                            <p className="font-medium">
+                            <p>
                                 My love for coding drives me to spend a lot of my free time programming on personal projects.
                                 I often find myself experimenting with and geeking out over new technologies.
                             </p>
