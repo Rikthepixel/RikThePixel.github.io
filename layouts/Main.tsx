@@ -31,12 +31,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             <div ref={containerRef} className="flex flex-col items-center h-full">
                 <nav
                     ref={navbarRef}
-                    className="grid grid-cols-2 place-items-center w-full sm:w-auto text-white gap-2 py-4 px-6 top-0 z-10 sm:grid-cols-none sm:grid-flow-col"
+                    className="top-0 z-10 grid w-full grid-cols-2 gap-2 px-6 py-4 text-white place-items-center sm:w-auto sm:grid-cols-none sm:grid-flow-col"
                 >
                     <PageLink to="/">Home</PageLink>
                     <PageLink to="/about">About</PageLink>
-                    <PageLink to="/projects">Projects</PageLink>
-                    <PageLink to="/blog" >Blog</PageLink>
+                    {/* <PageLink to="/projects">Projects</PageLink>
+                    <PageLink to="/blog" >Blog</PageLink> */}
                 </nav>
                 {children}
             </div>
