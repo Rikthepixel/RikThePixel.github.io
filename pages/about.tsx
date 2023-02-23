@@ -75,7 +75,7 @@ const About = ({ initialLoad }: PageProps) => {
                             <h2 id="who-am-i" className="text-4xl font-medium md:text-5xl">Who am I?</h2>
                             <p className="font-medium">
                                 I am Rik den Breejen, a Software engineer from the Netherlands.
-                                My specialization is prominently in web-development, ranging from front- to back-end.
+                                My specialization is predominantly in web-development, ranging from front- to back-end.
                             </p>
                             <p>
                                 Currently I attend <InlineLink href="https://fontys.edu/" rel="noreferrer" external>Fontys University of Applied Sciences</InlineLink>, majoring in Software engineering.
