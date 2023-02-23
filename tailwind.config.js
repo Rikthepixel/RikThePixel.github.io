@@ -28,10 +28,11 @@ module.exports = {
     },
   },
   plugins: [
+    require("@headlessui/tailwindcss"),
     require("./plugins/tailwind-text-shadow"),
     plugin(({ addVariant }) => {
-      addVariant("is", ":is(&)")
-      addVariant("where", ":where(&)")
+      addVariant("is", ":is(&)");
+      addVariant("where", ":where(&)");
     })
   ]
 };
