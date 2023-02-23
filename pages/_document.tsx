@@ -6,8 +6,8 @@ const Document = () => {
             <Head>
                 <meta property="og:title" content="Rik den Breejen | Portfolio" />
 
-                <meta property="og:image" content="website_image.jpg" />
-                <meta property="twitter:image" content="website_image.jpg" />
+                {/* <meta property="og:image" content="website_image.jpg" />
+                <meta property="twitter:image" content="website_image.jpg" /> */}
 
                 <meta property="og:type" content="portfolio" />
 
