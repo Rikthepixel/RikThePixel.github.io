@@ -8,16 +8,16 @@ export default [
     {
         name: "Github",
         icon: GithubIcon,
-        link: "github.com/Rikthepixel"
+        link: "https://github.com/Rikthepixel"
     },
     {
         name: "LinkedIn",
         icon: LinkedInIcon,
-        link: "linkedin.com/in/rik-den-breejen-a84aa71a7/"
+        link: "https://linkedin.com/in/rik-den-breejen-a84aa71a7/"
     },
     {
         name: "Youtube",
         icon: YoutubeIcon,
-        link: "youtube.com/@rikthepixel"
+        link: "https://youtube.com/@rikthepixel"
     }
 ]satisfies IExternalLink[];
