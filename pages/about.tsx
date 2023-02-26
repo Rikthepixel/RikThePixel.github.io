@@ -58,10 +58,10 @@ const About = ({ initialLoad }: PageProps) => {
             </Head>
             <h1 id="page-header" className="absolute text-[0px]">About Me</h1>
             <div className="w-full h-full overflow-auto">
-                <div className="flex flex-col w-full gap-16 py-16 mx-auto max-w-7xl md:gap-24 md:py-24">
-                    <section className="grid w-full gap-4 p-4 text-center place-items-center md:grid-flow-col md:grid-rows-1" aria-labelledby="who-am-i">
+                <div className="flex flex-col w-full max-w-7xl mx-auto gap-16 py-16 md:gap-24 md:py-24">
+                    <section className="grid place-items-center w-full text-center gap-4 p-4 md:grid-flow-col md:grid-rows-1" aria-labelledby="who-am-i">
                         <motion.img
-                            className="rounded-lg w-44 aspect-square md:w-80"
+                            className="w-44 aspect-square rounded-lg md:w-80"
                             src={RikSquarePicture.src}
                             width={RikSquarePicture.width}
                             height={RikSquarePicture.height}
@@ -116,13 +116,13 @@ const About = ({ initialLoad }: PageProps) => {
                             ))}
                         </div>
                     </section>
-                    {/* <section className="flex flex-col items-center gap-4 p-4 text-center" aria-labelledby="projects">
+                    <section className="flex flex-col items-center text-center gap-4 p-4" aria-labelledby="projects">
                         <h2 id="projects" className="absolute text-[0px]">Projects</h2>
                         <div>Actions speak louder then words! Have a look at my projects next</div>
                         <LinkButton href="/projects" className="block">
                             Go to my Projects
                         </LinkButton>
-                    </section> */}
+                    </section>
                 </div>
             </div>
         </>
