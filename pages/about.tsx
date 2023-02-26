@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { PageProps } from "typings/page";
 
 import InlineLink from "components/navigation/InlineLink";
-// import LinkButton from "components/controls/LinkButton";
+import LinkButton from "components/controls/LinkButton";
 import Experience from "components/pages/about/Experience";
 import ExternalLink from "components/pages/about/ExternalLink";
 
