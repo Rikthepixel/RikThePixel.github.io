@@ -46,10 +46,10 @@
     "node_modules"
   ],
   "include": [
-    "next-env.d.ts",
     "typings/svg.d.ts",
     "typings/page.d.ts",
     "typings/formik.d.ts",
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ]
