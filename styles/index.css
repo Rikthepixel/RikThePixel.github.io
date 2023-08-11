@@ -3,27 +3,26 @@
 @tailwind utilities;
 
 :root {
-    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
 }
 
 html,
 body,
 #__next {
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
-@layer base {
+:where(input, select, button, a, .focusable) {
+  @apply outline-primary-contrast/25;
+}
 
-    :where(input, select, button, a, .focusable) {
-        @apply outline-primary-contrast/25
-    }
-
-    :where(:where(input, select, button, a, .focusable):focus-within,
-        .focusable[data-focussed="true"]) {
-        outline-style: solid;
-        @apply outline-primary-contrast/25
-    }
-
+:where(
+:where(input, select, button, a, .focusable):focus-within,
+:where(input, select, button, a, .focusable):focus-visible,
+.focusable[data-focussed="true"]
+) {
+  outline-style: solid;
+  @apply outline-primary-contrast/25;
 }

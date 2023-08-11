@@ -4,10 +4,7 @@ import Head from "next/head";
 import {
     Formik,
     Form,
-    Field
 } from 'formik';
-
-import SearchIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 
 import AutoComplete from "components/controls/formik/AutoComplete";
 import FormError from "components/controls/formik/FormError";

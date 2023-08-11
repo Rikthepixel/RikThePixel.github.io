@@ -16,7 +16,10 @@ module.exports = {
           "600": "#70012B",
           "700": "#B60045",
           "900": "#FF0060",
-          "contrast": "#FFF"
+          "contrast": {
+            DEFAULT: "#fff",
+            "low": "#bbb"
+          }
         },
         secondary: "#FFF",
         current: "currentColor"

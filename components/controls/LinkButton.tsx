@@ -2,11 +2,11 @@ import React from "react";
 import Link, { LinkProps } from "next/link";
 import { cva, VariantProps } from "class-variance-authority";
 
-export const style = cva("font-medium rounded-md transition-colors px-4 py-2", {
+export const style = cva("font-medium text-center rounded-md transition-colors px-4 py-2", {
     variants: {
         variant: {
             contained: "bg-primary-900 hover:bg-primary-700",
-            outlined: "text-primary-900 border-primary-900 border-2 hover:text-primary-700 hover:border-primary-700"
+            outlined: "border-primary-900 border-2 hover:border-primary-700"
         }
     },
 });
