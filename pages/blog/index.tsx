@@ -1,91 +1,59 @@
 import matter from "gray-matter";
 import fs from "node:fs/promises";
 import Head from "next/head";
-import React, { useMemo, useState } from "react";
+import React, { useEffect } from "react";
 import path from "node:path";
-import { z } from "zod";
 import Button from "components/controls/Button";
-import { Search as Searcher } from "js-search";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import LinkButton from "components/controls/LinkButton";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import fadeAnim, { fadeTrans } from "anims/fade";
 import useIsFirstRender from "hooks/useIsFirstRender";
+import { PostBrief, SerializedPostBrief } from "models/blog/Post";
+import useBlogPosts, { SortingKey } from "hooks/useBlogPosts";
+import { capitalize } from "utils/string";
+import { frontMatterSchema } from "validators/blog";
+import { POST_EXT, POSTS_PATH, POST_IMAGE_PATH } from "config/blog";
+import DotDivider from "components/DotDivider";
+import { NextSeo } from "next-seo";
 
-interface PostBrief {
-  id: number;
-  title: string;
-  slug: string;
-  readtime: number;
-  thumbnail: string;
-  excerpt: string;
-  tags?: string[];
-  date: Date;
-}
-
-interface SerializedPostBrief extends Omit<PostBrief, "date"> {
-  date: string;
-}
+const SORTING_KEY_TO_SORTING_INFO = {
+  newest: {
+    label: "🌱 Newest",
+    title: "Newest article",
+  },
+  oldest: {
+    label: "🌳 Oldest",
+    title: "Oldest article",
+  },
+  shortest: {
+    label: "🐇 Shortest",
+    title: "Shortest readtime",
+  },
+  longest: {
+    label: "🐢 Longest",
+    title: "Longest readtime",
+  },
+} satisfies Record<SortingKey, { label: string; title: string }>;
 
 interface StaticProps {
   posts: SerializedPostBrief[];
 }
 
-const SORTINGS = {
-  newest(a: PostBrief, b: PostBrief) {
-    const deltaTime = a.date.getTime() - b.date.getTime();
-    if (deltaTime !== 0) return deltaTime;
-    return a.id - b.id;
-  },
-
-  oldest(a: PostBrief, b: PostBrief) {
-    const deltaTime = b.date.getTime() - a.date.getTime();
-    if (deltaTime !== 0) return deltaTime;
-    return b.id - a.id;
-  },
-} as const;
-
-const capitalize = (str: string) => {
-  const firstLetter = str.length > 0 ? str[0].toUpperCase() : "";
-  const rest = str.length >= 2 ? str.substring(1) : "";
-
-  return firstLetter + rest;
-};
-
 export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
-  const [sort, setSort] = useState<"newest" | "oldest">("newest");
-  const [search, setSearch] = useState<string>("");
+  const { posts, sort, setSort, sortingKeys, search, setSearch, tag, setTag } =
+    useBlogPosts(serializedPosts);
+
   const { query } = useRouter();
+
+  useEffect(() => {
+    if (typeof query.tag !== "string" && query.tag !== undefined) return;
+    setTag(query.tag);
+  }, [query.tag]);
+
   const reduceMotion = useReducedMotion();
   const isFirstRender = useIsFirstRender();
-
-  const searcher = useMemo(() => {
-    const searcher = new Searcher("id");
-    searcher.addIndex("title");
-    searcher.addIndex("tags");
-    searcher.addDocuments(serializedPosts);
-    return searcher;
-  }, [serializedPosts]);
-
-  const posts = useMemo(() => {
-    let filteredPosts =
-      search !== ""
-        ? (searcher.search(search) as SerializedPostBrief[])
-        : serializedPosts;
-
-    if (typeof query.tag === "string") {
-      const searchTag = query.tag.toLowerCase();
-
-      filteredPosts = filteredPosts.filter(
-        (p) => p.tags?.includes(searchTag) ?? true,
-      );
-    }
-
-    return filteredPosts
-      .map<PostBrief>((p) => ({ ...p, date: new Date(p.date) }))
-      .sort(SORTINGS[sort]);
-  }, [serializedPosts, sort, search, query.tag, searcher]);
 
   const readtimeFormat = new Intl.NumberFormat("en-US", {
     style: "unit",
@@ -94,69 +62,83 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
 
   return (
     <>
-      <Head>
-        <title>Rik den Breejen | Blog</title>
-      </Head>
+      <NextSeo
+        title="Rik den Breejen | Blog"
+        openGraph={{
+          title: "Rik den Breejen | Blog",
+          description:
+            "Follow me and explore some of the things I am passionate about",
+        }}
+        description="Follow me and explore some of the things I am passionate about"
+      />
       <div className="flex flex-1 flex-col overflow-auto md:overflow-clip">
         <h1
           id="page-header"
-          className="text-center text-4xl font-medium md:text-5xl mb-4"
+          className="w-full text-center text-4xl font-medium md:text-5xl mb-4"
         >
           Blog
         </h1>
-        <div className="grid md:grid-cols-[300px_1fr] mx-auto gap-4 p-4 flex-1 w-full max-w-7xl">
-          <aside className="flex flex-col gap-4 flex-1 md:border-r-2 md:border-neutral-600/50 md:pr-2">
-            <div className="flex flex-col gap-2">
-              <p className="text-sm">Search:</p>
-              <input
-                className="border-2 border-primary-900 rounded-md px-3 py-2 w-full bg-transparent focus-visible:outline focus-visible:outline-primary-contrast/25"
-                onChange={(e) => setSearch(e.target.value)}
-                value={search}
-                placeholder="Search title & tags..."
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-sm">Sort by:</p>
-              <div className="grid grid-cols-2 gap-2">
-                <Button
-                  variant={sort === "newest" ? "contained" : "outlined"}
-                  onClick={() => setSort("newest")}
-                >
-                  Newest
-                </Button>
-                <Button
-                  variant={sort === "oldest" ? "contained" : "outlined"}
-                  onClick={() => setSort("oldest")}
-                >
-                  Oldest
-                </Button>
+        <div className="grid grid-cols-1 md:grid-cols-[17rem_1fr] lg:grid-cols-[20rem_1fr] transition-all mx-auto gap-4 p-4 flex-1 w-full max-w-7xl">
+          <aside className="relative w-full md:border-r-2 md:border-neutral-600/50 md:pr-2">
+            <div className="sticky top-20 w-full flex flex-col gap-4 flex-1">
+              <div className="flex flex-col gap-2">
+                <p className="text-sm">Search:</p>
+                <input
+                  className="border-2 border-primary-900 rounded-md px-3 py-2 w-full bg-transparent focus-visible:outline focus-visible:outline-primary-contrast/25"
+                  onChange={(e) => setSearch(e.target.value)}
+                  value={search}
+                  placeholder="🔎 Search title & tags..."
+                />
               </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-sm">Sort by:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {sortingKeys.map((key, i) => {
+                    const sortingInfo = SORTING_KEY_TO_SORTING_INFO[key];
+
+                    return (
+                      <Button
+                        key={i}
+                        variant={sort === key ? "contained" : "outlined"}
+                        onClick={() => setSort(key)}
+                        title={sortingInfo.title}
+                      >
+                        {sortingInfo.label}
+                      </Button>
+                    );
+                  })}
+                </div>
+              </div>
+              <AnimatePresence>
+                {tag && (
+                  <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    className="w-full"
+                    transition={fadeTrans}
+                    variants={reduceMotion ? {} : fadeAnim}
+                  >
+                    <LinkButton
+                      variant="outlined"
+                      href="/blog"
+                      className="block"
+                    >
+                      Clear {`"${capitalize(tag)}"`} tag filter
+                    </LinkButton>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-            <AnimatePresence>
-              {typeof query.tag === "string" && (
-                <motion.div
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="w-full"
-                  transition={fadeTrans}
-                  variants={reduceMotion ? {} : fadeAnim}
-                >
-                  <LinkButton variant="outlined" href="/blog" className="block">
-                    Clear {`"${capitalize(query.tag)}"`} tag filter
-                  </LinkButton>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </aside>
           {posts.length > 0 ? (
-            <div className="flex flex-wrap h-fit md:overflow-auto">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 h-fit">
               <AnimatePresence>
                 {posts.map((p) => (
                   <motion.div
                     key={p.slug}
                     layout
-                    className={`flex flex-col rounded-md gap-2 w-full p-4 sm:w-1/2 lg:w-1/3 h-fit`}
+                    className={`flex flex-col rounded-md gap-2 w-full h-fit`}
                   >
                     <Link href={`/blog/${p.slug}`} className="rounded-md">
                       <img
@@ -194,7 +176,7 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
                         {isFirstRender
                           ? p.date.toDateString()
                           : p.date.toLocaleDateString()}
-                        <div className="w-1 h-1 rounded-full bg-primary-contrast-low" />
+                        <DotDivider />
                         {isFirstRender
                           ? `${p.readtime} min read`
                           : `${readtimeFormat.format(p.readtime)} read`}
@@ -206,9 +188,7 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
             </div>
           ) : (
             <p role="note" className="w-full text-center">
-              No blog posts found with {'"'}
-              {search}
-              {'"'} in the title or tags
+              No blog posts found with {`"${search}"`} in the title or tags
             </p>
           )}
         </div>
@@ -218,30 +198,13 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
 }
 
 export const getStaticProps = async () => {
-  const frontMatterSchema = z.object({
-    title: z.string(),
-    thumbnail: z.string(),
-    readtime: z.coerce.number(),
-    date: z.coerce.date(),
-    tags: z.array(z.coerce.string()).optional(),
-  });
-
-  const postsPath = path.resolve(process.cwd(), "./res/posts/");
-  const postNameFormat = /(\d+)-(.+)(\.md[x]*)$/;
-
   const posts = await Promise.all(
-    await fs.readdir(postsPath, { withFileTypes: true }).then((dirents) =>
+    await fs.readdir(POSTS_PATH, { withFileTypes: true }).then((dirents) =>
       dirents
-        .filter((d) => d.isFile() && d.name.match(postNameFormat))
+        .filter((d) => d.isFile() && d.name.endsWith(POST_EXT))
         .map<Promise<PostBrief>>(async (dirent) => {
-          const direntMatches = dirent.name.match(postNameFormat);
-          const unvalidatedId = direntMatches?.[1];
-          const slugPart = direntMatches?.[2];
-
-          const id = z.coerce.number().int().parse(unvalidatedId);
-
           const fileContent = await fs.readFile(
-            path.resolve(postsPath, dirent.name),
+            path.resolve(POSTS_PATH, dirent.name),
           );
 
           const { data: unvalidatedFrontMatter, excerpt } = matter(
@@ -253,33 +216,36 @@ export const getStaticProps = async () => {
             throw new Error(`Excerpt is missing from file: ${dirent.name}`);
 
           const frontMatter = frontMatterSchema.parse(unvalidatedFrontMatter);
+          const slug = dirent.name.replace(RegExp(`(${POST_EXT})$`), "");
+
+          const trimmedExcerpt = excerpt.substring(
+            0,
+            excerpt.length > 200 ? 200 : excerpt.length,
+          );
 
           return {
-            id: id,
             title: frontMatter.title,
-            slug: `${id}-${slugPart}`,
+            slug: dirent.name.replace(RegExp(`(${POST_EXT})$`), ""),
             readtime: frontMatter.readtime,
-            thumbnail: path.join("images", "posts", frontMatter.thumbnail),
+            thumbnail: path.join(POST_IMAGE_PATH, slug, frontMatter.thumbnail),
+            thumbnail_alt: frontMatter.thumbnail_alt,
+            banner: path.join(POST_IMAGE_PATH, slug, frontMatter.banner),
             tags: frontMatter.tags,
             date: frontMatter.date,
-            excerpt: excerpt.substring(0, 200),
+            excerpt: trimmedExcerpt,
           };
         }),
     ),
   ).then((posts) =>
     posts
       .sort((a, b) => {
-        const idDelta = a.id - b.id;
-        if (idDelta !== 0) return idDelta;
-
         const dateDelta = a.date.getTime() - b.date.getTime();
         if (dateDelta !== 0) return dateDelta;
-
         return a.title.localeCompare(b.title);
       })
-      .map<SerializedPostBrief>((p) => ({
-        ...p,
-        date: p.date.toUTCString(),
+      .map<SerializedPostBrief>((post) => ({
+        ...post,
+        date: post.date.toUTCString(),
       })),
   );
 

@@ -6,13 +6,17 @@
   font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
 }
 
+html {
+  @apply min-h-full
+}
+
 html,
 body,
 #__next {
   margin: 0;
-  height: 100%;
-  overflow: hidden;
+  @apply flex flex-col flex-1;
 }
+
 
 :where(input, select, button, a, .focusable) {
   @apply outline-primary-contrast/25;

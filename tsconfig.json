@@ -4,12 +4,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext",
-      "ESNext.Array"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "ESNext.Array"],
     "rootDir": ".",
     "outDir": "out",
     "strict": true,
@@ -37,14 +32,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "typeRoots": [
-      "./typings",
-      "./node_modules/@types",
-    ]
+    "typeRoots": ["./typings", "./node_modules/@types"]
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
     "typings/svg.d.ts",
     "typings/page.d.ts",
