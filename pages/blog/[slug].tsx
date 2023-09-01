@@ -3,7 +3,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
 import fs from "node:fs/promises";
-import { SerializedPost } from "models/blog/Post";
+import { makePostFromFile, SerializedPost } from "models/blog/Post";
 
 import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -46,19 +46,16 @@ export default function BlogPage({ post: serializedPost }: StaticProps) {
           images: [
             {
               url: post.thumbnail,
-              alt: post.thumbnail_alt
-            }
+              alt: post.thumbnail_alt,
+            },
           ],
           article: {
             tags: post.tags ?? undefined,
-            authors: [
-              "Rik den Breejen"
-            ],
+            authors: ["Rik den Breejen"],
             section: post.section ?? undefined,
-            publishedTime: post.date.toUTCString()
-          }
+            publishedTime: post.date.toUTCString(),
+          },
         }}
-        
       />
       <article className="flex flex-col gap-4 mx-auto w-full max-w-4xl rounded-md p-8 mb-16">
         <img
@@ -114,7 +111,10 @@ export default function BlogPage({ post: serializedPost }: StaticProps) {
           </div>
 
           <div className="flex flex-col gap-8 text-lg">
-            <MDXRemote {...post.content} components={{ SyntaxHighlighter, ...Markdown }} />
+            <MDXRemote
+              {...post.content}
+              components={{ SyntaxHighlighter, ...Markdown }}
+            />
           </div>
 
           {post.tags && (
@@ -139,7 +139,7 @@ export default function BlogPage({ post: serializedPost }: StaticProps) {
       </article>
     </>
   );
-} 
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -163,40 +163,14 @@ export const getStaticProps: GetStaticProps<{}, { slug: string }> = async ({
 }) => {
   if (!params) throw new Error("Params was undefined");
   const filePath = path.resolve(POSTS_PATH, `${params.slug}${POST_EXT}`);
-  const fileContent = await fs.readFile(filePath);
-
-  const {
-    data: unvalidatedFrontMatter,
-    content,
-    excerpt,
-  } = matter(fileContent.toString(), { excerpt: true });
-
-  if (!excerpt) throw new Error(`Excerpt is missing from slug: ${params.slug}`);
-
-  const frontMatter = frontMatterSchema.parse(unvalidatedFrontMatter);
-  const mdxSource = await serialize(content.substring(content.indexOf("---") + 3), { parseFrontmatter: false });
-  const trimmedExcerpt = excerpt.substring(
-    0,
-    excerpt.length > 200 ? 200 : excerpt.length,
-  );
-
-  const props: StaticProps = {
-    post: {
-      title: frontMatter.title,
-      slug: params.slug,
-      readtime: frontMatter.readtime,
-      thumbnail: path.join(POST_IMAGE_PATH, params.slug, frontMatter.thumbnail),
-      thumbnail_alt: frontMatter.thumbnail_alt,
-      banner: path.join(POST_IMAGE_PATH, params.slug, frontMatter.banner),
-      tags: frontMatter.tags ? frontMatter.tags : null,
-      section: frontMatter.section ? frontMatter.section : null, 
-      date: frontMatter.date.toUTCString(),
-      content: mdxSource,
-      excerpt: trimmedExcerpt,
-    },
-  };
+  const post = await makePostFromFile(filePath);
 
   return {
-    props,
+    props: {
+      post: { 
+        ...post, 
+        date: post.date.toUTCString() 
+      },
+    } as StaticProps,
   };
 };

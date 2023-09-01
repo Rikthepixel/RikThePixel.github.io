@@ -10,11 +10,14 @@ import LinkButton from "components/controls/LinkButton";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import fadeAnim, { fadeTrans } from "anims/fade";
 import useIsFirstRender from "hooks/useIsFirstRender";
-import { PostBrief, SerializedPostBrief } from "models/blog/Post";
+import {
+  makePostFromFile,
+  PostBrief,
+  SerializedPostBrief,
+} from "models/blog/Post";
 import useBlogPosts, { SortingKey } from "hooks/useBlogPosts";
 import { capitalize } from "utils/string";
-import { frontMatterSchema } from "validators/blog";
-import { POST_EXT, POSTS_PATH, POST_IMAGE_PATH } from "config/blog";
+import { POST_EXT, POSTS_PATH } from "config/blog";
 import DotDivider from "components/DotDivider";
 import { NextSeo } from "next-seo";
 
@@ -198,59 +201,28 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
 }
 
 export const getStaticProps = async () => {
+  const dirents = await fs.readdir(POSTS_PATH, { withFileTypes: true });
+
   const posts = await Promise.all(
-    await fs.readdir(POSTS_PATH, { withFileTypes: true }).then((dirents) =>
-      dirents
-        .filter((d) => d.isFile() && d.name.endsWith(POST_EXT))
-        .map<Promise<PostBrief>>(async (dirent) => {
-          const fileContent = await fs.readFile(
-            path.resolve(POSTS_PATH, dirent.name),
-          );
-
-          const { data: unvalidatedFrontMatter, excerpt } = matter(
-            fileContent.toString(),
-            { excerpt: true },
-          );
-
-          if (!excerpt)
-            throw new Error(`Excerpt is missing from file: ${dirent.name}`);
-
-          const frontMatter = frontMatterSchema.parse(unvalidatedFrontMatter);
-          const slug = dirent.name.replace(RegExp(`(${POST_EXT})$`), "");
-
-          const trimmedExcerpt = excerpt.substring(
-            0,
-            excerpt.length > 200 ? 200 : excerpt.length,
-          );
-
-          return {
-            title: frontMatter.title,
-            slug: dirent.name.replace(RegExp(`(${POST_EXT})$`), ""),
-            readtime: frontMatter.readtime,
-            thumbnail: path.join(POST_IMAGE_PATH, slug, frontMatter.thumbnail),
-            thumbnail_alt: frontMatter.thumbnail_alt,
-            banner: path.join(POST_IMAGE_PATH, slug, frontMatter.banner),
-            tags: frontMatter.tags,
-            date: frontMatter.date,
-            excerpt: trimmedExcerpt,
-          };
-        }),
-    ),
-  ).then((posts) =>
-    posts
-      .sort((a, b) => {
-        const dateDelta = a.date.getTime() - b.date.getTime();
-        if (dateDelta !== 0) return dateDelta;
-        return a.title.localeCompare(b.title);
-      })
-      .map<SerializedPostBrief>((post) => ({
-        ...post,
-        date: post.date.toUTCString(),
-      })),
+    dirents
+      .filter((d) => d.isFile() && d.name.endsWith(POST_EXT))
+      .map<Promise<PostBrief>>(
+        async (dirent) =>
+          await makePostFromFile(path.resolve(POSTS_PATH, dirent.name)),
+      ),
   );
 
+  posts.sort((a, b) => {
+    const dateDelta = a.date.getTime() - b.date.getTime();
+    if (dateDelta !== 0) return dateDelta;
+    return a.title.localeCompare(b.title);
+  });
+
   const props: StaticProps = {
-    posts,
+    posts: posts.map<SerializedPostBrief>((p) => ({
+      ...p,
+      date: p.date.toUTCString(),
+    })),
   };
 
   return {
