@@ -1,5 +1,3 @@
-import Head from "next/head";
-import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
 import fs from "node:fs/promises";
@@ -7,9 +5,7 @@ import { makePostFromFile, SerializedPost } from "models/blog/Post";
 
 import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
-import matter from "gray-matter";
-import { frontMatterSchema } from "validators/blog";
-import { POST_EXT, POSTS_PATH, POST_IMAGE_PATH } from "config/blog";
+import { POST_EXT, POSTS_PATH} from "config/blog";
 import useIsFirstRender from "hooks/useIsFirstRender";
 import useBlogPost from "hooks/useBlogPost";
 import DotDivider from "components/DotDivider";
@@ -18,7 +14,6 @@ import { capitalize } from "utils/string";
 import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { NextSeo } from "next-seo";
-import { twMerge } from "tailwind-merge";
 import Markdown from "components/layout/Markdown";
 
 interface StaticProps {

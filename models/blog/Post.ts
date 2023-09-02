@@ -4,6 +4,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import fs from "node:fs/promises";
 import path from "node:path";
+import remarkGfm from "remark-gfm";
 import { frontMatterSchema } from "validators/blog";
 
 export interface BasePost {
@@ -61,7 +62,10 @@ async function parsePostFile(filePath: string) {
 
 export async function makePostFromFile(filePath: string): Promise<Post> {
   const { slug, frontMatter, content, excerpt } = await parsePostFile(filePath);
-  const mdxSource = await serialize(content, { parseFrontmatter: false });
+  const mdxSource = await serialize(content, {
+    parseFrontmatter: false,
+    mdxOptions: { remarkPlugins: [remarkGfm] },
+  });
 
   return {
     title: frontMatter.title,
@@ -93,6 +97,6 @@ export async function makePostBriefFromFile(
     tags: frontMatter.tags ? frontMatter.tags : null,
     section: frontMatter.section ? frontMatter.section : null,
     date: frontMatter.date,
-    excerpt: excerpt
+    excerpt: excerpt,
   };
 }

@@ -11,6 +11,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import fadeAnim, { fadeTrans } from "anims/fade";
 import useIsFirstRender from "hooks/useIsFirstRender";
 import {
+    makePostBriefFromFile,
   makePostFromFile,
   PostBrief,
   SerializedPostBrief,
@@ -208,7 +209,7 @@ export const getStaticProps = async () => {
       .filter((d) => d.isFile() && d.name.endsWith(POST_EXT))
       .map<Promise<PostBrief>>(
         async (dirent) =>
-          await makePostFromFile(path.resolve(POSTS_PATH, dirent.name)),
+          await makePostBriefFromFile(path.resolve(POSTS_PATH, dirent.name)),
       ),
   );
 
