@@ -8,5 +8,6 @@ export const frontMatterSchema = z.object({
   readtime: z.coerce.number(),
   date: z.coerce.date(),
   tags: z.array(z.coerce.string()).optional(),
-  section: z.coerce.string().optional()
+  section: z.coerce.string().optional(),
+  excerpt: z.coerce.string()
 });

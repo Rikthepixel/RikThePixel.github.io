@@ -42,61 +42,60 @@ async function parsePostFile(filePath: string) {
   const basename = path.basename(filePath);
   const slug = basename.replace(RegExp(`(${POST_EXT})$`), "");
 
-  const {
-    data: unvalidatedFrontMatter,
-    content,
-    excerpt,
-  } = matter(fileContent.toString(), { excerpt: true });
+  const mdxSource = await serialize(fileContent.toString(), {
+    parseFrontmatter: true,
+    mdxOptions: { remarkPlugins: [remarkGfm] },
+    scope: { 
+      imageUrl: path.join(POST_IMAGE_PATH, slug)
+    }
+  });
 
-  if (!excerpt) throw new Error(`Excerpt is missing from slug: ${slug}`);
-
-  const frontMatter = frontMatterSchema.parse(unvalidatedFrontMatter);
+  const frontMatter = frontMatterSchema.parse(mdxSource.frontmatter);
 
   return {
     frontMatter,
     slug,
-    content: content.substring(content.indexOf("---") + 3),
-    excerpt: excerpt.substring(0, excerpt.length > 200 ? 200 : excerpt.length),
+    source: { scope: mdxSource.scope, compiledSource: mdxSource.compiledSource, frontmatter: {} },
   };
 }
 
-export async function makePostFromFile(filePath: string): Promise<Post> {
-  const { slug, frontMatter, content, excerpt } = await parsePostFile(filePath);
-  const mdxSource = await serialize(content, {
-    parseFrontmatter: false,
-    mdxOptions: { remarkPlugins: [remarkGfm] },
-  });
-
+export async function makePostFromFile(
+  filePath: string,
+  imageUrl: string,
+): Promise<Post> {
+  const { slug, frontMatter, source } = await parsePostFile(filePath);
+  
   return {
     title: frontMatter.title,
     slug: slug,
     readtime: frontMatter.readtime,
-    thumbnail: path.join(POST_IMAGE_PATH, slug, frontMatter.thumbnail),
+    thumbnail: path.join(imageUrl, slug, frontMatter.thumbnail),
     thumbnail_alt: frontMatter.thumbnail_alt,
-    banner: path.join(POST_IMAGE_PATH, slug, frontMatter.banner),
+    banner: path.join(imageUrl, slug, frontMatter.banner),
     tags: frontMatter.tags ? frontMatter.tags : null,
     section: frontMatter.section ? frontMatter.section : null,
     date: frontMatter.date,
-    content: mdxSource,
-    excerpt: excerpt,
+    excerpt: frontMatter.excerpt,
+    content: source
   };
 }
 
 export async function makePostBriefFromFile(
   filePath: string,
+  imageUrl: string,
 ): Promise<PostBrief> {
-  const { slug, frontMatter, excerpt } = await parsePostFile(filePath);
+  const { slug, frontMatter} = await parsePostFile(filePath);
 
   return {
     title: frontMatter.title,
     slug: slug,
     readtime: frontMatter.readtime,
-    thumbnail: path.join(POST_IMAGE_PATH, slug, frontMatter.thumbnail),
+    thumbnail: path.join(imageUrl, slug, frontMatter.thumbnail),
     thumbnail_alt: frontMatter.thumbnail_alt,
-    banner: path.join(POST_IMAGE_PATH, slug, frontMatter.banner),
+    banner: path.join(imageUrl, slug, frontMatter.banner),
     tags: frontMatter.tags ? frontMatter.tags : null,
     section: frontMatter.section ? frontMatter.section : null,
     date: frontMatter.date,
-    excerpt: excerpt,
+    excerpt: frontMatter.excerpt,
   };
 }

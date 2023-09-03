@@ -1,6 +1,4 @@
-import matter from "gray-matter";
 import fs from "node:fs/promises";
-import Head from "next/head";
 import React, { useEffect } from "react";
 import path from "node:path";
 import Button from "components/controls/Button";
@@ -11,14 +9,13 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import fadeAnim, { fadeTrans } from "anims/fade";
 import useIsFirstRender from "hooks/useIsFirstRender";
 import {
-    makePostBriefFromFile,
-  makePostFromFile,
+  makePostBriefFromFile,
   PostBrief,
   SerializedPostBrief,
 } from "models/blog/Post";
 import useBlogPosts, { SortingKey } from "hooks/useBlogPosts";
 import { capitalize } from "utils/string";
-import { POST_EXT, POSTS_PATH } from "config/blog";
+import { POST_EXT, POSTS_PATH, POST_IMAGE_PATH } from "config/blog";
 import DotDivider from "components/DotDivider";
 import { NextSeo } from "next-seo";
 
@@ -136,13 +133,13 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
             </div>
           </aside>
           {posts.length > 0 ? (
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 h-fit">
+            <div className="w-full grid grid-cols-1  lg:grid-cols-2 gap-8 h-fit">
               <AnimatePresence>
                 {posts.map((p) => (
                   <motion.div
                     key={p.slug}
                     layout
-                    className={`flex flex-col rounded-md gap-2 w-full h-fit`}
+                    className="flex flex-col rounded-md gap-2 w-full h-fit"
                   >
                     <Link href={`/blog/${p.slug}`} className="rounded-md">
                       <img
@@ -173,7 +170,7 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
                       className="flex flex-col gap-2 rounded-md"
                     >
                       <div className="text-xl font-semibold">{p.title}</div>
-                      <div className="line-clamp-3 break-words flex-1 text-primary-contrast-low">
+                      <div className="line-clamp-4 break-words flex-1 text-primary-contrast-low">
                         {p.excerpt}
                       </div>
                       <div className="flex flex-wrap items-center gap-2 text-sm text-primary-contrast-low">
@@ -209,7 +206,7 @@ export const getStaticProps = async () => {
       .filter((d) => d.isFile() && d.name.endsWith(POST_EXT))
       .map<Promise<PostBrief>>(
         async (dirent) =>
-          await makePostBriefFromFile(path.resolve(POSTS_PATH, dirent.name)),
+          await makePostBriefFromFile(path.resolve(POSTS_PATH, dirent.name), POST_IMAGE_PATH),
       ),
   );
 

@@ -5,7 +5,7 @@ import { makePostFromFile, SerializedPost } from "models/blog/Post";
 
 import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { POST_EXT, POSTS_PATH} from "config/blog";
+import { POST_EXT, POSTS_PATH, POST_IMAGE_PATH } from "config/blog";
 import useIsFirstRender from "hooks/useIsFirstRender";
 import useBlogPost from "hooks/useBlogPost";
 import DotDivider from "components/DotDivider";
@@ -15,12 +15,14 @@ import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { NextSeo } from "next-seo";
 import Markdown from "components/layout/Markdown";
+import { useMemo } from "react";
 
 interface StaticProps {
   post: SerializedPost;
+  imageUrl: string
 }
 
-export default function BlogPage({ post: serializedPost }: StaticProps) {
+export default function BlogPage({ post: serializedPost, imageUrl }: StaticProps) {
   const isFirstRender = useIsFirstRender();
   const post = useBlogPost(serializedPost);
 
@@ -28,6 +30,13 @@ export default function BlogPage({ post: serializedPost }: StaticProps) {
     style: "unit",
     unit: "minute",
   });
+
+  const mdxComponents = useMemo(() => {
+    return {
+      SyntaxHighlighter,
+      ...Markdown,
+    };
+  }, []);
 
   return (
     <>
@@ -55,7 +64,7 @@ export default function BlogPage({ post: serializedPost }: StaticProps) {
       <article className="flex flex-col gap-4 mx-auto w-full max-w-4xl rounded-md p-8 mb-16">
         <img
           className="aspect-[16/7] w-full rounded-md object-cover"
-          src={post.thumbnail}
+          src={post.banner}
           alt={post.thumbnail_alt}
         />
         <div className="flex flex-col gap-4">
@@ -108,7 +117,8 @@ export default function BlogPage({ post: serializedPost }: StaticProps) {
           <div className="flex flex-col gap-8 text-lg">
             <MDXRemote
               {...post.content}
-              components={{ SyntaxHighlighter, ...Markdown }}
+              components={mdxComponents}
+              scope={{ imageUrl }}
             />
           </div>
 
@@ -158,14 +168,17 @@ export const getStaticProps: GetStaticProps<{}, { slug: string }> = async ({
 }) => {
   if (!params) throw new Error("Params was undefined");
   const filePath = path.resolve(POSTS_PATH, `${params.slug}${POST_EXT}`);
-  const post = await makePostFromFile(filePath);
+  const post = await makePostFromFile(filePath, POST_IMAGE_PATH);
+  
+  const props: StaticProps = {
+    post: {
+      ...post,
+      date: post.date.toUTCString(),
+    },
+    imageUrl: path.join(POST_IMAGE_PATH, post.slug)
+  }
 
   return {
-    props: {
-      post: { 
-        ...post, 
-        date: post.date.toUTCString() 
-      },
-    } as StaticProps,
+    props
   };
 };
