@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import InlineLink from "components/navigation/InlineLink";
 
 import IExperience from "models/IExperience";
@@ -9,7 +11,7 @@ export interface ExperienceProps extends IExperience {
 const Experience = ({ title, position, logo, place, timespan, showDivider }: ExperienceProps) => {
     return (
         <>
-            <article className="flex flex-row items-center gap-4">
+            <motion.li className="flex flex-row items-center gap-4">
                 <img
                     className="w-20 aspect-square rounded-lg sm:w-28"
                     alt={`${place.name} logo`}
@@ -36,7 +38,7 @@ const Experience = ({ title, position, logo, place, timespan, showDivider }: Exp
                         </div>
                     </div>
                 </div>
-            </article>
+            </motion.li>
             {(showDivider) && <div className="w-full h-[1px] bg-neutral-600 rounded-full opacity-50" aria-hidden></div>}
         </>
     );

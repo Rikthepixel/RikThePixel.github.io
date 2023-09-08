@@ -24,12 +24,13 @@ interface StaticProps {
 
 export default function BlogPage({ post: serializedPost, imageUrl }: StaticProps) {
   const isFirstRender = useIsFirstRender();
-  const post = useBlogPost(serializedPost);
-
   const readtimeFormat = new Intl.NumberFormat("en-US", {
     style: "unit",
     unit: "minute",
   });
+
+  const post = useBlogPost(serializedPost);
+
 
   const mdxComponents = useMemo(() => {
     return {

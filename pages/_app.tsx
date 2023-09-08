@@ -21,15 +21,14 @@ import "@fontsource/roboto-slab/900.css";
 
 import "../styles/index.css";
 import useIsFirstRender from "hooks/useIsFirstRender";
-import useTypeTitle from "hooks/useTypeTitle";
-import { DefaultSeo } from "next-seo";
+import { DefaultSeo, DefaultSeoProps } from "next-seo";
 
-const pageTransition = {
+const PAGE_TRANSITION = {
   duration: 0.35,
   ease: "easeOut",
 };
 
-const pageAnimation = {
+const PAGE_ANIMATION = {
   initial: {
     opacity: 0,
     translateX: "0%",
@@ -44,16 +43,34 @@ const pageAnimation = {
   },
 };
 
+const DEFAULT_SEO: DefaultSeoProps = {
+  title: "Rik den Breejen | Portfolio",
+  description: "Learn more about me and my exploration and passion for coding",
+  openGraph: {
+    title: "Rik den Breejen | Portfolio",
+    description:
+      "Learn more about me and my exploration and passion for coding",
+    siteName: "Rik den Breejen Portfolio",
+    type: "profile",
+    profile: {
+      firstName: "Rik",
+      lastName: "den Breejen",
+      username: "RikThePixel",
+      gender: "male",
+    },
+    images: [
+      {
+        url: "website_image.jpg",
+      },
+    ],
+  },
+};
+
 const App = ({ Component, pageProps, router }: AppProps) => {
   const previousPathname = useRef(router.pathname);
   const [initialLoad, setIntialLoad] = useState(true);
   const isFirstRender = useIsFirstRender();
   const reduceMotion = useReducedMotion();
-
-  useTypeTitle({
-    updateKey: router.pathname,
-    removePrefix: "Rik den Breejen | ",
-  });
 
   useEffect(() => {
     if (previousPathname.current !== router.pathname) setIntialLoad(false);
@@ -71,31 +88,10 @@ const App = ({ Component, pageProps, router }: AppProps) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={pageTransition}
-            variants={isFirstRender || reduceMotion ? {} : pageAnimation}
+            transition={PAGE_TRANSITION}
+            variants={isFirstRender || reduceMotion ? {} : PAGE_ANIMATION}
           >
-            <DefaultSeo
-              title="Rik den Breejen | Portfolio"
-              description="Learn more about me and my exploration and passion for coding"
-              openGraph={{
-                title: "Rik den Breejen | Portfolio",
-                description:
-                  "Learn more about me and my exploration and passion for coding",
-                siteName: "Rik den Breejen Portfolio",
-                type: "profile",
-                profile: {
-                  firstName: "Rik",
-                  lastName: "den Breejen",
-                  username: "RikThePixel",
-                  gender: "male",
-                },
-                images: [
-                  {
-                    url: "website_image.jpg",
-                  },
-                ],
-              }}
-            />
+            <DefaultSeo {...DEFAULT_SEO} />
             <Component initialLoad={initialLoad} {...pageProps} />
           </motion.main>
         </AnimatePresence>

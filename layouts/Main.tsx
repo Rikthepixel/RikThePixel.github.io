@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useEffect } from "react";
+import { ReactNode} from "react";
 import PageLink from "components/layout/PageLink";
 
 export interface MainLayoutProps {
@@ -13,8 +13,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       >
         <PageLink to="/">Home</PageLink>
         <PageLink to="/about">About</PageLink>
-        <PageLink to="/projects">Projects</PageLink>
-        <PageLink to="/blog">Blog</PageLink>
+        {/* <PageLink to="/projects">Projects</PageLink> */}
+        <PageLink className="col-span-2 sm:col-span-1" to="/blog">Blog</PageLink>
       </nav>
       {children}
     </>

@@ -1,13 +1,11 @@
 import fs from "node:fs/promises";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import path from "node:path";
 import Button from "components/controls/Button";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import LinkButton from "components/controls/LinkButton";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import fadeAnim, { fadeTrans } from "anims/fade";
-import useIsFirstRender from "hooks/useIsFirstRender";
 import {
   makePostBriefFromFile,
   PostBrief,
@@ -16,8 +14,9 @@ import {
 import useBlogPosts, { SortingKey } from "hooks/useBlogPosts";
 import { capitalize } from "utils/string";
 import { POST_EXT, POSTS_PATH, POST_IMAGE_PATH } from "config/blog";
-import DotDivider from "components/DotDivider";
 import { NextSeo } from "next-seo";
+import Header from "components/Header";
+import PostItem from "components/pages/blog/[slug]/PostItem";
 
 const SORTING_KEY_TO_SORTING_INFO = {
   newest: {
@@ -43,23 +42,35 @@ interface StaticProps {
 }
 
 export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
+  const reduceMotion = useReducedMotion();
+  const { query } = useRouter();
+
   const { posts, sort, setSort, sortingKeys, search, setSearch, tag, setTag } =
     useBlogPosts(serializedPosts);
-
-  const { query } = useRouter();
 
   useEffect(() => {
     if (typeof query.tag !== "string" && query.tag !== undefined) return;
     setTag(query.tag);
   }, [query.tag]);
 
-  const reduceMotion = useReducedMotion();
-  const isFirstRender = useIsFirstRender();
+  const renderedSortingButtons = useMemo(
+    () =>
+      sortingKeys.map((key, i) => {
+        const sortingInfo = SORTING_KEY_TO_SORTING_INFO[key];
 
-  const readtimeFormat = new Intl.NumberFormat("en-US", {
-    style: "unit",
-    unit: "minute",
-  });
+        return (
+          <Button
+            key={i}
+            variant={sort === key ? "contained" : "outlined"}
+            onClick={() => setSort(key)}
+            title={sortingInfo.title}
+          >
+            {sortingInfo.label}
+          </Button>
+        );
+      }),
+    [sort, setSort, sortingKeys],
+  );
 
   return (
     <>
@@ -73,12 +84,9 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
         description="Follow me and explore some of the things I am passionate about"
       />
       <div className="flex flex-1 flex-col overflow-auto md:overflow-clip">
-        <h1
-          id="page-header"
-          className="w-full text-center text-4xl font-medium md:text-5xl mb-4"
-        >
+        <Header.H1 id="page-header" className="w-full text-center mb-4">
           Blog
-        </h1>
+        </Header.H1>
         <div className="grid grid-cols-1 md:grid-cols-[17rem_1fr] lg:grid-cols-[20rem_1fr] transition-all mx-auto gap-4 p-4 flex-1 w-full max-w-7xl">
           <aside className="relative w-full md:border-r-2 md:border-neutral-600/50 md:pr-2">
             <div className="sticky top-20 w-full flex flex-col gap-4 flex-1">
@@ -94,20 +102,7 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
               <div className="flex flex-col gap-2">
                 <p className="text-sm">Sort by:</p>
                 <div className="grid grid-cols-2 gap-2">
-                  {sortingKeys.map((key, i) => {
-                    const sortingInfo = SORTING_KEY_TO_SORTING_INFO[key];
-
-                    return (
-                      <Button
-                        key={i}
-                        variant={sort === key ? "contained" : "outlined"}
-                        onClick={() => setSort(key)}
-                        title={sortingInfo.title}
-                      >
-                        {sortingInfo.label}
-                      </Button>
-                    );
-                  })}
+                  {renderedSortingButtons}
                 </div>
               </div>
               <AnimatePresence>
@@ -125,7 +120,7 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
                       href="/blog"
                       className="block"
                     >
-                      Clear {`"${capitalize(tag)}"`} tag filter
+                      {`Clear "${capitalize(tag)}" tag filter`}
                     </LinkButton>
                   </motion.div>
                 )}
@@ -136,60 +131,13 @@ export default function BlogIndex({ posts: serializedPosts }: StaticProps) {
             <div className="w-full grid grid-cols-1  lg:grid-cols-2 gap-8 h-fit">
               <AnimatePresence>
                 {posts.map((p) => (
-                  <motion.div
-                    key={p.slug}
-                    layout
-                    className="flex flex-col rounded-md gap-2 w-full h-fit"
-                  >
-                    <Link href={`/blog/${p.slug}`} className="rounded-md">
-                      <img
-                        className="aspect-video object-contain w-full rounded-md"
-                        src={p.thumbnail}
-                        width="1920"
-                        height="1080"
-                      />
-                    </Link>
-                    <div className="flex gap-1 overflow-auto py-1 -my-1">
-                      {p.tags?.map((tag, tagIndex) => {
-                        const searchParams = new URLSearchParams();
-                        searchParams.append("tag", tag.toLowerCase());
-
-                        return (
-                          <Link
-                            key={tagIndex}
-                            href={`/blog?${searchParams.toString()}`}
-                            className="text-sm border-2 border-primary-900 rounded-md p-1"
-                          >
-                            {capitalize(tag)}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                    <Link
-                      href={`/blog/${p.slug}`}
-                      className="flex flex-col gap-2 rounded-md"
-                    >
-                      <div className="text-xl font-semibold">{p.title}</div>
-                      <div className="line-clamp-4 break-words flex-1 text-primary-contrast-low">
-                        {p.excerpt}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2 text-sm text-primary-contrast-low">
-                        {isFirstRender
-                          ? p.date.toDateString()
-                          : p.date.toLocaleDateString()}
-                        <DotDivider />
-                        {isFirstRender
-                          ? `${p.readtime} min read`
-                          : `${readtimeFormat.format(p.readtime)} read`}
-                      </div>
-                    </Link>
-                  </motion.div>
+                  <PostItem key={p.slug} post={p} />
                 ))}
               </AnimatePresence>
             </div>
           ) : (
             <p role="note" className="w-full text-center">
-              No blog posts found with {`"${search}"`} in the title or tags
+              {`No blog posts found with "${search}" in the title or tags`}
             </p>
           )}
         </div>
@@ -206,7 +154,10 @@ export const getStaticProps = async () => {
       .filter((d) => d.isFile() && d.name.endsWith(POST_EXT))
       .map<Promise<PostBrief>>(
         async (dirent) =>
-          await makePostBriefFromFile(path.resolve(POSTS_PATH, dirent.name), POST_IMAGE_PATH),
+          await makePostBriefFromFile(
+            path.resolve(POSTS_PATH, dirent.name),
+            POST_IMAGE_PATH,
+          ),
       ),
   );
 

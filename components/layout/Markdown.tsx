@@ -2,19 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { style as inlineLinkStyle } from "components/navigation/InlineLink";
 import useIsFirstRender from "hooks/useIsFirstRender";
-
-const createStyled = <TTag extends keyof JSX.IntrinsicElements>(
-  Tag: TTag,
-  baseClassName: string,
-) => {
-  return ({ className, ...props }: React.ComponentProps<TTag>) => {
-    const computedClassName = useMemo(() => {
-      return { className: twMerge(baseClassName, className) } as any;
-    }, [className]);
-
-    return <Tag {...computedClassName} {...props} />;
-  };
-};
+import { createStyled } from "utils/components";
 
 const Markdown = {
   h2: createStyled("h2", "text-4xl font-bold"),

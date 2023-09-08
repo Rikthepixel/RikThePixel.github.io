@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { PageProps } from "typings/page";
@@ -13,8 +12,9 @@ import RikSquarePicture from "res/images/graphics/rik-square.webp";
 import experiences from "res/state/experiences";
 import externalLinks from "res/state/external-links";
 import { NextSeo } from "next-seo";
+import Header from "components/Header";
 
-const portraitPictureAnimation = {
+const PORTRAIT_PICTURE_ANIMATION = {
   initial: {
     translateX: "-5%",
   },
@@ -30,7 +30,7 @@ const portraitPictureAnimation = {
   },
 } as const;
 
-const experienceContainerAnimation = {
+const EXPERIENCE_CONTAINER_ANIMATION = {
   hidden: {},
   show: {
     transition: {
@@ -39,7 +39,7 @@ const experienceContainerAnimation = {
   },
 } as const;
 
-const experienceAnimation = {
+const EXPERIENCE_ANIMATION = {
   hidden: {
     translateX: "-5%",
   },
@@ -77,19 +77,17 @@ const About = ({ initialLoad }: PageProps) => {
               initial={initialLoad ? "" : "initial"}
               animate="animate"
               exit="exit"
-              variants={reduceMotion ? undefined : portraitPictureAnimation}
+              variants={reduceMotion ? undefined : PORTRAIT_PICTURE_ANIMATION}
             />
             <div className="flex flex-col gap-4">
-              <h2 id="who-am-i" className="text-4xl font-medium md:text-5xl">
-                Who am I?
-              </h2>
+              <Header.H2 id="who-am-i">Who am I?</Header.H2>
               <p className="font-medium">
                 I am Rik den Breejen, a Software engineer from the Netherlands.
                 My specialization is predominantly in web-development, ranging
                 from front- to back-end.
               </p>
               <p>
-                Currently I attend{" "}
+                {"Currently I attend "}
                 <InlineLink
                   href="https://fontys.edu/"
                   rel="noreferrer"
@@ -108,23 +106,20 @@ const About = ({ initialLoad }: PageProps) => {
             </div>
           </section>
           <section className="p-4" aria-labelledby="experience">
-            <h2
-              id="experience"
-              className="text-4xl font-medium text-center md:text-5xl"
-            >
+            <Header.H2 id="experience" className="text-center">
               Experience
-            </h2>
+            </Header.H2>
             <motion.div
               className="flex flex-col gap-4 mt-4"
               initial="hidden"
               animate="show"
-              variants={experienceContainerAnimation}
+              variants={EXPERIENCE_CONTAINER_ANIMATION}
             >
               {experiences.map((experience, i, arr) => (
                 <motion.div
                   key={i}
                   variants={
-                    reduceMotion || initialLoad ? {} : experienceAnimation
+                    reduceMotion || initialLoad ? {} : EXPERIENCE_ANIMATION
                   }
                 >
                   <Experience
@@ -139,12 +134,12 @@ const About = ({ initialLoad }: PageProps) => {
             className="flex flex-col items-center gap-4 p-4"
             aria-labelledby="external-links"
           >
-            <h2
+            <Header.H2
               id="external-links"
               className="text-4xl font-medium text-center md:text-5xl"
             >
               External Links
-            </h2>
+            </Header.H2>
             <div className="flex flex-col gap-4">
               {externalLinks.map((externalLink, i) => (
                 <ExternalLink key={i} {...externalLink} />
@@ -153,16 +148,28 @@ const About = ({ initialLoad }: PageProps) => {
           </section>
           <section
             className="flex flex-col items-center text-center gap-4 p-4"
-            aria-labelledby="projects"
+            aria-labelledby="blog"
           >
-            <h2 id="projects" className="absolute text-[0px]">
-              Projects
-            </h2>
+            <Header.H2
+              id="blog"
+              className="text-4xl font-medium text-center md:text-5xl"
+              // id="projects"
+              // className="absolute text-[0px]"
+            >
+              Blog
+              {/*   Projects */}
+            </Header.H2>
             <div>
-              Actions speak louder then words! Have a look at my projects next
+              Do you want to know more? Have a look at my blog!
+              {/* Actions speak louder then words! Have a look at my projects next */}
             </div>
-            <LinkButton href="/projects" className="block">
-              Go to my Projects
+            <LinkButton
+              // href="/projects"
+              href="/blog"
+              className="block"
+            >
+              Go to my Blog
+              {/* Go to my Projects */}
             </LinkButton>
           </section>
         </div>

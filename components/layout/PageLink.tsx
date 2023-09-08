@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import { useRouter } from "next/router";
 import LinkButton from "components/controls/LinkButton";
 import { twMerge } from "tailwind-merge";
@@ -17,15 +17,21 @@ const PageLink = ({ to, className, children }: PageLinkProps) => {
       ? router.asPath === "/"
       : router.asPath.includes(to);
 
+  const computedClassName = useMemo(
+    () =>
+      twMerge(
+        `w-full text-lg text-center bg-primary-100 shadow font-normal px-2 py-1 text-white hover:text-white active:hover:border-secondary aria-[current='page']:text-white aria-[current='page']:border-secondary md:text-2xl`,
+        className,
+      ),
+    [className],
+  );
+
   return (
     <LinkButton
       href={to}
       variant="outlined"
       aria-current={match ? "page" : undefined}
-      className={twMerge(
-        `w-full text-lg text-center bg-primary-100 shadow font-normal px-2 py-1 text-white hover:text-white active:hover:border-secondary aria-[current='page']:text-white aria-[current='page']:border-secondary md:text-2xl`,
-        className,
-      )}
+      className={computedClassName}
     >
       {children}
     </LinkButton>
