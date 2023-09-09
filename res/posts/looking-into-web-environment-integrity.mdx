@@ -70,7 +70,7 @@ Some potential problems I see with this is that Google Chrome can set requiremen
 
 Another problem has to do with user experience, if a user disables all the privacy invasive attesters and a website requires the user to use one of those, then the user would be blocked out of that website.
 
-Now that we know what the Web Integrity API and who can be an attester, lets look at what the benefits are (for Google).
+Now that we know what the Web Integrity API is and who can be an attester, lets look at what the benefits are (for Google).
 
 ## The Benefits For You (and For Google)
 
@@ -102,13 +102,44 @@ Lets go over the downsides of this proposal one-by-one and see what other reason
 
 Because trustworthiness is based on the environment, which includes the browser, users can't use untrusted browsers. New browsers would be by default not be trusted by attesters. This means that they have to get verified first. If the attester doesn't like the browser's policies they might not validate them. This adds an extra step into creating a new web browser. Making it harder to get into the browser market might kill competition.
 
-Brave and Firefox are browsers that likely don't want to implement it.
+<div>
+  <Img
+    baseUrl={imageUrl}
+    src="/browser-opinions.webp"
+    alt={`
+        Official stances of major browsers. 
+        Firefox: "Mozilla opposes this proposal because it contradicts our principles and vision for the Web. Mechanisms that attempt to restrict these choices are harmful to the openness of the Web ecosystem and are not good for users.".
+        Brave: "WEI is the latest step in a terrible direction Google is pushing for the Web. Web users deserve a browser that doesn’t treat them as enemies that need to be restricted and controlled.".
+        Vivaldi: "Vivaldi browser thinks Google’s new proposal, the Web-Environment-Integrity spec, is a major threat to the open web and should be pushed back."
+        `}
+  />
+  <Img.Subtitle>
+    Stance on Web Environment Integrity from Firefox[^12], Brave[^14] and
+    Vivaldi[^15]
+  </Img.Subtitle>
+</div>
 
-_(Show Brave, Vivaldi and Firefox statements)_
+<Split leftSpan={1.5}>
 
-However because Chromium is such a large part of the browser market they will have to implement it, otherwise they will risk their users not being able to surf the web.
+    Brave and Firefox are browsers that likely don't want to implement it. However because Chromium is such a large part of the browser market they will have to implement it, otherwise they will risk their users not being able to surf the web.
 
-_(Show market share chromium based browsers)_
+<div>
+  <Img
+    baseUrl={imageUrl}
+    src="/browser-market-share.webp"
+    alt={`
+        Image of Browsers and their marketshare. 
+        Chrome: 63.56%.
+        Safari: 19.85%.
+        Edge: 5.43%.
+        Firefox: 2.94%.
+        Opera: 2.74%.
+        Samsung Internet: 2.33%.
+    `}
+  />
+  <Img.Subtitle>Browser marketshare[^16]</Img.Subtitle>
+</div>
+</Split>
 
 ### #2 Abusing their Power
 
@@ -226,5 +257,8 @@ Thanks to the pushback of a lot of developers this proposal has been put on the 
 [^9]: Pointing out the code changes: https://groups.google.com/a/chromium.org/g/blink-dev/c/Ux5h_kGO22g/m/WJiomHkTAgAJ
 [^10]: Developer threats and abuse: https://groups.google.com/a/chromium.org/g/blink-dev/c/Ux5h_kGO22g/m/0doc7unxAQAJ
 [^11]: Proposal status: https://chromestatus.com/feature/5796524191121408
-[^12]: Firefox comment: https://github.com/mozilla/standards-positions/issues/852#issuecomment-1648820747
+[^12]: Firefox stance: https://github.com/mozilla/standards-positions/issues/852#issuecomment-1648820747
 [^13]: Captcha: Humans vs Bots study: https://arxiv.org/abs/2307.12108
+[^14]: Brave stance: https://brave.com/web-standards-at-brave/9-web-environment-integrity/
+[^15]: Vivaldi stance: https://vivaldi.com/blog/googles-new-dangerous-web-environment-integrity-spec/
+[^16]: Browser marketshare: https://gs.statcounter.com/browser-market-share

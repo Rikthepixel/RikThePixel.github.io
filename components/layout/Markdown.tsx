@@ -65,7 +65,7 @@ const Markdown = {
         [className],
       );
 
-      return <img className={computedClassName} src={computedSrc} {...props} />;
+      return <img className={computedClassName} src={computedSrc} loading="lazy" {...props} />;
     },
     {
       Subtitle: createStyled(
