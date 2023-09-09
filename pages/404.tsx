@@ -1,4 +1,3 @@
-import Head from "next/head";
 import HomeModernIcon from "@heroicons/react/24/solid/HomeModernIcon";
 
 import LinkButton from "components/controls/LinkButton";
