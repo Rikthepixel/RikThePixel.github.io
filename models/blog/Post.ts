@@ -1,5 +1,4 @@
 import { POST_EXT, POST_IMAGE_PATH } from "config/blog";
-import matter from "gray-matter";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import fs from "node:fs/promises";
