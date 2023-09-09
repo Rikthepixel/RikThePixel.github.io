@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 const Document = () => {
   return (
     <Html
-      className="overflow-auto bg-primary-100 text-primary-contrast"
+      className="bg-primary-100 text-primary-contrast"
       lang="en"
     >
       <Head>

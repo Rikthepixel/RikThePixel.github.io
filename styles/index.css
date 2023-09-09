@@ -7,7 +7,7 @@
 }
 
 html {
-  @apply min-h-full
+  @apply min-h-full overflow-y-auto overflow-x-clip
 }
 
 html,
