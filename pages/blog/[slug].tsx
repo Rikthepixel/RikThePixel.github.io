@@ -90,7 +90,7 @@ export default function BlogPage({ post: serializedPost, imageUrl }: StaticProps
               </span>
             </div>
             <DotDivider />
-            <span>
+            <span className="flex gap-2">
               <span className="text-xl">📅</span>
               <time
                 aria-label="Date created"
@@ -102,7 +102,7 @@ export default function BlogPage({ post: serializedPost, imageUrl }: StaticProps
               </time>
             </span>
             <DotDivider />
-            <span>
+            <span className="flex gap-2">
               <span className="text-xl">📖</span>
               <time
                 aria-label="article reading time"
