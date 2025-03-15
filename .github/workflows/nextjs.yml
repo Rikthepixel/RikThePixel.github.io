@@ -50,8 +50,6 @@ jobs:
         run: npm ci 
       - name: Build with Next.js
         run: npx --noinstall next build
-      - name: Static HTML export with Next.js
-        run: npx --no-install next export
       - run: echo '' > ./out/_next/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
