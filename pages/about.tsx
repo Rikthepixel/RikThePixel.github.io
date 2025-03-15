@@ -94,8 +94,9 @@ const About = ({ initialLoad }: PageProps) => {
                   external
                 >
                  TinyTronics 
-                </InlineLink>. I work on internal projects that streamline different business processes.
-                {"I graduated from "}
+                </InlineLink>. 
+                I work on internal projects that streamline different business processes.
+                {" I graduated from "}
                 <InlineLink
                   href="https://fontys.edu/"
                   rel="noreferrer"

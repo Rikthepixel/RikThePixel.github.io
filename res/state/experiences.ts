@@ -19,19 +19,6 @@ export default [
     },
   },
   {
-    title: "Software engineer",
-    logo: TinyTronicsLogo,
-    position: "Parttime",
-    place: {
-      name: "TinyTronics B.V.",
-      link: "https://www.tinytronics.nl/shop/en/about-us/",
-    },
-    timespan: {
-      start: "Jun. 2022",
-      end: "Sept. 2024",
-    },
-  },
-  {
     title: "Intern Software engineer",
     logo: SquadraMlcLogo,
     position: "Fulltime Intern",
@@ -45,6 +32,19 @@ export default [
     },
   },
   {
+    title: "Software engineer",
+    logo: TinyTronicsLogo,
+    position: "Parttime",
+    place: {
+      name: "TinyTronics B.V.",
+      link: "https://www.tinytronics.nl/shop/en/about-us/",
+    },
+    timespan: {
+      start: "Jun. 2022",
+      end: "Sept. 2024",
+    },
+  },
+  {
     title: "Software engineering Student",
     logo: FontysLogo,
     position: "Student",
@@ -54,7 +54,7 @@ export default [
     },
     timespan: {
       start: "2020",
-      end: "Present",
+      end: "2024",
     },
   },
 ] satisfies IExperience[];
