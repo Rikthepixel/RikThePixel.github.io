@@ -87,7 +87,15 @@ const About = ({ initialLoad }: PageProps) => {
                 from front- to back-end.
               </p>
               <p>
-                {"Currently I attend "}
+                {"I work at "}
+                <InlineLink
+                  href="https://www.tinytronics.nl/"
+                  rel="noreferrer"
+                  external
+                >
+                 TinyTronics 
+                </InlineLink>. I work on internal projects that streamline different business processes.
+                {"I graduated from "}
                 <InlineLink
                   href="https://fontys.edu/"
                   rel="noreferrer"
@@ -95,8 +103,7 @@ const About = ({ initialLoad }: PageProps) => {
                 >
                   Fontys University of Applied Sciences
                 </InlineLink>
-                , majoring in Software engineering. Ever since I started
-                attending college I have gained a passion for coding.
+                , majoring in Software engineering.
               </p>
               <p>
                 My love for coding drives me to spend a lot of my free time
